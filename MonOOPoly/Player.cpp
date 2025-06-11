@@ -7,6 +7,7 @@ Player::Player(const MyString& name, int money)
 	this->position = 0;
 	this->totalBalance = money;
 	this->inJail = false;
+	this->ownedProperties = MyVector<Property>(Utils::MIN_CAPACITY);
 }
 
 Player::Player(const MyString& name, int money, size_t position, int totalBalance, bool inJail)
