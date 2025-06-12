@@ -1,7 +1,10 @@
 #include "Player.h"
 
+int Player::nextId = 1;
+
 Player::Player(const MyString& name, int money)
 {
+	this->id = nextId++;
 	this->name = name;
 	this->money = money;
 	this->position = 0;
@@ -10,8 +13,9 @@ Player::Player(const MyString& name, int money)
 	this->ownedProperties = MyVector<Property>(Utils::MIN_CAPACITY);
 }
 
-Player::Player(const MyString& name, int money, size_t position, int totalBalance, bool inJail)
+Player::Player(int id, const MyString& name, int money, size_t position, int totalBalance, bool inJail)
 {
+	this->id = id;
 	this->name = name;
 	this->money = money;
 	this->position = position;
@@ -27,6 +31,15 @@ int Player::getMoney() const
 int Player::getTotalBalance() const
 {
 	return totalBalance;
+}
+
+void Player::setJailStatus()
+{
+	inJail = !inJail;
+	if (inJail)
+	{
+		position = Utils::JAIL_POSITION;
+	}
 }
 
 size_t Player::getCurrentPosition() const

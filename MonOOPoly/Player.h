@@ -5,6 +5,8 @@
 
 class Player
 {
+	static int nextId;
+	int id;
 	int money;
 	MyString name;
 	size_t position;
@@ -13,9 +15,10 @@ class Player
 	MyVector<Property> ownedProperties;
 public:
 	Player(const MyString& name, int money = Utils::INITIAL_MONEY);
-	Player(const MyString& name, int money, size_t position, int totalBalance, bool inJail);
+	Player(int id, const MyString& name, int money, size_t position, int totalBalance, bool inJail);
 	int getMoney() const;
 	int getTotalBalance() const;
+	void setJailStatus();
 	size_t getCurrentPosition() const;
 	bool isInJail() const;
 };
