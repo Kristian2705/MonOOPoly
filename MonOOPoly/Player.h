@@ -14,6 +14,7 @@ class Player
 	bool inJail;
 	MyVector<Property> ownedProperties;
 public:
+	Player() = default;
 	Player(const MyString& name, int money = GameConstants::INITIAL_MONEY);
 	Player(int id, const MyString& name, int money, size_t position, int totalBalance, bool inJail);
 	int getMoney() const;

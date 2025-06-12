@@ -14,6 +14,7 @@ class Property : public Field
 	size_t hotelPrice;
 	ColorSet colorSet;
 public:
+	Property() = default;
 	Property(int boardIndex, const MyString& name, int price, const size_t* rentTiers, size_t housePrice, size_t hotelPrice ,ColorSet colorSet);
 	Property(int ownerId, int boardIndex, const MyString& name, int price, int rentTierIndex, const size_t* rentTiers, size_t housePrice, size_t hotelPrice, ColorSet colorSet);
 	int getOwnerId() const;

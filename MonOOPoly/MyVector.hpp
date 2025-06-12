@@ -89,7 +89,7 @@ template<typename T>
 MyVector<T>::MyVector() {
 	size = 0;
 	capacity = GameConstants::MIN_CAPACITY;
-	elements = new T[GameConstants:MIN_CAPACITY];
+	elements = new T[GameConstants::MIN_CAPACITY];
 }
 
 template<typename T>
