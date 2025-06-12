@@ -1,12 +1,13 @@
 #pragma once
 #include "Field.h"
-#include "Player.h"
 
 class GoToJailField : public Field
 {
 public:
-	GoToJailField();
+	GoToJailField() = delete;
+	GoToJailField(const MyString& name);
 	void putInJail(Player& player) const;
-	virtual Field* clone() const override;
+	void applyEffect(Player& player) override;
+	Field* clone() const override;
 };
 

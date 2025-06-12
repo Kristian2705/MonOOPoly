@@ -3,13 +3,8 @@
 int Player::nextId = 1;
 
 Player::Player(const MyString& name, int money)
+	: id(nextId++), name(name), money(money), position(GameConstants::GO_FIELD_INDEX), totalBalance(money)
 {
-	this->id = nextId++;
-	this->name = name;
-	this->money = money;
-	this->position = 0;
-	this->totalBalance = money;
-	this->inJail = false;
 	this->ownedProperties = MyVector<Property>(GameConstants::MIN_CAPACITY);
 }
 
@@ -23,9 +18,25 @@ Player::Player(int id, const MyString& name, int money, size_t position, int tot
 	this->inJail = inJail;
 }
 
+int Player::getId() const
+{
+	return this->id;
+}
+
 int Player::getMoney() const
 {
 	return money;
+}
+
+void Player::addMoney(int amount)
+{
+	money += amount;
+	totalBalance += amount;
+}
+
+const MyString& Player::getName() const
+{
+	return name;
 }
 
 int Player::getTotalBalance() const
@@ -40,6 +51,16 @@ void Player::setJailStatus()
 	{
 		position = GameConstants::JAIL_POSITION;
 	}
+}
+
+void Player::resign()
+{
+	isInGame = false;
+	totalBalance = 0;
+	money = 0;
+	position = GameConstants::INVALID_POSITION;
+	inJail = false;
+	ownedProperties.clear();
 }
 
 size_t Player::getCurrentPosition() const

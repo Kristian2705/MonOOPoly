@@ -134,17 +134,23 @@
     <ClCompile Include="CardField.cpp" />
     <ClCompile Include="Constants.h" />
     <ClCompile Include="Field.cpp" />
+    <ClCompile Include="GoField.cpp" />
     <ClCompile Include="GoToJailField.cpp" />
     <ClCompile Include="GroupPaymentCard.cpp" />
+    <ClCompile Include="JailField.cpp" />
     <ClCompile Include="MonOOPoly.cpp" />
     <ClCompile Include="Monopoly.cpp" />
     <ClCompile Include="Mortgage.cpp" />
     <ClCompile Include="MovePositionCard.cpp" />
     <ClCompile Include="MyString.cpp" />
+    <ClCompile Include="ParkingField.cpp" />
     <ClCompile Include="PaymentCard.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Property.cpp" />
+    <ClCompile Include="Station.cpp" />
+    <ClCompile Include="TaxField.cpp" />
     <ClCompile Include="Trade.cpp" />
+    <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bank.h" />
@@ -154,18 +160,24 @@
     <ClInclude Include="CardField.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="Field.h" />
+    <ClInclude Include="GoField.h" />
     <ClInclude Include="GoToJailField.h" />
     <ClInclude Include="GroupPaymentCard.h" />
+    <ClInclude Include="JailField.h" />
     <ClInclude Include="Monopoly.h" />
     <ClInclude Include="Mortgage.h" />
     <ClInclude Include="MovePositionCard.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="MyVector.hpp" />
+    <ClInclude Include="ParkingField.h" />
     <ClInclude Include="PaymentCard.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PolymorphicContainer.hpp" />
     <ClInclude Include="Property.h" />
+    <ClInclude Include="Station.h" />
+    <ClInclude Include="TaxField.h" />
     <ClInclude Include="Trade.h" />
+    <ClInclude Include="Utility.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

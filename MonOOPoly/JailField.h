@@ -1,10 +1,10 @@
 #pragma once
 #include "Field.h"
-class CardField : public Field
+class JailField : public Field
 {
 public:
-	CardField() = delete;
-	CardField(int id, const MyString& name);
+	JailField() = delete;
+	JailField(const MyString& name);
 	void applyEffect(Player& player) override;
 	Field* clone() const override;
 };

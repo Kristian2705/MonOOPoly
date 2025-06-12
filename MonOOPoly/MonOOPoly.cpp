@@ -1,6 +1,10 @@
 #include <iostream>
+#include "Monopoly.h"
 
 int main()
 {
-    std::cout << "Hello MonOOPoly!" << std::endl;
+	Monopoly* game = Monopoly::getInstance();
+	game->startGame();
+	Monopoly::freeInstance();
+	return 0;
 }

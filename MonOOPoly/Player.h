@@ -1,5 +1,4 @@
 #pragma once
-#include "MyString.h"
 #include "Property.h"
 #include "MyVector.hpp"
 
@@ -11,15 +10,20 @@ class Player
 	MyString name;
 	size_t position;
 	int totalBalance;
-	bool inJail;
+	bool isInGame = true;
+	bool inJail = false;
 	MyVector<Property> ownedProperties;
 public:
 	Player() = default;
 	Player(const MyString& name, int money = GameConstants::INITIAL_MONEY);
 	Player(int id, const MyString& name, int money, size_t position, int totalBalance, bool inJail);
+	int getId() const;
 	int getMoney() const;
+	void addMoney(int amount);
+	const MyString& getName() const;
 	int getTotalBalance() const;
 	void setJailStatus();
+	void resign();
 	size_t getCurrentPosition() const;
 	bool isInJail() const;
 };

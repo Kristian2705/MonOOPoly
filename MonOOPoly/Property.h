@@ -1,12 +1,12 @@
 #pragma once
 #include "Field.h"
 #include "MyString.h"
+#include "MyVector.hpp"
 #include "Enums.h"
 
 class Property : public Field
 {
 	int ownerId;
-	MyString name;
 	size_t price;
 	size_t rentTiers[GameConstants::RENT_TIERS_COUNT];
 	int rentTierIndex;
@@ -20,6 +20,7 @@ public:
 	int getOwnerId() const;
 	int getPrice() const;
 	size_t getRent() const;
+	void applyEffect(Player& player) override;
 	Field* clone() const override;
 };
 

@@ -37,55 +37,28 @@
     <Filter Include="Source Files\Utilities">
       <UniqueIdentifier>{fb183db0-79f1-4377-8db8-c1b361f06fc3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Entities\Fields">
+      <UniqueIdentifier>{945f96aa-9127-4457-825b-ea13d8c1f635}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities\Cards">
+      <UniqueIdentifier>{34b2d4a3-8af2-4727-a0a5-1bac2b7db866}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities\Base">
+      <UniqueIdentifier>{43d83c71-97d1-433e-aa7f-eaae091f2431}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Fields">
+      <UniqueIdentifier>{d19708f6-d59d-4d4a-ad46-22765659b2b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Cards">
+      <UniqueIdentifier>{d673ed10-2127-40d0-8e3a-67653ee302a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Base">
+      <UniqueIdentifier>{9a455e5d-f789-4ebf-a1a2-2b493525190c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MonOOPoly.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Monopoly.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Bank.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Board.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Field.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Property.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="CardField.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="GoToJailField.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="CardDeck.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Card.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="MovePositionCard.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="PaymentCard.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="GroupPaymentCard.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Mortgage.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Trade.cpp">
-      <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Constants.h">
       <Filter>Header Files\Utilities</Filter>
@@ -93,53 +66,71 @@
     <ClCompile Include="MyString.cpp">
       <Filter>Source Files\Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="Field.cpp">
+      <Filter>Source Files\Entities\Fields</Filter>
+    </ClCompile>
+    <ClCompile Include="CardField.cpp">
+      <Filter>Source Files\Entities\Fields</Filter>
+    </ClCompile>
+    <ClCompile Include="GoField.cpp">
+      <Filter>Source Files\Entities\Fields</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToJailField.cpp">
+      <Filter>Source Files\Entities\Fields</Filter>
+    </ClCompile>
+    <ClCompile Include="JailField.cpp">
+      <Filter>Source Files\Entities\Fields</Filter>
+    </ClCompile>
+    <ClCompile Include="TaxField.cpp">
+      <Filter>Source Files\Entities\Fields</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility.cpp">
+      <Filter>Source Files\Entities\Fields</Filter>
+    </ClCompile>
+    <ClCompile Include="Station.cpp">
+      <Filter>Source Files\Entities\Fields</Filter>
+    </ClCompile>
+    <ClCompile Include="ParkingField.cpp">
+      <Filter>Source Files\Entities\Fields</Filter>
+    </ClCompile>
+    <ClCompile Include="Property.cpp">
+      <Filter>Source Files\Entities\Fields</Filter>
+    </ClCompile>
+    <ClCompile Include="Card.cpp">
+      <Filter>Source Files\Entities\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="PaymentCard.cpp">
+      <Filter>Source Files\Entities\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="MovePositionCard.cpp">
+      <Filter>Source Files\Entities\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupPaymentCard.cpp">
+      <Filter>Source Files\Entities\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="Bank.cpp">
+      <Filter>Source Files\Entities\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Board.cpp">
+      <Filter>Source Files\Entities\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="CardDeck.cpp">
+      <Filter>Source Files\Entities\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Monopoly.cpp">
+      <Filter>Source Files\Entities\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Mortgage.cpp">
+      <Filter>Source Files\Entities\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Entities\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Trade.cpp">
+      <Filter>Source Files\Entities\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Monopoly.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Bank.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Board.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Field.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Property.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="CardField.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="GoToJailField.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="CardDeck.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Card.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="MovePositionCard.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="PaymentCard.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="GroupPaymentCard.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Mortgage.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Trade.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="MyVector.hpp">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
@@ -151,6 +142,69 @@
     </ClInclude>
     <ClInclude Include="Enums.h">
       <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="TaxField.h">
+      <Filter>Header Files\Entities\Fields</Filter>
+    </ClInclude>
+    <ClInclude Include="Station.h">
+      <Filter>Header Files\Entities\Fields</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Header Files\Entities\Fields</Filter>
+    </ClInclude>
+    <ClInclude Include="Property.h">
+      <Filter>Header Files\Entities\Fields</Filter>
+    </ClInclude>
+    <ClInclude Include="ParkingField.h">
+      <Filter>Header Files\Entities\Fields</Filter>
+    </ClInclude>
+    <ClInclude Include="JailField.h">
+      <Filter>Header Files\Entities\Fields</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToJailField.h">
+      <Filter>Header Files\Entities\Fields</Filter>
+    </ClInclude>
+    <ClInclude Include="GoField.h">
+      <Filter>Header Files\Entities\Fields</Filter>
+    </ClInclude>
+    <ClInclude Include="Field.h">
+      <Filter>Header Files\Entities\Fields</Filter>
+    </ClInclude>
+    <ClInclude Include="CardField.h">
+      <Filter>Header Files\Entities\Fields</Filter>
+    </ClInclude>
+    <ClInclude Include="Card.h">
+      <Filter>Header Files\Entities\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="PaymentCard.h">
+      <Filter>Header Files\Entities\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="MovePositionCard.h">
+      <Filter>Header Files\Entities\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="GroupPaymentCard.h">
+      <Filter>Header Files\Entities\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="Bank.h">
+      <Filter>Header Files\Entities\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Header Files\Entities\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CardDeck.h">
+      <Filter>Header Files\Entities\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Monopoly.h">
+      <Filter>Header Files\Entities\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Mortgage.h">
+      <Filter>Header Files\Entities\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Entities\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Trade.h">
+      <Filter>Header Files\Entities\Base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
