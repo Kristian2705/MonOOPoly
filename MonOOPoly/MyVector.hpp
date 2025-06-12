@@ -88,8 +88,8 @@ static unsigned roundToPowerOfTwo(unsigned v)
 template<typename T>
 MyVector<T>::MyVector() {
 	size = 0;
-	capacity = Utils::MIN_CAPACITY;
-	elements = new T[Utils:MIN_CAPACITY];
+	capacity = GameConstants::MIN_CAPACITY;
+	elements = new T[GameConstants:MIN_CAPACITY];
 }
 
 template<typename T>

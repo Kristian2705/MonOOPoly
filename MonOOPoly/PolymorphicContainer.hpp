@@ -28,7 +28,7 @@ public:
 template<class T>
 PolymorphicContainer<T>::PolymorphicContainer()
 {
-	capacity = Utils::MIN_CAPACITY;
+	capacity = GameConstants::MIN_CAPACITY;
 	elements = new T * [capacity] { nullptr };
 	size = 0;
 

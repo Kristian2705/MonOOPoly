@@ -10,7 +10,7 @@ Player::Player(const MyString& name, int money)
 	this->position = 0;
 	this->totalBalance = money;
 	this->inJail = false;
-	this->ownedProperties = MyVector<Property>(Utils::MIN_CAPACITY);
+	this->ownedProperties = MyVector<Property>(GameConstants::MIN_CAPACITY);
 }
 
 Player::Player(int id, const MyString& name, int money, size_t position, int totalBalance, bool inJail)
@@ -38,7 +38,7 @@ void Player::setJailStatus()
 	inJail = !inJail;
 	if (inJail)
 	{
-		position = Utils::JAIL_POSITION;
+		position = GameConstants::JAIL_POSITION;
 	}
 }
 

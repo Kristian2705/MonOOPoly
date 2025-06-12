@@ -16,7 +16,7 @@ static unsigned roundToPowerOfTwo(unsigned v)
 
 MyString::MyString() {
     size = 0;
-    capacity = Utils::MIN_CAPACITY;
+    capacity = GameConstants::MIN_CAPACITY;
     str = new char[capacity + 1];
     str[capacity] = '\0';
 }
@@ -193,7 +193,7 @@ int MyString::stoi() const
 
 MyString MyString::itos(int num)
 {
-    char res[Utils::BUFFER_CAPACITY];
+    char res[GameConstants::BUFFER_CAPACITY];
     int i = 0;
 
     if (num == 0) {
@@ -307,7 +307,7 @@ std::ostream& operator<<(std::ostream& os, const MyString& obj) {
 std::istream& operator>>(std::istream& is, MyString& ref) {
     ref.clear();
 
-    char buffer[Utils::BUFFER_CAPACITY];
+    char buffer[GameConstants::BUFFER_CAPACITY];
     is >> buffer;
     ref.size = strlen(buffer);
     ref.capacity = roundToPowerOfTwo(ref.size);
