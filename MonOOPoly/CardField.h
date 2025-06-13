@@ -3,9 +3,8 @@
 class CardField : public Field
 {
 public:
-	CardField() = delete;
-	CardField(int id, const MyString& name);
-	void applyEffect(Player& player) override;
+	CardField(int id, const MyString& name, const MyString& abbreviation);
+	void applyEffect() override;
 	Field* clone() const override;
 };
 

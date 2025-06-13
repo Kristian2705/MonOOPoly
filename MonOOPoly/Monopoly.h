@@ -11,7 +11,9 @@ public:
 	static Monopoly* getInstance();
 	static void freeInstance();
 	void startGame();
+	void welcomePlayers() const;
 	int rollDice() const;
+	void addPlayers();
 	void showPlayerData(int id) const;
 	void nextTurn();
 };

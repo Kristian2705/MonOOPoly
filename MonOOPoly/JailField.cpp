@@ -1,10 +1,10 @@
 #include "JailField.h"
 
-JailField::JailField(const MyString& name)
-	: Field(GameConstants::JAIL_FIELD_INDEX, name)
+JailField::JailField(const MyString& name, const MyString& abbreviation)
+	: Field(GameConstants::JAIL_FIELD_INDEX, name, abbreviation)
 { }
 
-void JailField::applyEffect(Player& player)
+void JailField::applyEffect()
 {
 	std::cout << "Just visiting the jail." << std::endl;
 }

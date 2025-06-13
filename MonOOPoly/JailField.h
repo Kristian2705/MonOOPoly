@@ -3,9 +3,8 @@
 class JailField : public Field
 {
 public:
-	JailField() = delete;
-	JailField(const MyString& name);
-	void applyEffect(Player& player) override;
+	JailField(const MyString& name, const MyString& abbreviation);
+	void applyEffect() override;
 	Field* clone() const override;
 };
 

@@ -18,4 +18,6 @@ namespace GameConstants {
 	const int GO_FIELD_INDEX = 0;
 	const int JAIL_FIELD_INDEX = 10;
 	const int PASS_GO_BONUS = 200;
+	const int PRINT_BOARD_WIDTH = 11;
+	const int CELL_WIDTH = 7;
 };

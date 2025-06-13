@@ -1,10 +1,10 @@
 #include "Station.h"
 
-Station::Station(int boardIndex, const MyString& name)
-	: Field(boardIndex, name)
+Station::Station(int boardIndex, const MyString& name, const MyString& abbreviation)
+	: Field(boardIndex, name, abbreviation)
 { }
 
-void Station::applyEffect(Player& player)
+void Station::applyEffect()
 {
 	std::cout << "You landed on " << name << ". This is a station." << std::endl;
 	// Implement the effect of landing on a station.

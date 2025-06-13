@@ -23,17 +23,24 @@ void Monopoly::freeInstance()
 void Monopoly::startGame()
 {
 	board = Board::getInstance();
+	welcomePlayers();
+	addPlayers();
+	board->printBoard();
+	//while (true) {
+	//	Player& currentPlayer = board->getPlayer(currentPlayerIndex);
+	//	std::cout << "Current Player: " << currentPlayer.getName() << std::endl;
+	//	showPlayerData(currentPlayerIndex);
+	//	std::cout << "Press Enter to roll the dice..." << std::endl;
+	//	std::cin.get();
+	//	int result = rollDice();
+	//}
+}
 
-
-	
-	while (true) {
-		Player& currentPlayer = board->getPlayer(currentPlayerIndex);
-		std::cout << "Current Player: " << currentPlayer.getName() << std::endl;
-		showPlayerData(currentPlayerIndex);
-		std::cout << "Press Enter to roll the dice..." << std::endl;
-		std::cin.get();
-		int result = rollDice();
-	}
+void Monopoly::welcomePlayers() const
+{
+	std::cout << "Welcome to MonOOPoly!" << std::endl;
+	std::cout << "Press Enter to start the game..." << std::endl;
+	std::cin.get();
 }
 
 int Monopoly::rollDice() const
@@ -43,6 +50,26 @@ int Monopoly::rollDice() const
 	int total = die1 + die2;
 	std::cout << "You rolled: " << die1 << " and " << die2 << " (Total: " << total << ")" << std::endl;
 	return total;
+}
+
+void Monopoly::addPlayers()
+{
+	std::cout << "Enter the number of players (2-6): ";
+	int numPlayers;
+	std::cin >> numPlayers;
+	while (numPlayers < 2 || numPlayers > GameConstants::MAX_PLAYERS) {
+		std::cout << "Invalid number of players. Please enter a number between 2 and " << GameConstants::MAX_PLAYERS << "." << std::endl;
+		std::cout << "Enter the number of players (2-6): ";
+		std::cin >> numPlayers;
+	}
+	for (int i = 0; i < numPlayers; i++) {
+		std::cout << "Enter name for Player " << (i + 1) << ": ";
+		MyString name;
+		std::cin >> name;
+		Player player(name);
+		board->addPlayer(player);
+		std::cout << "Player " << (i + 1) << " added with ID: " << player.getId() << std::endl;
+	}
 }
 
 void Monopoly::showPlayerData(int id) const

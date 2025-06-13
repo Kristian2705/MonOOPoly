@@ -1,18 +1,18 @@
 #include "GoToJailField.h"
 
-GoToJailField::GoToJailField(const MyString & name)
-	: Field(GameConstants::GO_TO_JAIL_FIELD_INDEX, name)
+GoToJailField::GoToJailField(const MyString & name, const MyString& abbreviation)
+	: Field(GameConstants::GO_TO_JAIL_FIELD_INDEX, name, abbreviation)
 {
 }
 
-void GoToJailField::putInJail(Player & player) const
-{
-	player.setJailStatus();
-}
+//void GoToJailField::putInJail() const
+//{
+//	player.setJailStatus();
+//}
 
-void GoToJailField::applyEffect(Player& player)
+void GoToJailField::applyEffect()
 {
-	putInJail(player);
+
 }
 
 Field* GoToJailField::clone() const

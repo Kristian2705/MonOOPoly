@@ -6,9 +6,8 @@ class Station : public Field
 	size_t price;
 	size_t rent;
 public:
-	Station() = delete;
-	Station(int boardIndex, const MyString& name);
-	void applyEffect(Player& player) override;
+	Station(int boardIndex, const MyString& name, const MyString& abbreviation);
+	void applyEffect() override;
 	Field* clone() const override;
 };
 

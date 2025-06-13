@@ -1,12 +1,12 @@
 #include "TaxField.h"
 
-TaxField::TaxField(int boardIndex, const MyString& name, int taxAmount)
-	: Field(boardIndex, name), taxAmount(taxAmount)
+TaxField::TaxField(int boardIndex, const MyString& name, const MyString& abbreviation, int taxAmount)
+	: Field(boardIndex, name, abbreviation), taxAmount(taxAmount)
 { }
 
-void TaxField::applyEffect(Player& player)
+void TaxField::applyEffect()
 {
-	player.addMoney(-taxAmount);
+
 }
 
 Field* TaxField::clone() const

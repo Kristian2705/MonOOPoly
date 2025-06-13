@@ -9,6 +9,7 @@
 #include "TaxField.h"
 #include "Station.h"
 #include "Utility.h"
+#include <iomanip>
 
 class Board
 {
@@ -18,6 +19,10 @@ class Board
 	PolymorphicContainer<Field> fields;
 	MyVector<Player> players;
 	void initializeBoard();
+	void printCell(const MyString& label) const;
+	void printTopRow() const;
+	void printBottomRow() const;
+	void printMiddleRows() const;
 public:
 	static Board* getInstance();
 	static void freeInstance();
@@ -25,5 +30,6 @@ public:
 	void removePlayer(int playerId);
 	const Player& getPlayer(int playerId) const;
 	Player& getPlayer(int playerId);
+	void printBoard() const;
 };
 

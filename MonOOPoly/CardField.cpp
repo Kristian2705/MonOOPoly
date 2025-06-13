@@ -1,10 +1,10 @@
 #include "CardField.h"
 
-CardField::CardField(int id, const MyString& name)
-	: Field(id, name)
+CardField::CardField(int id, const MyString& name, const MyString& abbreviation)
+	: Field(id, name, abbreviation)
 { }
 
-void CardField::applyEffect(Player& player)
+void CardField::applyEffect()
 {
 	// Implement the effect of the card field on the player
 	// For example, draw a card from the deck and apply its effect

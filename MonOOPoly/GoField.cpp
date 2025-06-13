@@ -1,13 +1,12 @@
 #include "GoField.h"
 
-GoField::GoField(const MyString& name)
-	: Field(GameConstants::GO_FIELD_INDEX, name)
+GoField::GoField(const MyString& name, const MyString& abbreviation)
+	: Field(GameConstants::GO_FIELD_INDEX, name, abbreviation)
 { }
 
-void GoField::applyEffect(Player& player)
+void GoField::applyEffect()
 {
 	std::cout << "You passed GO! Collect $200." << std::endl;
-	player.addMoney(GameConstants::PASS_GO_BONUS);
 }
 
 Field* GoField::clone() const

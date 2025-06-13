@@ -5,9 +5,8 @@ class TaxField : public Field
 {
 	int taxAmount;
 public:
-	TaxField() = delete;
-	TaxField(int boardIndex, const MyString& name, int taxAmount);
-	void applyEffect(Player& player) override;
+	TaxField(int boardIndex, const MyString& name, const MyString& abbreviation, int taxAmount);
+	void applyEffect() override;
 	Field* clone() const override;
 };
 

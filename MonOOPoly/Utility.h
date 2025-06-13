@@ -4,9 +4,8 @@
 class Utility : public Field
 {
 public:
-	Utility() = default;
-	Utility(int boardIndex, const MyString& name);
-	void applyEffect(Player& player) override;
-	Field* clone() const override;;
+	Utility(int boardIndex, const MyString& name, const MyString& abbreviation);
+	void applyEffect() override;
+	Field* clone() const override;
 };
 
