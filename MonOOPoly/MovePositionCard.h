@@ -4,11 +4,9 @@
 
 class MovePositionCard : public Card
 {
-	MoveTypes moveType;
-	//implement applyEffect for each MoveType
 public:
-	MovePositionCard(const MyString& description, MoveTypes moveType);
-	void applyEffect() const override;
+	MovePositionCard(const MyString& description, std::unique_ptr<CardEffectStrategy> effectStartegy);
+	void applyEffect(Player& player) const override;
 	Card* clone() const override;
 };
 

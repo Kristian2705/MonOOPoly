@@ -1,6 +1,8 @@
 #pragma once
 #include "Property.h"
 #include "MyVector.hpp"
+#include <memory>
+class Card;
 
 class Player
 {
@@ -13,6 +15,7 @@ class Player
 	bool isInGame = true;
 	bool inJail = false;
 	MyVector<Property> ownedProperties;
+	MyVector<std::shared_ptr<Card>> cards;
 public:
 	Player() = default;
 	Player(const MyString& name, int money = GameConstants::INITIAL_MONEY);
@@ -26,5 +29,6 @@ public:
 	void resign();
 	size_t getCurrentPosition() const;
 	bool isInJail() const;
+	void moveTo(size_t newPosition);
 };
 

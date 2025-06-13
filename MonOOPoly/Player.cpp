@@ -72,3 +72,8 @@ bool Player::isInJail() const
 {
 	return inJail;
 }
+
+void Player::moveTo(size_t newPosition)
+{
+	position = newPosition;
+}

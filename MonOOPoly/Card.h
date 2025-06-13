@@ -1,13 +1,13 @@
 #pragma once
 #include "MyString.h"
+#include "CardEffectStrategy.h"
 
 class Card
 {
 	MyString description;
+	std::unique_ptr<CardEffectStrategy> effectStrategy;
 public:
-	Card(const MyString& description);
-	virtual void applyEffect() const = 0;
-	virtual Card* clone() const = 0;
-	virtual ~Card() = default;
+	Card(const MyString& description, std::unique_ptr<CardEffectStrategy> effectStrategy);
+	void applyEffect(Player& player);
 };
 
