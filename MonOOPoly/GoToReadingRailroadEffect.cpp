@@ -9,3 +9,8 @@ void GoToReadingRailroadEffect::execute(Player& player)
 	player.moveTo(GameConstants::READING_RAILROAD_LOCATION);
 	std::cout << "You are currently on position " << player.getCurrentPosition() << std::endl;
 }
+
+CardEffectStrategy* GoToReadingRailroadEffect::clone() const
+{
+	return new GoToReadingRailroadEffect(*this);
+}

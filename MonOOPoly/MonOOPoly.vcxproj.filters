@@ -225,6 +225,12 @@
     <ClCompile Include="OperaNightEffect.cpp">
       <Filter>Source Files\Entities\Cards\Effects\MultiplePayment</Filter>
     </ClCompile>
+    <ClCompile Include="ReceivePaymentEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClCompile>
+    <ClCompile Include="FeeEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyVector.hpp">
@@ -373,6 +379,12 @@
     </ClInclude>
     <ClInclude Include="OperaNightEffect.h">
       <Filter>Header Files\Entities\Cards\Effects\MultiplePayment</Filter>
+    </ClInclude>
+    <ClInclude Include="ReceivePaymentEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClInclude>
+    <ClInclude Include="FeeEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

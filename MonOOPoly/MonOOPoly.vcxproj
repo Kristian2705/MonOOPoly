@@ -141,6 +141,7 @@
     <ClCompile Include="Constants.h" />
     <ClCompile Include="ConsultancyFeeEffect.cpp" />
     <ClCompile Include="DoctorFeeEffect.cpp" />
+    <ClCompile Include="FeeEffect.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="GeneralRepairsEffect.cpp" />
     <ClCompile Include="GetOutOfJailEffect.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="PayPoorTaxEffect.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Property.cpp" />
+    <ClCompile Include="ReceivePaymentEffect.cpp" />
     <ClCompile Include="SaleOfStockEffect.cpp" />
     <ClCompile Include="SchoolFee.cpp" />
     <ClCompile Include="Station.cpp" />
@@ -191,6 +193,7 @@
     <ClInclude Include="ConsultancyFeeEffect.h" />
     <ClInclude Include="DoctorFeeEffect.h" />
     <ClInclude Include="Enums.h" />
+    <ClInclude Include="FeeEffect.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="GeneralRepairsEffect.h" />
     <ClInclude Include="GetOutOfJailEffect.h" />
@@ -220,6 +223,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PolymorphicContainer.hpp" />
     <ClInclude Include="Property.h" />
+    <ClInclude Include="ReceivePaymentEffect.h" />
     <ClInclude Include="SaleOfStockEffect.h" />
     <ClInclude Include="SchoolFee.h" />
     <ClInclude Include="Station.h" />
