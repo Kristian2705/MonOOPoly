@@ -31,4 +31,8 @@ namespace GameConstants {
 	const int ELECTRIC_COMPANY_LOCATION = 12;
 	const int WATER_WORKS_LOCATION = 28;
 	const int BROADWALK_LOCATION = 39;
+	const int BANK_DIVIDENT_REWARD = 50;
+	const int REPAIR_HOUSE_PRICE = 25;
+	const int REPAIR_HOTEL_PRICE = 100;
+	const int POOR_TAX = 15;
 };

@@ -33,6 +33,11 @@ size_t Property::getRent() const
 	return rentTiers[rentTierIndex];
 }
 
+int Property::getBuildsCount() const
+{
+	return rentTierIndex - 1;
+}
+
 void Property::applyEffect()
 {
 	// This method should implement the effect of landing on this property.

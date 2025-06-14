@@ -61,6 +61,18 @@
     <Filter Include="Header Files\Entities\Cards\Effects">
       <UniqueIdentifier>{0f62f7b7-1107-4850-9745-9212463a404d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Entities\Cards\Effects\Move">
+      <UniqueIdentifier>{58c848c7-589b-4adc-817e-9c4c85368869}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Cards\Effects\Move">
+      <UniqueIdentifier>{6b59f035-757a-44e9-a7aa-9b1e3695f7e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Cards\Effects\SinglePayment">
+      <UniqueIdentifier>{457a0c00-f794-4803-9fb0-6332c75d8b4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities\Cards\Effects\SinglePayment">
+      <UniqueIdentifier>{164ecafb-3770-4e73-bbd9-078d152d1538}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MonOOPoly.cpp">
@@ -102,9 +114,6 @@
     <ClCompile Include="Property.cpp">
       <Filter>Source Files\Entities\Fields</Filter>
     </ClCompile>
-    <ClCompile Include="Card.cpp">
-      <Filter>Source Files\Entities\Cards</Filter>
-    </ClCompile>
     <ClCompile Include="Bank.cpp">
       <Filter>Source Files\Entities\Base</Filter>
     </ClCompile>
@@ -126,38 +135,50 @@
     <ClCompile Include="Trade.cpp">
       <Filter>Source Files\Entities\Base</Filter>
     </ClCompile>
+    <ClCompile Include="AdvanceToGoEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="GetOutOfJailEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="GoBackThreeSpacesEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToBroadwalkEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToIllinoisEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToJailEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToNearestRailroadEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToNearestUtilityEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToReadingRailroadEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToStCharlesEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="BankPaysDividentEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClCompile>
     <ClCompile Include="CardEffectStrategy.cpp">
       <Filter>Source Files\Entities\Cards\Effects</Filter>
     </ClCompile>
-    <ClCompile Include="AdvanceToGoEffect.cpp">
-      <Filter>Source Files\Entities\Cards\Effects</Filter>
+    <ClCompile Include="Card.cpp">
+      <Filter>Source Files\Entities\Cards</Filter>
     </ClCompile>
-    <ClCompile Include="GoToJailEffect.cpp">
-      <Filter>Source Files\Entities\Cards\Effects</Filter>
+    <ClCompile Include="GeneralRepairsEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
     </ClCompile>
-    <ClCompile Include="GoToIllinoisEffect.cpp">
-      <Filter>Source Files\Entities\Cards\Effects</Filter>
-    </ClCompile>
-    <ClCompile Include="GoToStCharlesEffect.cpp">
-      <Filter>Source Files\Entities\Cards\Effects</Filter>
-    </ClCompile>
-    <ClCompile Include="GoToNearestRailroadEffect.cpp">
-      <Filter>Source Files\Entities\Cards\Effects</Filter>
-    </ClCompile>
-    <ClCompile Include="GoToNearestUtilityEffect.cpp">
-      <Filter>Source Files\Entities\Cards\Effects</Filter>
-    </ClCompile>
-    <ClCompile Include="GoBackThreeSpacesEffect.cpp">
-      <Filter>Source Files\Entities\Cards\Effects</Filter>
-    </ClCompile>
-    <ClCompile Include="GetOutOfJailEffect.cpp">
-      <Filter>Source Files\Entities\Cards\Effects</Filter>
-    </ClCompile>
-    <ClCompile Include="GoToReadingRailroadEffect.cpp">
-      <Filter>Source Files\Entities\Cards\Effects</Filter>
-    </ClCompile>
-    <ClCompile Include="GoToBroadwalkEffect.cpp">
-      <Filter>Source Files\Entities\Cards\Effects</Filter>
+    <ClCompile Include="PayPoorTaxEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -227,38 +248,47 @@
     <ClInclude Include="Trade.h">
       <Filter>Header Files\Entities\Base</Filter>
     </ClInclude>
+    <ClInclude Include="AdvanceToGoEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\Move</Filter>
+    </ClInclude>
+    <ClInclude Include="GetOutOfJailEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\Move</Filter>
+    </ClInclude>
+    <ClInclude Include="GoBackThreeSpacesEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\Move</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToBroadwalkEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\Move</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToIllinoisEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\Move</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToNearestRailroadEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\Move</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToJailEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\Move</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToNearestUtilityEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\Move</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToReadingRailroadEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\Move</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToStCharlesEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\Move</Filter>
+    </ClInclude>
     <ClInclude Include="CardEffectStrategy.h">
       <Filter>Header Files\Entities\Cards\Effects</Filter>
     </ClInclude>
-    <ClInclude Include="AdvanceToGoEffect.h">
-      <Filter>Header Files\Entities\Cards\Effects</Filter>
+    <ClInclude Include="BankPaysDividentEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
     </ClInclude>
-    <ClInclude Include="GoToJailEffect.h">
-      <Filter>Header Files\Entities\Cards\Effects</Filter>
+    <ClInclude Include="GeneralRepairsEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
     </ClInclude>
-    <ClInclude Include="GoToIllinoisEffect.h">
-      <Filter>Header Files\Entities\Cards\Effects</Filter>
-    </ClInclude>
-    <ClInclude Include="GoToStCharlesEffect.h">
-      <Filter>Header Files\Entities\Cards\Effects</Filter>
-    </ClInclude>
-    <ClInclude Include="GoToNearestRailroadEffect.h">
-      <Filter>Header Files\Entities\Cards\Effects</Filter>
-    </ClInclude>
-    <ClInclude Include="GoToNearestUtilityEffect.h">
-      <Filter>Header Files\Entities\Cards\Effects</Filter>
-    </ClInclude>
-    <ClInclude Include="GoBackThreeSpacesEffect.h">
-      <Filter>Header Files\Entities\Cards\Effects</Filter>
-    </ClInclude>
-    <ClInclude Include="GetOutOfJailEffect.h">
-      <Filter>Header Files\Entities\Cards\Effects</Filter>
-    </ClInclude>
-    <ClInclude Include="GoToReadingRailroadEffect.h">
-      <Filter>Header Files\Entities\Cards\Effects</Filter>
-    </ClInclude>
-    <ClInclude Include="GoToBroadwalkEffect.h">
-      <Filter>Header Files\Entities\Cards\Effects</Filter>
+    <ClInclude Include="PayPoorTaxEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
