@@ -1,16 +1,17 @@
 #include "CardField.h"
+#include "Monopoly.h"
 
 CardField::CardField(int id, const MyString& name, const MyString& abbreviation)
 	: Field(id, name, abbreviation)
-{ }
+{
+	deck = CardDeck::getInstance();
+}
 
 void CardField::applyEffect()
 {
-	// Implement the effect of the card field on the player
-	// For example, draw a card from the deck and apply its effect
-	// This is a placeholder implementation
-	//player.drawCard();
-	std::cout << "Draw card" << std::endl;
+	Player& player = Monopoly::getInstance()->getPlayerOnTurn();
+	Card* card = deck->drawCard();
+	card->applyEffect(player);
 }
 
 Field* CardField::clone() const

@@ -37,6 +37,8 @@ public:
 
 	void insert(size_t index, const T& value);
 
+	void swap(int ind1, int ind2);
+
 	T* begin();
 
 	const T* begin() const;
@@ -210,6 +212,14 @@ void MyVector<T>::insert(size_t index, const T& value) {
 
 	elements[index] = value;
 	size++;
+}
+
+template<typename T>
+void MyVector<T>::swap(int ind1, int ind2)
+{
+	T temp = elements[ind1];
+	elements[ind1] = elements[ind2];
+	elements[ind2] = temp;
 }
 
 template<typename T>

@@ -52,6 +52,23 @@ int Monopoly::rollDice() const
 	return total;
 }
 
+void Monopoly::stepOnCard()
+{
+	Player& cP = getPlayer(currentPlayerIndex);
+	Card* card = deck->drawCard();
+	card->applyEffect(cP);
+}
+
+const Player& Monopoly::getPlayerOnTurn() const
+{
+	return players[currentPlayerIndex];
+}
+
+Player& Monopoly::getPlayerOnTurn()
+{
+	return players[currentPlayerIndex];
+}
+
 void Monopoly::addPlayer(const Player& player)
 {
 	players.push_back(player);
@@ -59,26 +76,18 @@ void Monopoly::addPlayer(const Player& player)
 
 const Player& Monopoly::getPlayer(int playerId) const
 {
-	for (int i = 0; i < players.getSize(); i++)
-	{
-		if (players[i].getId() == playerId)
-		{
-			return players[i];
-		}
+	if (playerId < 1 || playerId > players.getSize()) {
+		throw std::out_of_range("Player not found");
 	}
-	throw std::out_of_range("Player not found");
+	return players[playerId - 1];
 }
 
 Player& Monopoly::getPlayer(int playerId)
 {
-	for (int i = 0; i < players.getSize(); i++)
-	{
-		if (players[i].getId() == playerId)
-		{
-			return players[i];
-		}
+	if (playerId < 1 || playerId > players.getSize()) {
+		throw std::out_of_range("Player not found");
 	}
-	throw std::out_of_range("Player not found");
+	return players[playerId - 1];
 }
 
 const MyVector<Player>& Monopoly::getPlayers() const

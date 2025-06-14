@@ -4,6 +4,11 @@ CardDeck::CardDeck() { }
 
 CardDeck* CardDeck::instance = nullptr;
 
+void CardDeck::loadCards()
+{
+	//To be implemented
+}
+
 CardDeck* CardDeck::getInstance()
 {
 	if (!instance)
@@ -21,15 +26,13 @@ void CardDeck::freeInstance()
 	instance = nullptr;
 }
 
-void CardDeck::drawCard()
+Card* CardDeck::drawCard()
 {
 	Card* card = cards[0];
 	if (!card) {
 		throw new std::invalid_argument("No cards in the deck to draw.");
 	}
-	card->applyEffect();
-	cards.remove(0);
-	cards.addElement(card->clone());
+	return card;
 }
 
 void CardDeck::shuffleDeck()

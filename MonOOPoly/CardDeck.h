@@ -1,16 +1,18 @@
 #pragma once
-#include "PolymorphicContainer.hpp"
+#include "MyVector.hpp"
 #include "Card.h"
 
 class CardDeck
 {
 	CardDeck();
 	static CardDeck* instance;
-	PolymorphicContainer<Card> cards;
+	MyVector<Card*> cards;
+
+	void loadCards();
 public:
 	static CardDeck* getInstance();
 	static void freeInstance();
-	void drawCard();
+	Card* drawCard();
 	void shuffleDeck();
 };
 

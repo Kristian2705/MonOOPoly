@@ -19,6 +19,9 @@ public:
 	void startGame();
 	void welcomePlayers() const;
 	int rollDice() const;
+	void stepOnCard();
+	const Player& getPlayerOnTurn() const;
+	Player& getPlayerOnTurn();
 	const Player& getPlayer(int playerId) const;
 	Player& getPlayer(int playerId);
 	const MyVector<Player>& getPlayers() const;

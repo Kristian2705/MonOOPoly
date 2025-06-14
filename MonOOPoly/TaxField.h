@@ -1,6 +1,8 @@
 #pragma once
 #include "Field.h"
 
+class Monopoly;
+
 class TaxField : public Field
 {
 	int taxAmount;
