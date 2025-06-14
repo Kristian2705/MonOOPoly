@@ -35,4 +35,18 @@ namespace GameConstants {
 	const int REPAIR_HOUSE_PRICE = 25;
 	const int REPAIR_HOTEL_PRICE = 100;
 	const int POOR_TAX = 15;
+	const int BANK_ERROR_REWARD = 200;
+	const int DOCTOR_FEE = 50;
+	const int SALE_OF_STOCK_REWARD = 50;
+	const int HOLIDAY_FUNDS_REWARD = 100;
+	const int INCOME_TAX_REFUND = 20;
+	const int BIRTHDAY_REWARD = 10;
+	const int LIFE_INSURANCE = 100;
+	const int HOSPITAL_FEE = 50;
+	const int SCHOOL_FEE = 50;
+	const int CONSULTANCY_FEE_REWARD = 25;
+	const int INHERITANCE_REWARD = 100;
+	const int ASSESSED_HOUSE_REPAIR_PRICE = 45;
+	const int ASSESSED_HOTEL_REPAIR_PRICE = 115;
+	const int GRAND_OPERA_NIGHT_REWARD = 50;
 };

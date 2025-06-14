@@ -73,6 +73,12 @@
     <Filter Include="Header Files\Entities\Cards\Effects\SinglePayment">
       <UniqueIdentifier>{164ecafb-3770-4e73-bbd9-078d152d1538}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entities\Cards\Effects\MultiplePayment">
+      <UniqueIdentifier>{b60392c4-343b-4c5f-ab92-2522cc0faf54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities\Cards\Effects\MultiplePayment">
+      <UniqueIdentifier>{38151175-73a0-4e8a-8dd9-ac3bb280ba78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MonOOPoly.cpp">
@@ -179,6 +185,45 @@
     </ClCompile>
     <ClCompile Include="PayPoorTaxEffect.cpp">
       <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClCompile>
+    <ClCompile Include="BankErrorEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClCompile>
+    <ClCompile Include="DoctorFeeEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClCompile>
+    <ClCompile Include="SaleOfStockEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClCompile>
+    <ClCompile Include="HolidayFundsEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClCompile>
+    <ClCompile Include="IncomeTaxRefundEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClCompile>
+    <ClCompile Include="LifeInsuranceEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClCompile>
+    <ClCompile Include="HospitalFeeEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClCompile>
+    <ClCompile Include="SchoolFee.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsultancyFeeEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClCompile>
+    <ClCompile Include="InheritanceEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClCompile>
+    <ClCompile Include="AssessedRepairEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClCompile>
+    <ClCompile Include="BirthdayEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\MultiplePayment</Filter>
+    </ClCompile>
+    <ClCompile Include="OperaNightEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\MultiplePayment</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +334,45 @@
     </ClInclude>
     <ClInclude Include="PayPoorTaxEffect.h">
       <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClInclude>
+    <ClInclude Include="BankErrorEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClInclude>
+    <ClInclude Include="DoctorFeeEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClInclude>
+    <ClInclude Include="SaleOfStockEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClInclude>
+    <ClInclude Include="HolidayFundsEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClInclude>
+    <ClInclude Include="IncomeTaxRefundEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClInclude>
+    <ClInclude Include="LifeInsuranceEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClInclude>
+    <ClInclude Include="HospitalFeeEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClInclude>
+    <ClInclude Include="SchoolFee.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsultancyFeeEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClInclude>
+    <ClInclude Include="InheritanceEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClInclude>
+    <ClInclude Include="AssessedRepairEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\SinglePayment</Filter>
+    </ClInclude>
+    <ClInclude Include="BirthdayEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\MultiplePayment</Filter>
+    </ClInclude>
+    <ClInclude Include="OperaNightEffect.h">
+      <Filter>Header Files\Entities\Cards\Effects\MultiplePayment</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

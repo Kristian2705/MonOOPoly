@@ -15,9 +15,7 @@ class Board
 {
 	Board();
 	static Board* instance;
-	CardDeck* cardDeck;
 	PolymorphicContainer<Field> fields;
-	MyVector<Player> players;
 	void initializeBoard();
 	void printCell(const MyString& label) const;
 	void printTopRow() const;
@@ -26,10 +24,6 @@ class Board
 public:
 	static Board* getInstance();
 	static void freeInstance();
-	void addPlayer(const Player& player);
-	void removePlayer(int playerId);
-	const Player& getPlayer(int playerId) const;
-	Player& getPlayer(int playerId);
 	void printBoard() const;
 };
 

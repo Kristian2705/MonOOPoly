@@ -52,6 +52,45 @@ int Monopoly::rollDice() const
 	return total;
 }
 
+void Monopoly::addPlayer(const Player& player)
+{
+	players.push_back(player);
+}
+
+const Player& Monopoly::getPlayer(int playerId) const
+{
+	for (int i = 0; i < players.getSize(); i++)
+	{
+		if (players[i].getId() == playerId)
+		{
+			return players[i];
+		}
+	}
+	throw std::out_of_range("Player not found");
+}
+
+Player& Monopoly::getPlayer(int playerId)
+{
+	for (int i = 0; i < players.getSize(); i++)
+	{
+		if (players[i].getId() == playerId)
+		{
+			return players[i];
+		}
+	}
+	throw std::out_of_range("Player not found");
+}
+
+const MyVector<Player>& Monopoly::getPlayers() const
+{
+	return players;
+}
+
+MyVector<Player>& Monopoly::getPlayers()
+{
+	return players;
+}
+
 void Monopoly::addPlayers()
 {
 	std::cout << "Enter the number of players (2-6): ";
@@ -67,14 +106,14 @@ void Monopoly::addPlayers()
 		MyString name;
 		std::cin >> name;
 		Player player(name);
-		board->addPlayer(player);
+		addPlayer(player);
 		std::cout << "Player " << (i + 1) << " added with ID: " << player.getId() << std::endl;
 	}
 }
 
 void Monopoly::showPlayerData(int id) const
 {
-	const Player& player = board->getPlayer(id);
+	const Player& player = getPlayer(id);
 	std::cout << "Player ID: " << player.getId() << std::endl
 		<< "Name: " << player.getName() << std::endl
 		<< "Money: " << player.getMoney() << std::endl

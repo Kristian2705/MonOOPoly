@@ -120,35 +120,6 @@ void Board::freeInstance()
 	instance = nullptr;
 }
 
-void Board::addPlayer(const Player& player)
-{
-	players.push_back(player);
-}
-
-const Player& Board::getPlayer(int playerId) const
-{
-	for (int i = 0; i < players.getSize(); i++)
-	{
-		if (players[i].getId() == playerId)
-		{
-			return players[i];
-		}
-	}
-	throw std::out_of_range("Player not found");
-}
-
-Player& Board::getPlayer(int playerId)
-{
-	for (int i = 0; i < players.getSize(); i++)
-	{
-		if (players[i].getId() == playerId)
-		{
-			return players[i];
-		}
-	}
-	throw std::out_of_range("Player not found");
-}
-
 void Board::printBoard() const
 {
 	printTopRow();

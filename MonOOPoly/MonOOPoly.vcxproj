@@ -128,14 +128,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AdvanceToGoEffect.cpp" />
+    <ClCompile Include="AssessedRepairEffect.cpp" />
     <ClCompile Include="Bank.cpp" />
+    <ClCompile Include="BankErrorEffect.cpp" />
     <ClCompile Include="BankPaysDividentEffect.cpp" />
+    <ClCompile Include="BirthdayEffect.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardDeck.cpp" />
     <ClCompile Include="CardEffectStrategy.cpp" />
     <ClCompile Include="CardField.cpp" />
     <ClCompile Include="Constants.h" />
+    <ClCompile Include="ConsultancyFeeEffect.cpp" />
+    <ClCompile Include="DoctorFeeEffect.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="GeneralRepairsEffect.cpp" />
     <ClCompile Include="GetOutOfJailEffect.cpp" />
@@ -149,15 +154,23 @@
     <ClCompile Include="GoToNearestUtilityEffect.cpp" />
     <ClCompile Include="GoToReadingRailroadEffect.cpp" />
     <ClCompile Include="GoToStCharlesEffect.cpp" />
+    <ClCompile Include="HolidayFundsEffect.cpp" />
+    <ClCompile Include="HospitalFeeEffect.cpp" />
+    <ClCompile Include="IncomeTaxRefundEffect.cpp" />
+    <ClCompile Include="InheritanceEffect.cpp" />
     <ClCompile Include="JailField.cpp" />
+    <ClCompile Include="LifeInsuranceEffect.cpp" />
     <ClCompile Include="MonOOPoly.cpp" />
     <ClCompile Include="Monopoly.cpp" />
     <ClCompile Include="Mortgage.cpp" />
     <ClCompile Include="MyString.cpp" />
+    <ClCompile Include="OperaNightEffect.cpp" />
     <ClCompile Include="ParkingField.cpp" />
     <ClCompile Include="PayPoorTaxEffect.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Property.cpp" />
+    <ClCompile Include="SaleOfStockEffect.cpp" />
+    <ClCompile Include="SchoolFee.cpp" />
     <ClCompile Include="Station.cpp" />
     <ClCompile Include="TaxField.cpp" />
     <ClCompile Include="Trade.cpp" />
@@ -165,13 +178,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdvanceToGoEffect.h" />
+    <ClInclude Include="AssessedRepairEffect.h" />
     <ClInclude Include="Bank.h" />
+    <ClInclude Include="BankErrorEffect.h" />
     <ClInclude Include="BankPaysDividentEffect.h" />
+    <ClInclude Include="BirthdayEffect.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardDeck.h" />
     <ClInclude Include="CardEffectStrategy.h" />
     <ClInclude Include="CardField.h" />
+    <ClInclude Include="ConsultancyFeeEffect.h" />
+    <ClInclude Include="DoctorFeeEffect.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="GeneralRepairsEffect.h" />
@@ -186,16 +204,24 @@
     <ClInclude Include="GoToNearestUtilityEffect.h" />
     <ClInclude Include="GoToReadingRailroadEffect.h" />
     <ClInclude Include="GoToStCharlesEffect.h" />
+    <ClInclude Include="HolidayFundsEffect.h" />
+    <ClInclude Include="HospitalFeeEffect.h" />
+    <ClInclude Include="IncomeTaxRefundEffect.h" />
+    <ClInclude Include="InheritanceEffect.h" />
     <ClInclude Include="JailField.h" />
+    <ClInclude Include="LifeInsuranceEffect.h" />
     <ClInclude Include="Monopoly.h" />
     <ClInclude Include="Mortgage.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="MyVector.hpp" />
+    <ClInclude Include="OperaNightEffect.h" />
     <ClInclude Include="ParkingField.h" />
     <ClInclude Include="PayPoorTaxEffect.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PolymorphicContainer.hpp" />
     <ClInclude Include="Property.h" />
+    <ClInclude Include="SaleOfStockEffect.h" />
+    <ClInclude Include="SchoolFee.h" />
     <ClInclude Include="Station.h" />
     <ClInclude Include="TaxField.h" />
     <ClInclude Include="Trade.h" />
