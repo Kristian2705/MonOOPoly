@@ -8,5 +8,6 @@ class ReceivePaymentEffect : public CardEffectStrategy
 public:
 	ReceivePaymentEffect(int amount);
 	void execute(Player& player) override;
+	CardEffectStrategy* clone() const override;
 };
 

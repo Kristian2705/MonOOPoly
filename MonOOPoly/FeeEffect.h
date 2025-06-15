@@ -8,5 +8,6 @@ class FeeEffect : public CardEffectStrategy
 public:
 	FeeEffect(int amount);
 	void execute(Player& player) override;
+	CardEffectStrategy* clone() const override;
 };
 

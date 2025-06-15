@@ -2,9 +2,13 @@
 #include "CardEffectStrategy.h"
 #include "Player.h"
 
-class GeneralRepairsEffect : public CardEffectStrategy
+class Monopoly;
+
+class MultiplePaymentToOthers : public CardEffectStrategy
 {
+	int amount;
 public:
+	MultiplePaymentToOthers(int amount);
 	void execute(Player& player) override;
 	CardEffectStrategy* clone() const override;
 };

@@ -49,4 +49,7 @@ namespace GameConstants {
 	const int ASSESSED_HOUSE_REPAIR_PRICE = 45;
 	const int ASSESSED_HOTEL_REPAIR_PRICE = 115;
 	const int GRAND_OPERA_NIGHT_REWARD = 50;
+	const int BEAUTY_CONTEST_REWARD = 10;
+	const int LOAN_MATURES_REWARD = 150;
+	const int CHAIRMAN_OF_THE_BOARD_AMOUNT = 50;
 };

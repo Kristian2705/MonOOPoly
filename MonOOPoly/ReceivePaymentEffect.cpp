@@ -8,3 +8,8 @@ void ReceivePaymentEffect::execute(Player& player)
 {
 	player.addMoney(amount);
 }
+
+CardEffectStrategy* ReceivePaymentEffect::clone() const
+{
+	return new ReceivePaymentEffect(*this);
+}

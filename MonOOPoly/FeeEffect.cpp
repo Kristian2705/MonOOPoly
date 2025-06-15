@@ -14,3 +14,8 @@ void FeeEffect::execute(Player& player)
 		//To be implemented
 	}
 }
+
+CardEffectStrategy* FeeEffect::clone() const
+{
+	return new FeeEffect(*this);
+}
