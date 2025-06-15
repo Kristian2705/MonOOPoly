@@ -7,9 +7,8 @@ CardField::CardField(int id, const MyString& name, const MyString& abbreviation)
 	deck = CardDeck::getInstance();
 }
 
-void CardField::applyEffect()
+void CardField::applyEffect(Player& player)
 {
-	Player& player = Monopoly::getInstance()->getPlayerOnTurn();
 	Card* card = deck->drawCard();
 	card->applyEffect(player);
 }

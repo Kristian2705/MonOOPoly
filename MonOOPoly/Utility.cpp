@@ -4,7 +4,7 @@ Utility::Utility(int boardIndex, const MyString& name, const MyString& abbreviat
 	: Field(boardIndex, name, abbreviation)
 { }
 
-void Utility::applyEffect()
+void Utility::applyEffect(Player& player)
 {
 	std::cout << "You landed on a utility field: " << name << ". You can either buy it or pay rent if it's owned." << std::endl;
 	// Implement the logic for buying or paying rent for the utility field.

@@ -4,7 +4,7 @@ Station::Station(int boardIndex, const MyString& name, const MyString& abbreviat
 	: Field(boardIndex, name, abbreviation)
 { }
 
-void Station::applyEffect()
+void Station::applyEffect(Player& player)
 {
 	std::cout << "You landed on " << name << ". This is a station." << std::endl;
 	// Implement the effect of landing on a station.

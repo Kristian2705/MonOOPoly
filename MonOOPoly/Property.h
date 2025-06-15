@@ -6,7 +6,7 @@
 
 class Property : public Field
 {
-	int ownerId;
+	Player* owner;
 	size_t price;
 	size_t rentTiers[GameConstants::RENT_TIERS_COUNT];
 	int rentTierIndex;
@@ -16,14 +16,14 @@ class Property : public Field
 public:
 	Property() = default;
 	Property(int boardIndex, const MyString& name, const MyString& abbreviation, int price, const size_t* rentTiers, size_t housePrice, size_t hotelPrice ,ColorSet colorSet);
-	Property(int ownerId, int boardIndex, const MyString& name, const MyString& abbreviation, int price, int rentTierIndex, const size_t* rentTiers, size_t housePrice, size_t hotelPrice, ColorSet colorSet);
+	Property(Player* owner, int boardIndex, const MyString& name, const MyString& abbreviation, int price, int rentTierIndex, const size_t* rentTiers, size_t housePrice, size_t hotelPrice, ColorSet colorSet);
 
-	int getOwnerId() const;
+	Player* getOwner();
 	int getPrice() const;
 	size_t getRent() const;
 	int getBuildsCount() const;
 
-	void applyEffect() override;
+	void applyEffect(Player& player) override;
 	Field* clone() const override;
 };
 

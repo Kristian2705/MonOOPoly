@@ -5,8 +5,7 @@ class GoToJailField : public Field
 {
 public:
 	GoToJailField(const MyString& name, const MyString& abbreviation);
-	//void putInJail(Player& player) const;
-	void applyEffect() override;
+	void applyEffect(Player& player) override;
 	Field* clone() const override;
 };
 

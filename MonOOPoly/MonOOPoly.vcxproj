@@ -134,6 +134,7 @@
     <ClCompile Include="CardDeck.cpp" />
     <ClCompile Include="CardEffectStrategy.cpp" />
     <ClCompile Include="CardField.cpp" />
+    <ClCompile Include="Command.cpp" />
     <ClCompile Include="Constants.h" />
     <ClCompile Include="FeeEffect.cpp" />
     <ClCompile Include="Field.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="CardDeck.h" />
     <ClInclude Include="CardEffectStrategy.h" />
     <ClInclude Include="CardField.h" />
+    <ClInclude Include="Command.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="FeeEffect.h" />
     <ClInclude Include="Field.h" />

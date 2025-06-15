@@ -5,7 +5,7 @@ TaxField::TaxField(int boardIndex, const MyString& name, const MyString& abbrevi
 	: Field(boardIndex, name, abbreviation), taxAmount(taxAmount)
 { }
 
-void TaxField::applyEffect()
+void TaxField::applyEffect(Player& player)
 {
 	Player& cP = Monopoly::getInstance()->getPlayerOnTurn();
 	if (taxAmount <= cP.getMoney()) {

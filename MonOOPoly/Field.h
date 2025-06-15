@@ -16,7 +16,7 @@ public:
 	Field(int boardIndex, const MyString& name, const MyString& abbreviation);
 	const MyString& getName() const;
 	const MyString& getAbbreviation() const;
-	virtual void applyEffect() = 0;
+	virtual void applyEffect(Player& player) = 0;
 	virtual Field* clone() const = 0;
 	virtual ~Field() = default;
 };

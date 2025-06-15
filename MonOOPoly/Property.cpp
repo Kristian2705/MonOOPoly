@@ -1,7 +1,8 @@
 #include "Property.h"
+#include "Player.h"
 
 Property::Property(int boardIndex, const MyString& name, const MyString& abbreviation, int price, const size_t* rentTiers, size_t housePrice, size_t hotelPrice, ColorSet colorSet)
-	: Field(boardIndex, name, abbreviation), ownerId(GameConstants::INVALID_PLAYER_ID), price(price), rentTierIndex(GameConstants::START_RENT_TIER), housePrice(housePrice), hotelPrice(hotelPrice), colorSet(colorSet)
+	: Field(boardIndex, name, abbreviation), owner(nullptr), price(price), rentTierIndex(GameConstants::START_RENT_TIER), housePrice(housePrice), hotelPrice(hotelPrice), colorSet(colorSet)
 {
 	for (int i = 0; i < GameConstants::RENT_TIERS_COUNT; i++)
 	{
@@ -9,8 +10,8 @@ Property::Property(int boardIndex, const MyString& name, const MyString& abbrevi
 	}
 }
 
-Property::Property(int ownerId, int boardIndex, const MyString& name, const MyString& abbreviation, int price, int rentTierIndex, const size_t* rentTiers, size_t housePrice, size_t hotelPrice, ColorSet colorSet)
-	: Field(boardIndex, name, abbreviation), ownerId(ownerId), price(price), rentTierIndex(rentTierIndex), housePrice(housePrice), hotelPrice(hotelPrice), colorSet(colorSet)
+Property::Property(Player* owner, int boardIndex, const MyString& name, const MyString& abbreviation, int price, int rentTierIndex, const size_t* rentTiers, size_t housePrice, size_t hotelPrice, ColorSet colorSet)
+	: Field(boardIndex, name, abbreviation), owner(owner), price(price), rentTierIndex(rentTierIndex), housePrice(housePrice), hotelPrice(hotelPrice), colorSet(colorSet)
 {
 	for (int i = 0; i < GameConstants::RENT_TIERS_COUNT; i++)
 	{
@@ -18,9 +19,9 @@ Property::Property(int ownerId, int boardIndex, const MyString& name, const MySt
 	}
 }
 
-int Property::getOwnerId() const
+Player* Property::getOwner()
 {
-	return ownerId;
+	return owner;
 }
 
 int Property::getPrice() const
@@ -38,14 +39,12 @@ int Property::getBuildsCount() const
 	return rentTierIndex - 1;
 }
 
-void Property::applyEffect()
+void Property::applyEffect(Player& player)
 {
-	// This method should implement the effect of landing on this property.
-	// For example, if the property is owned by another player, charge rent.
-	// If the property is unowned, allow the current player to buy it.
-	// If the property is owned by the current player, do nothing.
-	// This is a placeholder implementation.
-	std::cout << "Applying effect of property" << std::endl;
+	if (!owner) {
+		std::cout << "Do you want to purchase " << name << " for " << price;
+	}
+	//Maybe it will be better to implement the commands first
 }
 
 Field* Property::clone() const

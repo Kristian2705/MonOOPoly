@@ -9,7 +9,7 @@ class CardField : public Field
 	CardDeck* deck;
 public:
 	CardField(int id, const MyString& name, const MyString& abbreviation);
-	void applyEffect() override;
+	void applyEffect(Player& player) override;
 	Field* clone() const override;
 };
 
