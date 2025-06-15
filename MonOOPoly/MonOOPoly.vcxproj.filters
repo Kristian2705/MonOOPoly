@@ -290,5 +290,8 @@
     <ClInclude Include="GoToLocationEffect.h">
       <Filter>Header Files\Entities\Cards\Effects\Move</Filter>
     </ClInclude>
+    <ClInclude Include="Queue.hpp">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

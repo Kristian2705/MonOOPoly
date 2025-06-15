@@ -1,12 +1,9 @@
 #include <iostream>
 #include "Monopoly.h"
+#include "Queue.hpp"
 
 int main()
 {
-	CardDeck* deck = CardDeck::getInstance();
-	deck->showCards();
-	//Monopoly* game = Monopoly::getInstance();
-	//game->startGame();
-	//Monopoly::freeInstance();
+
 	return 0;
 }

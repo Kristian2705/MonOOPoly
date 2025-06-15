@@ -192,6 +192,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PolymorphicContainer.hpp" />
     <ClInclude Include="Property.h" />
+    <ClInclude Include="Queue.hpp" />
     <ClInclude Include="ReceivePaymentEffect.h" />
     <ClInclude Include="RepairEffect.h" />
     <ClInclude Include="Station.h" />

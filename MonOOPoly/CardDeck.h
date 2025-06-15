@@ -1,12 +1,12 @@
 #pragma once
-#include "MyVector.hpp"
+#include "Queue.hpp"
 #include "Card.h"
 
 class CardDeck
 {
 	CardDeck();
 	static CardDeck* instance;
-	MyVector<Card*> cards;
+	Queue<Card*> cards;
 
 	void loadCards();
 public:
