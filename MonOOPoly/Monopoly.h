@@ -16,8 +16,7 @@ class Monopoly
 public:
 	static Monopoly* getInstance();
 	static void freeInstance();
-	void startGame();
-	void welcomePlayers() const;
+	void welcomePlayers();
 	int rollDice() const;
 	void stepOnCard();
 	const Player& getPlayerOnTurn() const;
@@ -27,6 +26,6 @@ public:
 	const MyVector<Player>& getPlayers() const;
 	MyVector<Player>& getPlayers();
 	void showPlayerData(int id) const;
-	void nextTurn();
+	void playTurn();
 };
 

@@ -1,6 +1,10 @@
 #include "Monopoly.h"
 
-Monopoly::Monopoly() : currentPlayerIndex(GameConstants::FIRST_PLAYER_ID), board(nullptr) { }
+Monopoly::Monopoly() : currentPlayerIndex(GameConstants::FIRST_PLAYER_ID) 
+{
+	board = Board::getInstance();
+	deck = CardDeck::getInstance();
+}
 
 Monopoly* Monopoly::instance = nullptr;
 
@@ -20,27 +24,21 @@ void Monopoly::freeInstance()
 	instance = nullptr;
 }
 
-void Monopoly::startGame()
-{
-	board = Board::getInstance();
-	welcomePlayers();
-	addPlayers();
-	board->printBoard();
-	//while (true) {
-	//	Player& currentPlayer = board->getPlayer(currentPlayerIndex);
-	//	std::cout << "Current Player: " << currentPlayer.getName() << std::endl;
-	//	showPlayerData(currentPlayerIndex);
-	//	std::cout << "Press Enter to roll the dice..." << std::endl;
-	//	std::cin.get();
-	//	int result = rollDice();
-	//}
-}
+//while (true) {
+//	Player& currentPlayer = board->getPlayer(currentPlayerIndex);
+//	std::cout << "Current Player: " << currentPlayer.getName() << std::endl;
+//	showPlayerData(currentPlayerIndex);
+//	std::cout << "Press Enter to roll the dice..." << std::endl;
+//	std::cin.get();
+//	int result = rollDice();
+//}
 
-void Monopoly::welcomePlayers() const
+void Monopoly::welcomePlayers()
 {
 	std::cout << "Welcome to MonOOPoly!" << std::endl;
 	std::cout << "Press Enter to start the game..." << std::endl;
 	std::cin.get();
+	addPlayers();
 }
 
 int Monopoly::rollDice() const
@@ -118,6 +116,13 @@ void Monopoly::addPlayers()
 		addPlayer(player);
 		std::cout << "Player " << (i + 1) << " added with ID: " << player.getId() << std::endl;
 	}
+	std::cout << numPlayers << " added successfully!" << std::endl;
+	std::cout << "Are you ready to play?" << std::endl;
+	std::cout << "Press enter to continue..." << std::endl;
+	std::cin.get();
+	board->printBoard();
+	std::cout << "Player " << currentPlayerIndex << "'s turn." << std::endl;
+	std::cout << "Type help in order to see all the options" << std::endl;
 }
 
 void Monopoly::showPlayerData(int id) const
@@ -129,6 +134,11 @@ void Monopoly::showPlayerData(int id) const
 		<< "Total Balance: " << player.getTotalBalance() << std::endl
 		<< "Position: " << player.getCurrentPosition() << std::endl
 		<< "In Jail: " << (player.isInJail() ? "Yes" : "No") << std::endl;
+}
+
+void Monopoly::playTurn()
+{
+
 }
 
 //void Monopoly::nextTurn()
