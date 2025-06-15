@@ -2,6 +2,9 @@
 #include "MyString.h"
 #include <iostream>
 
+class Player;
+//Apply effect with Player&
+
 class Field
 {
 protected:

@@ -12,6 +12,7 @@ class CardDeck
 public:
 	static CardDeck* getInstance();
 	static void freeInstance();
+	void showCards();
 	Card* drawCard();
 	void shuffleDeck();
 };

@@ -4,6 +4,11 @@ Card::Card(const MyString& description, std::unique_ptr<CardEffectStrategy> effe
 	: description(description), effectStrategy(std::move(effectStrategy))
 { }
 
+const MyString& Card::getDescription() const
+{
+	return description;
+}
+
 void Card::applyEffect(Player& player)
 {
 	effectStrategy->execute(player);

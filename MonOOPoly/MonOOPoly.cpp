@@ -3,8 +3,10 @@
 
 int main()
 {
-	Monopoly* game = Monopoly::getInstance();
-	game->startGame();
-	Monopoly::freeInstance();
+	CardDeck* deck = CardDeck::getInstance();
+	deck->showCards();
+	//Monopoly* game = Monopoly::getInstance();
+	//game->startGame();
+	//Monopoly::freeInstance();
 	return 0;
 }
