@@ -73,7 +73,7 @@ void Property::applyEffect(Player& player)
 		}
 
 		if (player.getMoney() <= getRent()) {
-			player.addMoney(-getRent());
+			player.addMoney((-1)*getRent());
 			owner->addMoney(getRent());
 			std::cout << "You successfully paid " << owner->getName() << " a rent of $" << getRent() << std::endl;
 		}
@@ -107,7 +107,7 @@ void Property::applyEffect(Player& player)
 			return;
 		}
 		if (answer == "yes") {
-			player.addMoney(-price);
+			player.addMoney((- 1)*price);
 			player.addProperty(this);
 			return;
 		}
