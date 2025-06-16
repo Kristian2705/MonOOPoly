@@ -64,6 +64,8 @@ public:
 
     bool empty() const;
 
+    bool hasLettersOnly() const;
+
     char& operator[](size_t index);
 
     const char& operator[](size_t index) const;

@@ -44,6 +44,15 @@ ColorSet Property::getColorSet() const
 	return colorSet;
 }
 
+void Property::showProperty() const
+{
+	std::cout << "--Name: " << name << std::endl;
+	std::cout << "--Color: " << (int)colorSet << std::endl;
+	std::cout << "--Price: $" << price << std::endl;
+	std::cout << "--Rent: $" << getRent() << std::endl;
+	std::cout << "--Buildings count: " << ((rentTierIndex - 1) < 0 ? 0 : rentTierIndex - 1) << std::endl;
+}
+
 void Property::removeOwner()
 {
 	owner = nullptr;

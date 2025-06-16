@@ -154,3 +154,19 @@ void Player::moveTo(size_t newPosition)
 	position = newPosition;
 	std::cout << "You are currently on position " << position << std::endl;
 }
+
+void Player::showInfo() const
+{
+	std::cout << "Player name: " << name << std::endl;
+	std::cout << "------------------------------" << std::endl;
+	std::cout << "Money: $" << money << std::endl;
+	std::cout << "Position: " << position << std::endl;
+	std::cout << "In jail: " << (inJail ? "Yes" : "No") << std::endl;
+	std::cout << "In debt: " << (inJail ? "Yes" : "No") << std::endl;
+	std::cout << "Owned properties count: " << ownedProperties.getSize() << std::endl;
+	for (int i = 0; i < ownedProperties.getSize(); i++) {
+		ownedProperties[i]->showProperty();
+		std::cout << std::endl;
+	}
+
+}

@@ -24,6 +24,7 @@ public:
 	int getBuildsCount() const;
 	ColorSet getColorSet() const;
 
+	void showProperty() const;
 	void removeOwner();
 	void setOwner(Player* player);
 	void increaseRentTier();

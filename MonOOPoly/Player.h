@@ -41,5 +41,6 @@ public:
 	void addMoney(int amount);
 	void resign();
 	void moveTo(size_t newPosition);
+	void showInfo() const;
 };
 

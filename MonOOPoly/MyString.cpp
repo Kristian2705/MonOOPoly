@@ -159,6 +159,17 @@ bool MyString::empty() const {
     return (size == 0);
 }
 
+bool MyString::hasLettersOnly() const
+{
+    int i = 0;
+    while (str[i]) {
+        if (str[i] >= 48 && str[i] <= 57) {
+            return false;
+        }
+    }
+    return true;
+}
+
 MyString MyString::substr(unsigned startIndex, unsigned len) const {
     if (startIndex < 0 || startIndex >= size
         || len < 0 || (startIndex - 1 + len > size && startIndex + len != 0)) {
