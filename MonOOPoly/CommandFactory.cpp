@@ -2,5 +2,7 @@
 
 Command* CommandFactory::readCommand(const MyString& commandType)
 {
-	return nullptr;
+	if (commandType == "help") {
+		return new HelpCommand();
+	}
 }

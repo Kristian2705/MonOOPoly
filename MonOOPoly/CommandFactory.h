@@ -1,5 +1,7 @@
 #pragma once
 #include "Command.h"
+#include "HelpCommand.h"
+#include "RollDiceCommand.h"
 
 class CommandFactory
 {

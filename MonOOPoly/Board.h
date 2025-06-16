@@ -26,5 +26,6 @@ public:
 	static Board* getInstance();
 	static void freeInstance();
 	void printBoard() const;
+	void stepOn(size_t position, Player& player);
 };
 

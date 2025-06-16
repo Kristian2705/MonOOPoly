@@ -4,6 +4,8 @@
 class Monopoly
 {
 	int currentPlayerIndex;
+	bool hasPair = false;
+	bool hasRolled = false;
 	static Monopoly* instance;
 	Board* board;
 	CardDeck* deck;
@@ -17,15 +19,19 @@ public:
 	static Monopoly* getInstance();
 	static void freeInstance();
 	void welcomePlayers();
-	int rollDice() const;
+	int rollDice();
 	void stepOnCard();
+	void showPlayerData(int id) const;
+	void applyFieldEffect(size_t position);
+
+	bool getRolledStatus() const;
+	void setPairStatus();
+	bool getPairStatus() const;
 	const Player& getPlayerOnTurn() const;
 	Player& getPlayerOnTurn();
 	const Player& getPlayer(int playerId) const;
 	Player& getPlayer(int playerId);
 	const MyVector<Player>& getPlayers() const;
 	MyVector<Player>& getPlayers();
-	void showPlayerData(int id) const;
-	void playTurn();
 };
 

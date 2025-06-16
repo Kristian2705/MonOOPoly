@@ -20,7 +20,6 @@ void GoToNearestUtilityEffect::execute(Player& player)
 		player.addMoney(GameConstants::PASS_GO_BONUS);
 	}
 	player.moveTo(moveToPos);
-	std::cout << "You are currently on position " << player.getCurrentPosition() << std::endl;
 }
 
 CardEffectStrategy* GoToNearestUtilityEffect::clone() const

@@ -94,4 +94,5 @@ const MyVector<Card*>& Player::getCards() {
 void Player::moveTo(size_t newPosition)
 {
 	position = newPosition;
+	std::cout << "You are currently on position " << position << std::endl;
 }

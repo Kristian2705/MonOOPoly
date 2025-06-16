@@ -127,6 +127,11 @@ void Board::printBoard() const
 	printBottomRow();
 }
 
+void Board::stepOn(size_t position, Player& player)
+{
+	fields[position]->applyEffect(player);
+}
+
 void Board::printCell(const MyString& label) const {
 	std::cout << "|" << std::setw(GameConstants::CELL_WIDTH - 1) << std::left << label;
 }

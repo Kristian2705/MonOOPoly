@@ -24,15 +24,6 @@ void Monopoly::freeInstance()
 	instance = nullptr;
 }
 
-//while (true) {
-//	Player& currentPlayer = board->getPlayer(currentPlayerIndex);
-//	std::cout << "Current Player: " << currentPlayer.getName() << std::endl;
-//	showPlayerData(currentPlayerIndex);
-//	std::cout << "Press Enter to roll the dice..." << std::endl;
-//	std::cin.get();
-//	int result = rollDice();
-//}
-
 void Monopoly::welcomePlayers()
 {
 	std::cout << "Welcome to MonOOPoly!" << std::endl;
@@ -41,11 +32,14 @@ void Monopoly::welcomePlayers()
 	addPlayers();
 }
 
-int Monopoly::rollDice() const
+int Monopoly::rollDice()
 {
 	int die1 = rand() % 6 + 1;
 	int die2 = rand() % 6 + 1;
 	int total = die1 + die2;
+	if (die1 == die2) {
+		hasPair = true;
+	}
 	std::cout << "You rolled: " << die1 << " and " << die2 << " (Total: " << total << ")" << std::endl;
 	return total;
 }
@@ -55,6 +49,21 @@ void Monopoly::stepOnCard()
 	Player& cP = getPlayer(currentPlayerIndex);
 	Card* card = deck->drawCard();
 	card->applyEffect(cP);
+}
+
+bool Monopoly::getRolledStatus() const
+{
+	return hasRolled;
+}
+
+void Monopoly::setPairStatus()
+{
+	hasPair = !hasPair;
+}
+
+bool Monopoly::getPairStatus() const
+{
+	return hasPair;
 }
 
 const Player& Monopoly::getPlayerOnTurn() const
@@ -136,9 +145,9 @@ void Monopoly::showPlayerData(int id) const
 		<< "In Jail: " << (player.isInJail() ? "Yes" : "No") << std::endl;
 }
 
-void Monopoly::playTurn()
+void Monopoly::applyFieldEffect(size_t position)
 {
-
+	board->stepOn(position, getPlayerOnTurn());
 }
 
 //void Monopoly::nextTurn()
