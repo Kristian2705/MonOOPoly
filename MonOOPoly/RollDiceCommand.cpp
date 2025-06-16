@@ -6,6 +6,7 @@ void RollDiceCommand::execute() const
 		throw std::invalid_argument("You have already rolled and didn't get a pair.");
 	}
 	Player& playerOnTurn = game->getPlayerOnTurn();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	std::cout << "Press Enter to roll..." << std::endl;
 	std::cin.get();
 	int total = game->rollDice();

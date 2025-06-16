@@ -39,12 +39,82 @@ int Property::getBuildsCount() const
 	return rentTierIndex - 1;
 }
 
+ColorSet Property::getColorSet() const
+{
+	return colorSet;
+}
+
+void Property::removeOwner()
+{
+	owner = nullptr;
+}
+
+void Property::setOwner(Player* player)
+{
+	owner = player;
+}
+
+void Property::increaseRentTier()
+{
+	rentTierIndex++;
+}
+
+void Property::decreaseRentTier()
+{
+	rentTierIndex--;
+}
+
 void Property::applyEffect(Player& player)
 {
-	if (!owner) {
-		std::cout << "Do you want to purchase " << name << " for " << price;
+	if (owner) {
+		if (owner == &player) {
+			std::cout << "This property is yours. Home sweet home." << std::endl;
+			return;
+		}
+
+		if (player.getMoney() <= getRent()) {
+			player.addMoney(-getRent());
+			owner->addMoney(getRent());
+			std::cout << "You successfully paid " << owner->getName() << " a rent of $" << getRent() << std::endl;
+		}
+		else {
+			player.setInDebtStatus();
+			std::cout << "You don't have enough money to pay your debt to" << owner->getName() << std::endl;
+			std::cout << "You owe $" << getRent() << " but you have $" << player.getMoney() << std::endl;
+			std::cout << "Find a way to collect the money or go bankrupt." << std::endl;
+		}
+		return;
 	}
-	//Maybe it will be better to implement the commands first
+
+	if (price > player.getMoney()) {
+		std::cout << "You landed on " << name << " which costs $" << price << std::endl;
+		std::cout << "But you don't have enough money to get it. So it is still unowned." << std::endl;
+		//Auction might be needed here
+		return;
+	}
+
+	std::cout << "You landed on " << name << " which costs $" << price << std::endl;
+	std::cout << "Do you want to purchase it for $" << price << std::endl;
+	std::cout << "You currently have: $" << player.getMoney() << std::endl;
+	std::cout << "Type 'yes' or 'no'." << std::endl;
+
+	MyString answer;
+	std::cin >> answer;
+
+	while (true) {
+		if (answer == "no") {
+			std::cout << "You are chilling. You may buy it later if it is still unowned." << std::endl;
+			return;
+		}
+		if (answer == "yes") {
+			player.addMoney(-price);
+			player.addProperty(this);
+			return;
+		}
+		std::cout << "Invalid input. Please type 'yes' or 'no'." << std::endl;
+		std::cin >> answer;
+	}
+
 }
 
 Field* Property::clone() const

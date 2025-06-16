@@ -14,6 +14,7 @@ class Player
 	int totalBalance;
 	bool inGame = true;
 	bool inJail = false;
+	bool inDebt = false;
 	MyVector<Property*> ownedProperties;
 	MyVector<Card*> cards;
 public:
@@ -25,13 +26,18 @@ public:
 	int getMoney() const;
 	const MyString& getName() const;
 	int getTotalBalance() const;
-	void setJailStatus();
 	size_t getCurrentPosition() const;
 	bool isInGame() const;
 	bool isInJail() const;
-	const MyVector<Property*>& getOwnedProperties();
-	const MyVector<Card*>& getCards();
+	bool isInDebt() const;
+	const MyVector<Property*>& getOwnedProperties() const;
+	MyVector<Property*>& getOwnedProperties();
+	const MyVector<Card*>& getCards() const;
+	MyVector<Card*>& getCards();
 
+	void setJailStatus();
+	void setInDebtStatus();
+	void addProperty(Property* property);
 	void addMoney(int amount);
 	void resign();
 	void moveTo(size_t newPosition);

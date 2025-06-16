@@ -7,13 +7,16 @@ TaxField::TaxField(int boardIndex, const MyString& name, const MyString& abbrevi
 
 void TaxField::applyEffect(Player& player)
 {
-	Player& cP = Monopoly::getInstance()->getPlayerOnTurn();
-	if (taxAmount <= cP.getMoney()) {
-		cP.addMoney(-taxAmount);
+	if (taxAmount <= player.getMoney()) {
+		player.addMoney(-taxAmount);
+		std::cout << "You successfully paid the tax of $" << taxAmount << std::endl;
+		std::cout << "You currently have $" << player.getMoney() << std::endl;
+		return;
 	}
-	else {
-		//To be implemented
-	}
+	player.setInDebtStatus();
+	std::cout << "You don't have enough money to pay your debt to the bank." << std::endl;
+	std::cout << "You owe $" << taxAmount << " but you have $" << player.getMoney() << std::endl;
+	std::cout << "Find a way to collect the money or go bankrupt." << std::endl;
 }
 
 Field* TaxField::clone() const

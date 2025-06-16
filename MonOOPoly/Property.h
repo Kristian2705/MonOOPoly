@@ -22,7 +22,12 @@ public:
 	int getPrice() const;
 	size_t getRent() const;
 	int getBuildsCount() const;
+	ColorSet getColorSet() const;
 
+	void removeOwner();
+	void setOwner(Player* player);
+	void increaseRentTier();
+	void decreaseRentTier();
 	void applyEffect(Player& player) override;
 	Field* clone() const override;
 };

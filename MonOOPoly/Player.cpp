@@ -32,6 +32,44 @@ int Player::getMoney() const
 	return money;
 }
 
+void Player::addProperty(Property* property)
+{
+	ownedProperties.push_back(property);
+	property->setOwner(this);
+
+	std::cout << "You successfully purchased " << property->getName() << " for $" << property->getPrice() << std::endl;
+
+	MyVector<Property*> propsByColor;
+	for (int i = 0; i < ownedProperties.getSize(); i++) {
+		if (property->getColorSet() == ownedProperties[i]->getColorSet()) {
+			propsByColor.push_back(ownedProperties[i]);
+		}
+	}
+
+	switch (property->getColorSet())
+	{
+		case ColorSet::Brown:
+		case ColorSet::Blue:
+			if (propsByColor.getSize() == GameConstants::FIRST_AND_LAST_PROPERTIES_COUNT_BY_COLOR) {
+				for (int i = 0; i < propsByColor.getSize(); i++) {
+					propsByColor[i]->increaseRentTier();
+				}
+				std::cout << "You have collected all properties of color " << (int)property->getColorSet() << std::endl;
+				std::cout << "You can now build houses and later hotels on the properties of this color to increase the rent!" << std::endl;
+			}
+			break;
+		default:
+			if (propsByColor.getSize() == GameConstants::REST_PROPERTIES_COUNT_BY_COLOR_) {
+				for (int i = 0; i < propsByColor.getSize(); i++) {
+					propsByColor[i]->increaseRentTier();
+				}
+				std::cout << "You have collected all properties of color " << (int)property->getColorSet() << std::endl;
+				std::cout << "You can now build houses and later hotels on the properties of this color to increase the rent!" << std::endl;
+			}
+			break;
+	}
+}
+
 void Player::addMoney(int amount)
 {
 	money += amount;
@@ -55,6 +93,11 @@ void Player::setJailStatus()
 	{
 		position = GameConstants::JAIL_POSITION;
 	}
+}
+
+void Player::setInDebtStatus()
+{
+	inDebt = !inDebt;
 }
 
 void Player::resign()
@@ -82,12 +125,27 @@ bool Player::isInJail() const
 	return inJail;
 }
 
-const MyVector<Property*>& Player::getOwnedProperties()
+bool Player::isInDebt() const
+{
+	return inDebt;
+}
+
+const MyVector<Property*>& Player::getOwnedProperties() const
 {
 	return ownedProperties;
 }
 
-const MyVector<Card*>& Player::getCards() {
+MyVector<Property*>& Player::getOwnedProperties()
+{
+	return ownedProperties;
+}
+
+const MyVector<Card*>& Player::getCards() const {
+	return cards;
+}
+
+MyVector<Card*>& Player::getCards()
+{
 	return cards;
 }
 

@@ -52,4 +52,6 @@ namespace GameConstants {
 	const int BEAUTY_CONTEST_REWARD = 10;
 	const int LOAN_MATURES_REWARD = 150;
 	const int CHAIRMAN_OF_THE_BOARD_AMOUNT = 50;
+	const int FIRST_AND_LAST_PROPERTIES_COUNT_BY_COLOR = 2;
+	const int REST_PROPERTIES_COUNT_BY_COLOR_ = 3;
 };

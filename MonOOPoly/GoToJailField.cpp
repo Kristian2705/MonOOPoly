@@ -9,7 +9,7 @@ GoToJailField::GoToJailField(const MyString & name, const MyString& abbreviation
 void GoToJailField::applyEffect(Player& player)
 {
 	player.setJailStatus();
-	std::cout << "You have been sent to jail! You can pay $100 and play next turn or wait for 3 turns." << std::endl;
+	std::cout << "You have been sent to jail! You can pay $50 and play next turn or wait for 3 turns." << std::endl;
 }
 
 Field* GoToJailField::clone() const

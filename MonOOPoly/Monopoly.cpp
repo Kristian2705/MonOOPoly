@@ -27,8 +27,8 @@ void Monopoly::freeInstance()
 void Monopoly::welcomePlayers()
 {
 	std::cout << "Welcome to MonOOPoly!" << std::endl;
-	std::cout << "Press Enter to start the game..." << std::endl;
-	std::cin.get();
+	std::cout << "Press anything to start the game..." << std::endl;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	addPlayers();
 }
 
@@ -68,12 +68,12 @@ bool Monopoly::getPairStatus() const
 
 const Player& Monopoly::getPlayerOnTurn() const
 {
-	return players[currentPlayerIndex];
+	return players[currentPlayerIndex - 1];
 }
 
 Player& Monopoly::getPlayerOnTurn()
 {
-	return players[currentPlayerIndex];
+	return players[currentPlayerIndex - 1];
 }
 
 void Monopoly::addPlayer(const Player& player)
@@ -128,6 +128,7 @@ void Monopoly::addPlayers()
 	std::cout << numPlayers << " added successfully!" << std::endl;
 	std::cout << "Are you ready to play?" << std::endl;
 	std::cout << "Press enter to continue..." << std::endl;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	std::cin.get();
 	board->printBoard();
 	std::cout << "Player " << currentPlayerIndex << "'s turn." << std::endl;

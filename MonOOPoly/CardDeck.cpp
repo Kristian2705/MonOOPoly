@@ -147,6 +147,10 @@ void CardDeck::showCards()
 
 Card* CardDeck::drawCard()
 {
+	std::cout << "You landed on a field for drawing cards!" << std::endl;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cout << "Press a key to draw a card..." << std::endl;
+	std::cin.get();
 	Card* card = cards.peek();
 	if (!card) {
 		throw new std::invalid_argument("No cards in the deck to draw.");

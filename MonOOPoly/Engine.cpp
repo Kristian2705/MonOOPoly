@@ -6,6 +6,21 @@ void Engine::run()
 	game->welcomePlayers();
 
 	while (true) {
-
+		MyString commandName;
+		std::cout << "> ";
+		std::cin >> commandName;
+		if (commandName == "exit") {
+			break;
+		}
+		try {
+			Command* command = CommandFactory::readCommand(commandName);
+			command->execute();
+			delete command;
+		}
+		catch (const std::exception& e) {
+			std::cerr << e.what() << std::endl;
+		}
 	}
+
+	game->freeInstance();
 }
