@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Card.h"
 
 int Player::nextId = 1;
 
@@ -7,6 +8,7 @@ Player::Player(const MyString& name, int money)
 {
 	this->ownedProperties = MyVector<Property*>(GameConstants::MIN_CAPACITY);
 	this->cards = MyVector<Card*>(GameConstants::MIN_CAPACITY);
+	this->ownedStations = MyVector<Station*>(GameConstants::MIN_CAPACITY);
 }
 
 Player::Player(int id, const MyString& name, int money, size_t position, int totalBalance, bool isInGame, bool inJail, const MyVector<Property*>& properties, const MyVector<Card*>& cards)
@@ -68,6 +70,19 @@ void Player::addProperty(Property* property)
 			}
 			break;
 	}
+}
+
+void Player::addStation(Station* station)
+{
+	ownedStations.push_back(station);
+	station->setOwner(this);
+	std::cout << "You successfully purchased " << station->getName() << " for $" << station->getPrice() << std::endl;
+
+	int ownedStationsCount = ownedStations.getSize();
+	if (ownedStationsCount > 1) {
+		station->increaseRentTier();
+	}
+	std::cout << "You currently have " << ownedStationsCount << " stations. Their rent is $" << station->getRent() << std::endl;
 }
 
 void Player::addMoney(int amount)
@@ -140,6 +155,16 @@ MyVector<Property*>& Player::getOwnedProperties()
 	return ownedProperties;
 }
 
+const MyVector<Station*>& Player::getOwnedStations() const
+{
+	return ownedStations;
+}
+
+MyVector<Station*>& Player::getOwnedStations()
+{
+	return ownedStations;
+}
+
 const MyVector<Card*>& Player::getCards() const {
 	return cards;
 }
@@ -164,9 +189,24 @@ void Player::showInfo() const
 	std::cout << "In jail: " << (inJail ? "Yes" : "No") << std::endl;
 	std::cout << "In debt: " << (inJail ? "Yes" : "No") << std::endl;
 	std::cout << "Owned properties count: " << ownedProperties.getSize() << std::endl;
-	for (int i = 0; i < ownedProperties.getSize(); i++) {
-		ownedProperties[i]->showProperty();
-		std::cout << std::endl;
+	if (ownedProperties.getSize()) {
+		for (int i = 0; i < ownedProperties.getSize(); i++) {
+			ownedProperties[i]->showProperty();
+			std::cout << std::endl;
+		}
 	}
-
+	std::cout << "Owned stations count: " << ownedStations.getSize() << std::endl;
+	if (ownedStations.getSize()) {
+		for (int i = 0; i < ownedStations.getSize(); i++) {
+			ownedStations[i]->showStation();
+			std::cout << std::endl;
+		}
+	}
+	std::cout << "Cards in hold: " << cards.getSize() << std::endl;
+	if (cards.getSize()) {
+		for (int i = 0; i < cards.getSize(); i++) {
+			cards[i]->getDescription();
+			std::cout << std::endl;
+		}
+	}
 }

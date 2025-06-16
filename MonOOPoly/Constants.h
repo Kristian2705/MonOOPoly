@@ -54,4 +54,9 @@ namespace GameConstants {
 	const int CHAIRMAN_OF_THE_BOARD_AMOUNT = 50;
 	const int FIRST_AND_LAST_PROPERTIES_COUNT_BY_COLOR = 2;
 	const int REST_PROPERTIES_COUNT_BY_COLOR_ = 3;
+	const int STATION_FIRST_RENT = 25;
+	const int STATION_SECOND_RENT = 50;
+	const int STATION_THIRD_RENT = 100;
+	const int STATION_FOURTH_RENT = 200;
+	const int RENT_TIERS_STATION_COUNT = 4;
 };

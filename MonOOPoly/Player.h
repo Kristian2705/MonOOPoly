@@ -1,6 +1,7 @@
 #pragma once
 #include "Property.h"
 #include "MyVector.hpp"
+#include "Station.h"
 #include <memory>
 class Card;
 
@@ -17,7 +18,9 @@ class Player
 	bool inDebt = false;
 	MyVector<Property*> ownedProperties;
 	MyVector<Card*> cards;
+	MyVector<Station*> ownedStations;
 public:
+	//Constructors for later
 	Player() = default;
 	Player(const MyString& name, int money = GameConstants::INITIAL_MONEY);
 	Player(int id, const MyString& name, int money, size_t position, int totalBalance, bool isInGame, bool inJail, const MyVector<Property*>& properties, const MyVector<Card*>& cards);
@@ -32,12 +35,15 @@ public:
 	bool isInDebt() const;
 	const MyVector<Property*>& getOwnedProperties() const;
 	MyVector<Property*>& getOwnedProperties();
+	const MyVector<Station*>& getOwnedStations() const;
+	MyVector<Station*>& getOwnedStations();
 	const MyVector<Card*>& getCards() const;
 	MyVector<Card*>& getCards();
 
 	void setJailStatus();
 	void setInDebtStatus();
 	void addProperty(Property* property);
+	void addStation(Station* station);
 	void addMoney(int amount);
 	void resign();
 	void moveTo(size_t newPosition);

@@ -14,6 +14,7 @@ class Property : public Field
 	size_t hotelPrice;
 	ColorSet colorSet;
 public:
+	//Constructors for later
 	Property() = default;
 	Property(int boardIndex, const MyString& name, const MyString& abbreviation, int price, const size_t* rentTiers, size_t housePrice, size_t hotelPrice ,ColorSet colorSet);
 	Property(Player* owner, int boardIndex, const MyString& name, const MyString& abbreviation, int price, int rentTierIndex, const size_t* rentTiers, size_t housePrice, size_t hotelPrice, ColorSet colorSet);
@@ -24,6 +25,7 @@ public:
 	int getBuildsCount() const;
 	ColorSet getColorSet() const;
 
+	//Mortgage function later
 	void showProperty() const;
 	void removeOwner();
 	void setOwner(Player* player);
