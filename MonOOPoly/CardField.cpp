@@ -11,6 +11,7 @@ void CardField::applyEffect(Player& player)
 {
 	Card* card = deck->drawCard();
 	card->applyEffect(player);
+	deck->putCardAtTheEnd(card);
 }
 
 Field* CardField::clone() const

@@ -34,13 +34,17 @@ void Monopoly::welcomePlayers()
 
 int Monopoly::rollDice()
 {
-	int die1 = rand() % 6 + 1;
-	int die2 = rand() % 6 + 1;
+	int die1 = /*rand() % 6 +*/ 15;
+	int die2 = /*rand() % 6 +*/ 15;
 	int total = die1 + die2;
+	if (hasPair) {
+		hasPair = false;
+	}
 	if (die1 == die2) {
 		hasPair = true;
 	}
 	std::cout << "You rolled: " << die1 << " and " << die2 << " (Total: " << total << ")" << std::endl;
+	hasRolled = true;
 	return total;
 }
 
@@ -56,15 +60,16 @@ bool Monopoly::getRolledStatus() const
 	return hasRolled;
 }
 
-void Monopoly::setPairStatus()
-{
-	hasPair = !hasPair;
-}
-
 bool Monopoly::getPairStatus() const
 {
 	return hasPair;
 }
+
+void Monopoly::resetPairStatus()
+{
+	hasPair = false;
+}
+
 
 const Player& Monopoly::getPlayerOnTurn() const
 {
@@ -144,6 +149,14 @@ void Monopoly::showPlayerData(int id) const
 		<< "Total Balance: " << player.getTotalBalance() << std::endl
 		<< "Position: " << player.getCurrentPosition() << std::endl
 		<< "In Jail: " << (player.isInJail() ? "Yes" : "No") << std::endl;
+}
+
+void Monopoly::endTurn()
+{
+	currentPlayerIndex = (currentPlayerIndex++) % players.getSize();
+	hasPair = false;
+	hasRolled = false;
+	std::cout << "Player " << currentPlayerIndex << "'s turn." << std::endl;
 }
 
 void Monopoly::applyFieldEffect(size_t position)

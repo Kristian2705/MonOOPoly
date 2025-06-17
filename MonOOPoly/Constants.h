@@ -59,4 +59,6 @@ namespace GameConstants {
 	const int STATION_THIRD_RENT = 100;
 	const int STATION_FOURTH_RENT = 200;
 	const int RENT_TIERS_STATION_COUNT = 4;
+	const int RAILROAD_PRICE = 200;
+	const int JAIL_RELEASE_PRICE = 50;
 };

@@ -3,6 +3,8 @@
 #include "HelpCommand.h"
 #include "RollDiceCommand.h"
 #include "InvalidCommand.h"
+#include "SeeInfoCommand.h"
+#include "EndTurnCommand.h"
 
 class CommandFactory
 {

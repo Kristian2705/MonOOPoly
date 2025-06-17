@@ -11,5 +11,6 @@ const MyString& Card::getDescription() const
 
 void Card::applyEffect(Player& player)
 {
+	std::cout << description << std::endl;
 	effectStrategy->execute(player);
 }

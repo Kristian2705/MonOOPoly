@@ -3,7 +3,7 @@
 class Station : public Field
 {
 	Player* owner;
-	size_t price;
+	size_t price = GameConstants::RAILROAD_PRICE;
 	size_t rentTiers[GameConstants::RENT_TIERS_STATION_COUNT];
 	int rentTierIndex;
 public:

@@ -22,11 +22,12 @@ public:
 	int rollDice();
 	void stepOnCard();
 	void showPlayerData(int id) const;
+	void endTurn();
 	void applyFieldEffect(size_t position);
 
 	bool getRolledStatus() const;
-	void setPairStatus();
 	bool getPairStatus() const;
+	void resetPairStatus();
 	const Player& getPlayerOnTurn() const;
 	Player& getPlayerOnTurn();
 	const Player& getPlayer(int playerId) const;

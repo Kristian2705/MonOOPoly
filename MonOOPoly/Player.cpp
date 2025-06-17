@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Card.h"
+#include "Monopoly.h"
 
 int Player::nextId = 1;
 
@@ -83,6 +84,11 @@ void Player::addStation(Station* station)
 		station->increaseRentTier();
 	}
 	std::cout << "You currently have " << ownedStationsCount << " stations. Their rent is $" << station->getRent() << std::endl;
+}
+
+void Player::addCard(Card* card)
+{
+	cards.push_back(card);
 }
 
 void Player::addMoney(int amount)
@@ -176,8 +182,10 @@ MyVector<Card*>& Player::getCards()
 
 void Player::moveTo(size_t newPosition)
 {
-	position = newPosition;
+	position = newPosition % GameConstants::BOARD_SIZE;
 	std::cout << "You are currently on position " << position << std::endl;
+	Monopoly* game = Monopoly::getInstance();
+	game->applyFieldEffect(position);
 }
 
 void Player::showInfo() const

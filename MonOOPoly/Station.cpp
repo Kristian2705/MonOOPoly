@@ -55,7 +55,7 @@ void Station::applyEffect(Player& player)
 			return;
 		}
 
-		if (player.getMoney() <= getRent()) {
+		if (player.getMoney() >= getRent()) {
 			player.addMoney((-1) * getRent());
 			owner->addMoney(getRent());
 			std::cout << "You successfully paid " << owner->getName() << " a rent of $" << getRent() << std::endl;

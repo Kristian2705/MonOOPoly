@@ -8,7 +8,7 @@ void FeeEffect::execute(Player& player)
 {
 	if (amount <= player.getMoney())
 	{
-		player.addMoney(amount);
+		player.addMoney(-amount);
 	}
 	else {
 		//To be implemented

@@ -14,6 +14,7 @@ public:
 	static void freeInstance();
 	void showCards();
 	Card* drawCard();
+	void putCardAtTheEnd(Card* card);
 	void shuffleDeck();
 };
 

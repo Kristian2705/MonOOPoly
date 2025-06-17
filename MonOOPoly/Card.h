@@ -1,6 +1,7 @@
 #pragma once
 #include "MyString.h"
 #include "CardEffectStrategy.h"
+#include <iostream>
 
 class Card
 {

@@ -8,5 +8,11 @@ Command* CommandFactory::readCommand(const MyString& commandType)
 	if (commandType == "roll_dice") {
 		return new RollDiceCommand();
 	}
+	if (commandType == "see_info") {
+		return new SeeInfoCommand();
+	}
+	if (commandType == "end_turn") {
+		return new EndTurnCommand();
+	}
 	return new InvalidCommand();
 }

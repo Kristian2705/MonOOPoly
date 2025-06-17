@@ -13,11 +13,13 @@ void RollDiceCommand::execute() const
 	if (playerOnTurn.isInJail()) {
 		if (game->getPairStatus()) {
 			playerOnTurn.setJailStatus();
-			game->setPairStatus();
+			game->resetPairStatus();
 			playerOnTurn.moveTo(playerOnTurn.getCurrentPosition() + total);
+		}
+		else {
+			std::cout << "Try next turn (rolls left: " << ") or pay $50." << std::endl;
 		}
 		return;
 	}
 	playerOnTurn.moveTo(playerOnTurn.getCurrentPosition() + total);
-	game->applyFieldEffect(playerOnTurn.getCurrentPosition());
 }

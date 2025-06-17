@@ -44,6 +44,7 @@ public:
 	void setInDebtStatus();
 	void addProperty(Property* property);
 	void addStation(Station* station);
+	void addCard(Card* card);
 	void addMoney(int amount);
 	void resign();
 	void moveTo(size_t newPosition);

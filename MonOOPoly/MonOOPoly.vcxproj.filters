@@ -156,9 +156,6 @@
     <ClCompile Include="GoToNearestRailroadEffect.cpp">
       <Filter>Source Files\Entities\Cards\Effects\Move</Filter>
     </ClCompile>
-    <ClCompile Include="GoToNearestUtilityEffect.cpp">
-      <Filter>Source Files\Entities\Cards\Effects\Move</Filter>
-    </ClCompile>
     <ClCompile Include="CardEffectStrategy.cpp">
       <Filter>Source Files\Entities\Cards\Effects</Filter>
     </ClCompile>
@@ -202,6 +199,15 @@
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="SeeInfoCommand.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="EndTurnCommand.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="GoToNearestUtilityEffect.cpp">
+      <Filter>Source Files\Entities\Cards\Effects\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="PayForReleaseCommand.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
   </ItemGroup>
@@ -333,6 +339,12 @@
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="SeeInfoCommand.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="EndTurnCommand.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="PayForReleaseCommand.h">
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
   </ItemGroup>

@@ -137,6 +137,7 @@
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="Constants.h" />
+    <ClCompile Include="EndTurnCommand.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="FeeEffect.cpp" />
     <ClCompile Include="Field.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="MultiplePaymentToOthers.cpp" />
     <ClCompile Include="MyString.cpp" />
     <ClCompile Include="ParkingField.cpp" />
+    <ClCompile Include="PayForReleaseCommand.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Property.cpp" />
     <ClCompile Include="ReceivePaymentEffect.cpp" />
@@ -179,6 +181,7 @@
     <ClInclude Include="CardField.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandFactory.h" />
+    <ClInclude Include="EndTurnCommand.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="FeeEffect.h" />
@@ -201,6 +204,7 @@
     <ClInclude Include="MyString.h" />
     <ClInclude Include="MyVector.hpp" />
     <ClInclude Include="ParkingField.h" />
+    <ClInclude Include="PayForReleaseCommand.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PolymorphicContainer.hpp" />
     <ClInclude Include="Property.h" />

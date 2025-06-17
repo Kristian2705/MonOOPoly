@@ -8,13 +8,13 @@ void SeeInfoCommand::execute() const
 	std::cin >> buffer;
 	while (true) {
 		MyString str(buffer);
-		if (str.hasLettersOnly()) {
+		if (!str.hasLettersOnly()) {
 			index = str.stoi();
 			break;
 		}
-		std::cout << "Invalid input. Please enter a number (1-)" << game->getPlayers().getSize() << ")" << std::endl;
+		std::cout << "Invalid input. Please enter a number (1-" << game->getPlayers().getSize() << ")" << std::endl;
 		std::cin >> buffer;
 	}
 	const Player& playerToShow = game->getPlayer(index);
-	
+	playerToShow.showInfo();
 }
