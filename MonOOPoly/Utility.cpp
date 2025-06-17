@@ -17,6 +17,7 @@ size_t Utility::getRentMultiplier() const
 
 void Utility::showUtility() const
 {
+	std::cout << "--Position: " << boardIndex << std::endl;
 	std::cout << "--Name: " << name << std::endl;
 	std::cout << "--Price: $" << price << std::endl;
 	std::cout << "--Rent Multiplier: " << rentMultiplier << "x" << std::endl;
@@ -44,9 +45,8 @@ void Utility::decreaseRentMultiplier()
 
 int Utility::rollRentDice() const
 {
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	std::cout << "Press Enter to roll..." << std::endl;
-	std::cin.get();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	int die1 = rand() % 6 + 1;
 	int die2 = rand() % 6 + 1;
 	int total = die1 + die2;

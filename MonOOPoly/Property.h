@@ -23,7 +23,10 @@ public:
 	int getPrice() const;
 	size_t getRent() const;
 	int getBuildsCount() const;
+	int getRentTierIndex() const;
 	ColorSet getColorSet() const;
+	size_t getHousePrice() const;
+	size_t getHotelPrice() const;
 
 	//Mortgage function later
 	void showProperty() const;

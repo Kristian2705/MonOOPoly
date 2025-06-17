@@ -39,18 +39,36 @@ int Property::getBuildsCount() const
 	return rentTierIndex - 1;
 }
 
+int Property::getRentTierIndex() const
+{
+	return rentTierIndex;
+}
+
 ColorSet Property::getColorSet() const
 {
 	return colorSet;
 }
 
+size_t Property::getHousePrice() const
+{
+	return housePrice;
+}
+
+size_t Property::getHotelPrice() const
+{
+	return hotelPrice;
+}
+
 void Property::showProperty() const
 {
+	std::cout << "--Position: " << boardIndex << std::endl;
 	std::cout << "--Name: " << name << std::endl;
 	std::cout << "--Color: " << (int)colorSet << std::endl;
 	std::cout << "--Price: $" << price << std::endl;
 	std::cout << "--Rent: $" << getRent() << std::endl;
 	std::cout << "--Buildings count: " << ((rentTierIndex - 1) < 0 ? 0 : rentTierIndex - 1) << std::endl;
+	std::cout << "--House price: $" << housePrice << std::endl;
+	std::cout << "--Hotel price: $" << hotelPrice << std::endl;
 }
 
 void Property::removeOwner()

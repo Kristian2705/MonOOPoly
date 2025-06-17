@@ -22,6 +22,7 @@ size_t Station::getRent() const
 
 void Station::showStation() const
 {
+	std::cout << "--Position: " << boardIndex << std::endl;
 	std::cout << "--Name: " << name << std::endl;
 	std::cout << "--Price: $" << price << std::endl;
 	std::cout << "--Rent: $" << getRent() << std::endl;

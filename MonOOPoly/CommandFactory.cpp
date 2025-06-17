@@ -14,5 +14,14 @@ Command* CommandFactory::readCommand(const MyString& commandType)
 	if (commandType == "end_turn") {
 		return new EndTurnCommand();
 	}
+	if (commandType == "pay_release") {
+		return new PayForReleaseCommand();
+	}
+	if (commandType == "bankrupt") {
+		return new BankruptCommand();
+	}
+	if (commandType == "build") {
+		return new BuildCommand();
+	}
 	return new InvalidCommand();
 }

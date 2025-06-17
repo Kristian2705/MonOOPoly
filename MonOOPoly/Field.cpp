@@ -13,3 +13,8 @@ const MyString& Field::getAbbreviation() const
 {
 	return abbreviation;
 }
+
+int Field::getBoardIndex() const
+{
+	return boardIndex;
+}

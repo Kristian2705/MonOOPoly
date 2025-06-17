@@ -129,7 +129,9 @@
   <ItemGroup>
     <ClCompile Include="AdvanceToGoEffect.cpp" />
     <ClCompile Include="Bank.cpp" />
+    <ClCompile Include="BankruptCommand.cpp" />
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="BuildCommand.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardDeck.cpp" />
     <ClCompile Include="CardEffectStrategy.cpp" />
@@ -174,7 +176,9 @@
   <ItemGroup>
     <ClInclude Include="AdvanceToGoEffect.h" />
     <ClInclude Include="Bank.h" />
+    <ClInclude Include="BankruptCommand.h" />
     <ClInclude Include="Board.h" />
+    <ClInclude Include="BuildCommand.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardDeck.h" />
     <ClInclude Include="CardEffectStrategy.h" />

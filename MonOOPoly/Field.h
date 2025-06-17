@@ -14,8 +14,11 @@ protected:
 public:
 	Field() = default;
 	Field(int boardIndex, const MyString& name, const MyString& abbreviation);
+
 	const MyString& getName() const;
 	const MyString& getAbbreviation() const;
+	int getBoardIndex() const;
+
 	virtual void applyEffect(Player& player) = 0;
 	virtual Field* clone() const = 0;
 	virtual ~Field() = default;
