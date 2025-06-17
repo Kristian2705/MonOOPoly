@@ -22,4 +22,3 @@ public:
 	void applyEffect(Player& player) override;
 	Field* clone() const override;
 };
-

@@ -6,10 +6,10 @@ GoToLocationEffect::GoToLocationEffect(size_t locationIndex)
 
 void GoToLocationEffect::execute(Player& player)
 {
-	if (player.getCurrentPosition() > locationIndex) {
-		std::cout << "You passed GO! Collect $200!";
-		player.addMoney(GameConstants::PASS_GO_BONUS);
-	}
+	//if (player.getCurrentPosition() > locationIndex) {
+	//	std::cout << "You passed GO! Collect $200!" << std::endl;
+	//	player.addMoney(GameConstants::PASS_GO_BONUS);
+	//}
 	player.moveTo(locationIndex);
 }
 

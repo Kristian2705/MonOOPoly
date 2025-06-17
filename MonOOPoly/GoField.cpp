@@ -7,8 +7,7 @@ GoField::GoField(const MyString& name, const MyString& abbreviation)
 
 void GoField::applyEffect(Player& player)
 {
-	player.addMoney(GameConstants::PASS_GO_BONUS);
-	std::cout << "You passed GO! Collect $200." << std::endl;
+	std::cout << "GO Collect $200.00 salary as you pass!" << std::endl;
 }
 
 Field* GoField::clone() const

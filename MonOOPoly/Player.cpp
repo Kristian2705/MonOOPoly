@@ -10,6 +10,7 @@ Player::Player(const MyString& name, int money)
 	this->ownedProperties = MyVector<Property*>(GameConstants::MIN_CAPACITY);
 	this->cards = MyVector<Card*>(GameConstants::MIN_CAPACITY);
 	this->ownedStations = MyVector<Station*>(GameConstants::MIN_CAPACITY);
+	this->ownedUtilities = MyVector<Utility*>(GameConstants::MIN_CAPACITY);
 }
 
 Player::Player(int id, const MyString& name, int money, size_t position, int totalBalance, bool isInGame, bool inJail, const MyVector<Property*>& properties, const MyVector<Card*>& cards)
@@ -81,7 +82,9 @@ void Player::addStation(Station* station)
 
 	int ownedStationsCount = ownedStations.getSize();
 	if (ownedStationsCount > 1) {
-		station->increaseRentTier();
+		for (int i = 0; i < ownedStationsCount; i++) {
+			ownedStations[i]->increaseRentTier();
+		}
 	}
 	std::cout << "You currently have " << ownedStationsCount << " stations. Their rent is $" << station->getRent() << std::endl;
 }
@@ -89,6 +92,20 @@ void Player::addStation(Station* station)
 void Player::addCard(Card* card)
 {
 	cards.push_back(card);
+}
+
+void Player::addUtility(Utility* utility)
+{
+	ownedUtilities.push_back(utility);
+	utility->setOwner(this);
+	std::cout << "You successfully purchased " << utility->getName() << " for $" << utility->getPrice() << std::endl;
+	int ownedUtilitiesCount = ownedUtilities.getSize();
+	if (ownedUtilitiesCount > 1) {
+		for (int i = 0; i < ownedUtilitiesCount; i++) {
+			ownedUtilities[i]->increaseRentMultiplier();
+		}
+	}
+	std::cout << "You currently have " << ownedUtilitiesCount << " stations. Their rent multiplier is " << utility->getRentMultiplier() << "x" << std::endl;
 }
 
 void Player::addMoney(int amount)
@@ -185,6 +202,16 @@ MyVector<Card*>& Player::getCards()
 	return cards;
 }
 
+const MyVector<Utility*>& Player::getUtilities() const
+{
+	return ownedUtilities;
+}
+
+MyVector<Utility*>& Player::getUtilities()
+{
+	return ownedUtilities;
+}
+
 int Player::getTimesLeft() const
 {
 	return timesLeftToRollInJail;
@@ -192,7 +219,12 @@ int Player::getTimesLeft() const
 
 void Player::moveTo(size_t newPosition)
 {
+	int currentPosition = position;
 	position = newPosition % GameConstants::BOARD_SIZE;
+	if (position < currentPosition) {
+		std::cout << "You passed GO! Collect $200!" << std::endl;
+		addMoney(GameConstants::PASS_GO_BONUS);
+	}
 	std::cout << "You are currently on position " << position << std::endl;
 	if (inJail) {
 		return;
@@ -227,6 +259,14 @@ void Player::showInfo() const
 	if (cards.getSize()) {
 		for (int i = 0; i < cards.getSize(); i++) {
 			cards[i]->getDescription();
+			std::cout << std::endl;
+		}
+	}
+
+	std::cout << "Owned Utilities: " << ownedUtilities.getSize() << std::endl;
+	if (ownedUtilities.getSize()) {
+		for (int i = 0; i < ownedUtilities.getSize(); i++) {
+			ownedUtilities[i]->showUtility();
 			std::cout << std::endl;
 		}
 	}

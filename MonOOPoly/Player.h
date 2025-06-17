@@ -2,6 +2,7 @@
 #include "Property.h"
 #include "MyVector.hpp"
 #include "Station.h"
+#include "Utility.h"
 #include <memory>
 class Card;
 
@@ -19,6 +20,7 @@ class Player
 	int timesLeftToRollInJail = GameConstants::TIMES_TO_ROLL_IN_JAIL;
 	MyVector<Property*> ownedProperties;
 	MyVector<Card*> cards;
+	MyVector<Utility*> ownedUtilities;
 	MyVector<Station*> ownedStations;
 public:
 	//Constructors for later
@@ -40,6 +42,8 @@ public:
 	MyVector<Station*>& getOwnedStations();
 	const MyVector<Card*>& getCards() const;
 	MyVector<Card*>& getCards();
+	const MyVector<Utility*>& getUtilities() const;
+	MyVector<Utility*>& getUtilities();
 	int getTimesLeft() const;
 
 	void decreaseTimesLeft();
@@ -48,6 +52,7 @@ public:
 	void addProperty(Property* property);
 	void addStation(Station* station);
 	void addCard(Card* card);
+	void addUtility(Utility* utility);
 	void addMoney(int amount);
 	void resign();
 	void moveTo(size_t newPosition);

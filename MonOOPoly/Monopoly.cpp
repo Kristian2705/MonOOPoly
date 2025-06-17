@@ -34,8 +34,8 @@ void Monopoly::welcomePlayers()
 
 int Monopoly::rollDice()
 {
-	int die1 = /*rand() % 6 +*/ 15;
-	int die2 = /*rand() % 6 +*/ 15;
+	int die1 = rand() % 6 + 1;
+	int die2 = rand() % 6 + 1;
 	int total = die1 + die2;
 	if (die1 == die2) {
 		pairsCount++;
