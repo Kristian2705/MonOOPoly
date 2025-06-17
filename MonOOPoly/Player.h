@@ -16,6 +16,7 @@ class Player
 	bool inGame = true;
 	bool inJail = false;
 	bool inDebt = false;
+	int timesLeftToRollInJail = GameConstants::TIMES_TO_ROLL_IN_JAIL;
 	MyVector<Property*> ownedProperties;
 	MyVector<Card*> cards;
 	MyVector<Station*> ownedStations;
@@ -39,7 +40,9 @@ public:
 	MyVector<Station*>& getOwnedStations();
 	const MyVector<Card*>& getCards() const;
 	MyVector<Card*>& getCards();
+	int getTimesLeft() const;
 
+	void decreaseTimesLeft();
 	void setJailStatus();
 	void setInDebtStatus();
 	void addProperty(Property* property);

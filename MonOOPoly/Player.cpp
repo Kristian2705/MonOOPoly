@@ -107,6 +107,11 @@ int Player::getTotalBalance() const
 	return totalBalance;
 }
 
+void Player::decreaseTimesLeft()
+{
+	timesLeftToRollInJail--;
+}
+
 void Player::setJailStatus()
 {
 	inJail = !inJail;
@@ -180,10 +185,18 @@ MyVector<Card*>& Player::getCards()
 	return cards;
 }
 
+int Player::getTimesLeft() const
+{
+	return timesLeftToRollInJail;
+}
+
 void Player::moveTo(size_t newPosition)
 {
 	position = newPosition % GameConstants::BOARD_SIZE;
 	std::cout << "You are currently on position " << position << std::endl;
+	if (inJail) {
+		return;
+	}
 	Monopoly* game = Monopoly::getInstance();
 	game->applyFieldEffect(position);
 }

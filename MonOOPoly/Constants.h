@@ -61,4 +61,5 @@ namespace GameConstants {
 	const int RENT_TIERS_STATION_COUNT = 4;
 	const int RAILROAD_PRICE = 200;
 	const int JAIL_RELEASE_PRICE = 50;
+	const int TIMES_TO_ROLL_IN_JAIL = 3;
 };

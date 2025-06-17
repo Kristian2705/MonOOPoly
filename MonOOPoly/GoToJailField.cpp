@@ -10,8 +10,9 @@ GoToJailField::GoToJailField(const MyString & name, const MyString& abbreviation
 void GoToJailField::applyEffect(Player& player)
 {
 	player.setJailStatus();
-	Monopoly::getInstance()->resetPairStatus();
 	std::cout << "You have been sent to jail! Next turn you can pay $50 and play or wait for 3 turns." << std::endl;
+	Monopoly::getInstance()->resetPairStatus();
+	player.moveTo(GameConstants::JAIL_FIELD_INDEX);
 }
 
 Field* GoToJailField::clone() const

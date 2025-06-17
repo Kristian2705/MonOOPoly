@@ -37,14 +37,22 @@ int Monopoly::rollDice()
 	int die1 = /*rand() % 6 +*/ 15;
 	int die2 = /*rand() % 6 +*/ 15;
 	int total = die1 + die2;
-	if (hasPair) {
-		hasPair = false;
-	}
 	if (die1 == die2) {
-		hasPair = true;
+		pairsCount++;
+	}
+	else {
+		pairsCount = 0;
 	}
 	std::cout << "You rolled: " << die1 << " and " << die2 << " (Total: " << total << ")" << std::endl;
 	hasRolled = true;
+	if (pairsCount == 3) {
+		std::cout << "You have been caught for speeding!" << std::endl;
+		Player& playerOnTurn = getPlayerOnTurn();
+		playerOnTurn.setJailStatus();
+		playerOnTurn.moveTo(GameConstants::JAIL_FIELD_INDEX);
+		pairsCount = 0;
+		throw std::invalid_argument("You have been sent to jail! Next turn you can pay $50 and play or wait for 3 turns.");
+	}
 	return total;
 }
 
@@ -62,12 +70,17 @@ bool Monopoly::getRolledStatus() const
 
 bool Monopoly::getPairStatus() const
 {
-	return hasPair;
+	return pairsCount != 0;
+}
+
+int Monopoly::getPairsCount() const
+{
+	return pairsCount;
 }
 
 void Monopoly::resetPairStatus()
 {
-	hasPair = false;
+	pairsCount = 0;
 }
 
 
@@ -154,7 +167,7 @@ void Monopoly::showPlayerData(int id) const
 void Monopoly::endTurn()
 {
 	currentPlayerIndex = (currentPlayerIndex++) % players.getSize();
-	hasPair = false;
+	pairsCount = 0;
 	hasRolled = false;
 	std::cout << "Player " << currentPlayerIndex << "'s turn." << std::endl;
 }

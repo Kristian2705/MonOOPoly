@@ -4,8 +4,8 @@
 class Monopoly
 {
 	int currentPlayerIndex;
-	bool hasPair = false;
 	bool hasRolled = false;
+	int pairsCount = 0;
 	static Monopoly* instance;
 	Board* board;
 	CardDeck* deck;
@@ -27,6 +27,7 @@ public:
 
 	bool getRolledStatus() const;
 	bool getPairStatus() const;
+	int getPairsCount() const;
 	void resetPairStatus();
 	const Player& getPlayerOnTurn() const;
 	Player& getPlayerOnTurn();
