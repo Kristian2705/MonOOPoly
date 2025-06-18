@@ -57,6 +57,8 @@ public:
 
 	void clear();
 
+	T erase(size_t index);
+
 	T& operator[](size_t index);
 
 	const T& operator[](size_t index) const;
@@ -272,6 +274,22 @@ void MyVector<T>::shrink_to_fit() {
 template<typename T>
 void MyVector<T>::clear() {
 	size = 0;
+}
+
+template<typename T>
+T MyVector<T>::erase(size_t index)
+{
+	if (index < 0 || index >= size) {
+		throw std::out_of_range("Erase index out of range");
+	}
+
+	T elToReturn = elements[index];
+	for (int i = index; i < size - 1; i++) {
+		elements[i] = elements[i + 1];
+	}
+
+	size--;
+	return elToReturn;
 }
 
 template<typename T>

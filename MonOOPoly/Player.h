@@ -46,6 +46,7 @@ public:
 	MyVector<Utility*>& getUtilities();
 	int getTimesLeft() const;
 
+	void removeProperty(Property* property);
 	void decreaseTimesLeft();
 	void setJailStatus();
 	void setInDebtStatus();

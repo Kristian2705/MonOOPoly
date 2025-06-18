@@ -124,6 +124,23 @@ int Player::getTotalBalance() const
 	return totalBalance;
 }
 
+void Player::removeProperty(Property* property)
+{
+	int index = -1;
+	for (int i = 0; i < ownedProperties.getSize(); i++) {
+		if (property == ownedProperties[i]) {
+			index = i;
+			break;
+		}
+	}
+
+	if (index == -1) {
+		throw std::invalid_argument("Invalid index for removal of properties!");
+	}
+
+	ownedProperties.erase(index);
+}
+
 void Player::decreaseTimesLeft()
 {
 	timesLeftToRollInJail--;

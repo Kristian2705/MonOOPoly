@@ -17,9 +17,9 @@ Command* CommandFactory::readCommand(const MyString& commandType)
 	if (commandType == "pay_release") {
 		return new PayForReleaseCommand();
 	}
-	//if (commandType == "bankrupt") {
-	//	return new BankruptCommand();
-	//}
+	if (commandType == "bankrupt") {
+		return new BankruptCommand();
+	}
 	if (commandType == "build") {
 		return new BuildCommand();
 	}

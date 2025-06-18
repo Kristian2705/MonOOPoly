@@ -29,6 +29,7 @@ public:
 	size_t getHotelPrice() const;
 
 	//Mortgage function later
+	void mortgage();
 	void showProperty() const;
 	void removeOwner();
 	void setOwner(Player* player);

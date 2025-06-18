@@ -59,6 +59,13 @@ size_t Property::getHotelPrice() const
 	return hotelPrice;
 }
 
+void Property::mortgage()
+{
+	owner->removeProperty(this);
+	owner = nullptr;
+	rentTierIndex = GameConstants::START_RENT_TIER;
+}
+
 void Property::showProperty() const
 {
 	std::cout << "--Position: " << boardIndex << std::endl;
