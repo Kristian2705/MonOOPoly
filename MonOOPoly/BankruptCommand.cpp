@@ -12,17 +12,21 @@ void BankruptCommand::execute() const
 			return;
 		}
 		if (answer == "yes") {
-			std::cout << "Type your username to confirm: ";
-			MyString username;
-			std::cin >> username;
-			if (username == game->getPlayerOnTurn().getName()) {
-				game->endTurn();
-				std::cout << "Good Game! You did well! Here are your stats:" << std::endl;
-				//This has to use a different function which will be implemented later
-				//game->getPlayerOnTurn().showInfo();
-				return;
+			std::cout << "Type your id to confirm: ";
+			char buffer[GameConstants::BUFFER_CAPACITY];
+			std::cin >> buffer;
+			MyString str(buffer);
+			if (!str.hasLettersOnly()) {
+				int id = str.stoi();
+				if (id == game->getPlayerOnTurn().getId()) {
+					game->endTurn();
+					std::cout << "Good Game! You did well! Here are your stats:" << std::endl;
+					//This has to use a different function which will be implemented later
+					//game->getPlayerOnTurn().showInfo();
+					return;
+				}
 			}
-			std::cout << "Sorry try again from the beginning! Please type 'yes' or 'no'." << std::endl;
+			std::cout << "Sorry try again from the beginning! Please type 'yes' to continue or 'no' to go back." << std::endl;
 			std::cin >> answer;
 			continue;
 		}
