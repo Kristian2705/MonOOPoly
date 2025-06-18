@@ -11,19 +11,19 @@ void SellCommand::execute() const
 	const MyVector<Property*>& ownedProps = player.getOwnedProperties();
 
 	if (!ownedProps.getSize()) {
-		throw std::invalid_argument("You don't have any properties to mortgage!");
+		throw std::invalid_argument("You don't have any properties yet so you can't sell buildings on them!");
 	}
 
 	MyVector<Property*> validPropsForBuilding;
 	for (int i = 0; i < ownedProps.getSize(); i++) {
 		int rentTierIndex = ownedProps[i]->getRentTierIndex();
-		if (rentTierIndex >= 1) {
+		if (rentTierIndex >= GameConstants::FIRST_BUILDING_RENT_INDEX) {
 			validPropsForBuilding.push_back(ownedProps[i]);
 		}
 	}
 
 	if (!validPropsForBuilding.getSize()) {
-		throw std::invalid_argument("No eligible properties to sell buildings on!");
+		throw std::invalid_argument("You haven't built anything on your properties yet. You can mortgage them if you want.");
 	}
 
 	std::cout << "Here are all the properties on which you can sell buildings!" << std::endl;
@@ -64,9 +64,9 @@ void SellCommand::execute() const
 			if (!str.hasLettersOnly()) {
 				position = str.stoi();
 
-				for (int i = 0; i < ownedProps.getSize(); i++) {
-					if (ownedProps[i]->getBoardIndex() == position) {
-						propToSellOn = ownedProps[i];
+				for (int i = 0; i < validPropsForBuilding.getSize(); i++) {
+					if (validPropsForBuilding[i]->getBoardIndex() == position) {
+						propToSellOn = validPropsForBuilding[i];
 						break;
 					}
 				}
@@ -78,19 +78,14 @@ void SellCommand::execute() const
 			std::cout << "Invalid input! Please enter a valid property's position for selling!" << std::endl;
 		}
 
-		//if (propToBuildOn->getRentTierIndex() == 0) {
-		//	std::cout << "You haven't collected all the properties of color " << (int)propToBuildOn->getColorSet() << std::endl;
-		//	std::cout << "Please select an eligible property for building!" << std::endl;
-		//}
-		//if (propToSellOn->getRentTierIndex() == 0) {
-		//	std::cout << propToSellOn->getName() << " doesn't have any builds! You are about to mortgage it for half the price!" << std::endl;
-		//	continue;
-		//}
+		if (propToSellOn->getRentTierIndex() == GameConstants::COLOR_SET_RENT_INDEX) {
+			throw std::invalid_argument("This property is doesn't have any builds. You can mortgage it if you want.");
+		}
 
 		bool otherPropsReady = true;
-		for (int i = 0; i < ownedProps.getSize(); i++) {
-			if (ownedProps[i]->getColorSet() == propToSellOn->getColorSet()) {
-				if (ownedProps[i]->getBuildsCount() > propToSellOn->getBuildsCount()) {
+		for (int i = 0; i < validPropsForBuilding.getSize(); i++) {
+			if (validPropsForBuilding[i]->getColorSet() == propToSellOn->getColorSet()) {
+				if (validPropsForBuilding[i]->getBuildsCount() > propToSellOn->getBuildsCount()) {
 					otherPropsReady = false;
 					break;
 				}
@@ -105,15 +100,10 @@ void SellCommand::execute() const
 			continue;
 		}
 
-		if (propToSellOn->getRentTierIndex() == 0) {
-			std::cout << propToSellOn->getName() << " doesn't have any builds! You are about to mortgage it for half the price!" << std::endl;
-		}
-		else {
-			std::cout << propToSellOn->getName() << " has " << propToSellOn->getBuildsCount() << " buildings! You are about to sell one for half the price!" << std::endl;
-		}
+		std::cout << propToSellOn->getName() << " has " << propToSellOn->getBuildsCount() << " buildings! You are about to sell one for half the price!" << std::endl;
 
-		bool isHouse = (propToSellOn->getBuildsCount() < 5);
-		size_t priceToPay = isHouse ? propToSellOn->getHousePrice() / 2 : propToSellOn->getHotelPrice() / 2;
+		bool isHouse = (propToSellOn->getBuildsCount() < GameConstants::HOTEL_BUILDING_NUM);
+		size_t priceToPay = isHouse ? propToSellOn->getHousePrice() / GameConstants::HALF_PRICE_MULTIPLIER : propToSellOn->getHotelPrice() / GameConstants::HALF_PRICE_MULTIPLIER;
 		MyString building = isHouse ? "house" : "hotel";
 
 		std::cout << "Are you sure you want to sell a " << building << " for $" << priceToPay << " on " << propToSellOn->getName() << std::endl;

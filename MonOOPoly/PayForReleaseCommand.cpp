@@ -8,5 +8,10 @@ void PayForReleaseCommand::execute() const
 	}
 	player.addMoney(-GameConstants::JAIL_RELEASE_PRICE);
 	player.setJailStatus();
-	std::cout << "You are free. You'll will be able to roll next turn." << std::endl;
+	if (game->getRolledStatus()) {
+		std::cout << "You are free. You'll will be able to roll next turn." << std::endl;
+	}
+	else {
+		std::cout << "You are free. You can now roll the dice!" << std::endl;
+	}
 }

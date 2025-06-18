@@ -157,6 +157,7 @@
     <ClCompile Include="MonOOPoly.cpp" />
     <ClCompile Include="Monopoly.cpp" />
     <ClCompile Include="Mortgage.cpp" />
+    <ClCompile Include="MortgageCommand.cpp" />
     <ClCompile Include="MultiplePaymentEffect.cpp" />
     <ClCompile Include="MultiplePaymentToOthers.cpp" />
     <ClCompile Include="MyString.cpp" />
@@ -204,6 +205,7 @@
     <ClInclude Include="JailField.h" />
     <ClInclude Include="Monopoly.h" />
     <ClInclude Include="Mortgage.h" />
+    <ClInclude Include="MortgageCommand.h" />
     <ClInclude Include="MultiplePaymentEffect.h" />
     <ClInclude Include="MultiplePaymentToOthers.h" />
     <ClInclude Include="MyString.h" />

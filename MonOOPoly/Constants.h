@@ -63,5 +63,9 @@ namespace GameConstants {
 	const int JAIL_RELEASE_PRICE = 50;
 	const int TIMES_TO_ROLL_IN_JAIL = 3;
 	const int UTILITY_FIRST_MULTIPLIER = 4;
-	const int UTILITY_SECOND_MULTIPLIER = 4;
+	const int UTILITY_SECOND_MULTIPLIER = 10;
+	const int FIRST_BUILDING_RENT_INDEX = 2;
+	const int COLOR_SET_RENT_INDEX = 1;
+	const int HOTEL_BUILDING_NUM = 5;
+	const int HALF_PRICE_MULTIPLIER = 2;
 };

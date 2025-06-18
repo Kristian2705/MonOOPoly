@@ -136,6 +136,9 @@ void Player::setJailStatus()
 	{
 		position = GameConstants::JAIL_POSITION;
 	}
+	else {
+		timesLeftToRollInJail = GameConstants::TIMES_TO_ROLL_IN_JAIL;
+	}
 }
 
 void Player::setInDebtStatus()
@@ -240,7 +243,7 @@ void Player::showInfo() const
 	std::cout << "Money: $" << money << std::endl;
 	std::cout << "Position: " << position << std::endl;
 	std::cout << "In jail: " << (inJail ? "Yes" : "No") << std::endl;
-	std::cout << "In debt: " << (inJail ? "Yes" : "No") << std::endl;
+	std::cout << "In debt: " << (inDebt ? "Yes" : "No") << std::endl;
 	std::cout << "Owned properties count: " << ownedProperties.getSize() << std::endl;
 	if (ownedProperties.getSize()) {
 		for (int i = 0; i < ownedProperties.getSize(); i++) {

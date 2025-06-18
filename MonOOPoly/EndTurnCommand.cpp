@@ -2,9 +2,18 @@
 
 void EndTurnCommand::execute() const
 {
+	if (!game->getRolledStatus()) {
+		throw std::invalid_argument("Roll the dice first!");
+	}
+
+	const Player& playerOnTurn = game->getPlayerOnTurn();
+
+	if(playerOnTurn.isInDebt()) {
+		throw std::invalid_argument("You are in debt and can't end your turn! Find money or go bankrupt!");
+	}
+
 	if (game->getPairStatus()) {
-		std::cout << "You have thrown a pair. Please roll again and then end your turn!" << std::endl;
-		return;
+		throw std::invalid_argument("You have thrown a pair. Please roll again and then end your turn!");
 	}
 
 	std::cout << "Are you sure you want to end your turn? Type 'yes' or 'no'" << std::endl;

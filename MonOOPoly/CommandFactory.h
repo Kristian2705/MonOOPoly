@@ -8,6 +8,7 @@
 #include "PayForReleaseCommand.h"
 #include "BankruptCommand.h"
 #include "BuildCommand.h"
+#include "SellCommand.h"
 
 class CommandFactory
 {
