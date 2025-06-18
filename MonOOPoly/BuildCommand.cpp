@@ -3,6 +3,11 @@
 void BuildCommand::execute() const
 {
 	Player& player = game->getPlayerOnTurn();
+
+	if (player.isInJail()) {
+		throw std::invalid_argument("Get out of jail first and then build!");
+	}
+
 	const MyVector<Property*>& ownedProps = player.getOwnedProperties();
 
 	if (!ownedProps.getSize()) {
@@ -48,34 +53,39 @@ void BuildCommand::execute() const
 		}
 
 		Property* propToBuildOn = nullptr;
+		int position = 0;
 		while (true) {
 			std::cout << "You currently have $" << player.getMoney() << std::endl;
-			std::cout << "Please enter the name of the property you'd like to build on!" << std::endl;
-			//Maybe return indices
-			MyString name;
-			std::cin >> name;
-			for (int i = 0; i < validPropsForBuilding.getSize(); i++) {
-				if (name == validPropsForBuilding[i]->getName()) {
-					propToBuildOn = validPropsForBuilding[i];
+			std::cout << "Please enter the position of the property you'd like to build on!" << std::endl;
+
+			char buffer[GameConstants::BUFFER_CAPACITY];
+			std::cin >> buffer;
+			MyString str(buffer);
+			if (!str.hasLettersOnly()) {
+				position = str.stoi();
+
+				for (int i = 0; i < validPropsForBuilding.getSize(); i++) {
+					if (validPropsForBuilding[i]->getBoardIndex() == position) {
+						propToBuildOn = validPropsForBuilding[i];
+						break;
+					}
+				}
+
+				if (propToBuildOn) {
 					break;
 				}
 			}
-			//char buffer[GameConstants::BUFFER_CAPACITY];
-			//std::cin >> buffer;
-			//MyString str(buffer);
-			//if (!str.hasLettersOnly()) {
-			//	position = str.stoi();
-			//	break;
-			//}
-			std::cout << "Invalid input! Please enter a valid property's name for building!" << std::endl;
+			std::cout << "Invalid input! Please enter a valid property's position for building!" << std::endl;
 		}
-		if (propToBuildOn->getRentTierIndex() == 0) {
-			std::cout << "You haven't collected all the properties of color " << (int)propToBuildOn->getColorSet() << std::endl;
-			std::cout << "Please select an eligible property for building!" << std::endl;
-		}
-		else if (propToBuildOn->getRentTierIndex() == GameConstants::RENT_TIERS_COUNT - 1) {
+
+		//if (propToBuildOn->getRentTierIndex() == 0) {
+		//	std::cout << "You haven't collected all the properties of color " << (int)propToBuildOn->getColorSet() << std::endl;
+		//	std::cout << "Please select an eligible property for building!" << std::endl;
+		//}
+		if (propToBuildOn->getRentTierIndex() == GameConstants::RENT_TIERS_COUNT - 1) {
 			std::cout << "You have a hotel on " << propToBuildOn->getName() << "! You are stacked! Keep going!" << std::endl;
 			std::cout << "Please select an eligible property for building!" << std::endl;
+			continue;
 		}
 
 		bool otherPropsReady = true;
@@ -87,9 +97,10 @@ void BuildCommand::execute() const
 				}
 			}
 		}
+
 		if (!otherPropsReady) {
-			std::cout << "You have selected " << propToBuildOn->getName() << " of color " << (int)propToBuildOn->getColorSet() << " which has " << propToBuildOn->getBuildsCount() << std::endl;
-			std::cout << "But other properties of color " << (int)propToBuildOn->getColorSet() << " have " << propToBuildOn->getBuildsCount() - 1 << std::endl;
+			std::cout << "You have selected " << propToBuildOn->getName() << " of color " << (int)propToBuildOn->getColorSet() << " which has " << propToBuildOn->getBuildsCount() << " buildings." << std::endl;
+			std::cout << "But other properties of color " << (int)propToBuildOn->getColorSet() << " have " << propToBuildOn->getBuildsCount() - 1 << " buildings." << std::endl;
 			std::cout << "Make sure all properties of the same color have the same amount of builds before adding new!" << std::endl;
 			std::cout << "Try again by selecting an eligible property." << std::endl;
 			continue;
@@ -125,16 +136,11 @@ void BuildCommand::execute() const
 			std::cout << "Try building on cheaper properties or play more and collect money!" << std::endl;
 			break;
 		}
+
 		propToBuildOn->increaseRentTier();
-		player.addMoney((-1) * propToBuildOn->getRent());
-		std::cout << "You successfully bought a " << (isHouse ? " house " : " hotel ") << " for " << propToBuildOn->getName() << " which cost $" << priceToPay << std::endl;
+		player.addMoney((-1) * priceToPay);
+		std::cout << "You successfully bought a " << (isHouse ? "house" : "hotel") << " for " << propToBuildOn->getName() << " which cost $" << priceToPay << std::endl;
 		std::cout << "Its rent is now $" << propToBuildOn->getRent() << std::endl;
-		//std::cout << "Would you like to build more? Type 'yes' or 'no'" << std::endl;
-		//MyString answer;
-		//std::cin >> answer;
-		//if (answer == "no") {
-		//	break;
-		//}
 	}
 	std::cout << "You just finished building! You can always come back as long as you are not in jail!" << std::endl;
 }

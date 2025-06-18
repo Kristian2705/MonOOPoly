@@ -166,6 +166,7 @@ bool MyString::hasLettersOnly() const
         if (str[i] >= 48 && str[i] <= 57) {
             return false;
         }
+        i++;
     }
     return true;
 }
