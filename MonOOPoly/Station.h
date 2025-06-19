@@ -21,6 +21,7 @@ public:
 	void setOwner(Player* player);
 	void increaseRentTier();
 	void decreaseRentTier();
+	void resetRentTier();
 	void applyEffect(Player& player) override;
 	Field* clone() const override;
 };

@@ -101,6 +101,11 @@ void Property::decreaseRentTier()
 	rentTierIndex--;
 }
 
+void Property::resetRentTier()
+{
+	rentTierIndex = GameConstants::START_RENT_TIER;
+}
+
 void Property::applyEffect(Player& player)
 {
 	if (owner) {

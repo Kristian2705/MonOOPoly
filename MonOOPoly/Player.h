@@ -15,10 +15,10 @@ class Player
 	size_t position;
 	int totalBalance;
 	bool inGame = true;
-	bool inJail = true;
+	bool inJail = false;
 	bool inDebt = false;
 	int timesLeftToRollInJail = GameConstants::TIMES_TO_ROLL_IN_JAIL;
-	int releaseCards = 1;
+	int releaseCards = GameConstants::RELEASE_CARDS_INITIAL_VALUE;
 	MyVector<Property*> ownedProperties;
 	MyVector<Utility*> ownedUtilities;
 	MyVector<Station*> ownedStations;

@@ -192,7 +192,7 @@ void MortgageCommand::mortgageStation() const
 					break;
 				}
 			}
-			std::cout << "Invalid input! Please enter a valid property's position for mortgaging!" << std::endl;
+			std::cout << "Invalid input! Please enter a valid station's position for mortgaging!" << std::endl;
 		}
 
 		size_t rewardForMortgage = stationToMortgage->getPrice() / GameConstants::HALF_PRICE_MULTIPLIER;
@@ -294,7 +294,7 @@ void MortgageCommand::mortgageUtility() const
 					break;
 				}
 			}
-			std::cout << "Invalid input! Please enter a valid property's position for mortgaging!" << std::endl;
+			std::cout << "Invalid input! Please enter a valid utility's position for mortgaging!" << std::endl;
 		}
 
 		size_t rewardForMortgage = utilityToMortage->getPrice() / GameConstants::HALF_PRICE_MULTIPLIER;

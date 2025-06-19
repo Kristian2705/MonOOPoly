@@ -1,13 +1,19 @@
 #pragma once
 #include "Command.h"
+#include "Trade.h"
+
 class TradeCommand : public Command
 {
-	void tradeProperty(Player* receiver) const;
-	void tradeStation(Player* receiver) const;
-	void tradeUtility(Player* receiver) const;
-	void tradeMoney(Player* receiver) const;
+	Trade* trade;
+	void tradeProperty(Player* player, Property*& property) const;
+	void tradeStation(Player* player, Station*& station) const;
+	void tradeUtility(Player* player, Utility*& utility) const;
+	void tradeMoney(Player* player, int& amount) const;
+	void showCurrentTrade() const;
+	void clearTrade() const;
 public:
-	TradeCommand() = default;
+	TradeCommand();
 	void execute() const override;
+	~TradeCommand() override;
 };
 

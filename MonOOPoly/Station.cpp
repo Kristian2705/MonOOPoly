@@ -59,6 +59,10 @@ void Station::decreaseRentTier()
 	rentTierIndex--;
 }
 
+void Station::resetRentTier() {
+	rentTierIndex = GameConstants::START_RENT_TIER;
+}
+
 void Station::applyEffect(Player& player)
 {
 	if (owner) {

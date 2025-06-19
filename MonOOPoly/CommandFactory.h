@@ -11,6 +11,7 @@
 #include "SellCommand.h"
 #include "MortgageCommand.h"
 #include "UseReleaseCardCommand.h"
+#include "TradeCommand.h"
 
 class CommandFactory
 {

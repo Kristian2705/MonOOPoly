@@ -3,6 +3,8 @@
 #include "Station.h"
 #include "Utility.h"
 
+class Player;
+
 class Trade
 {
 	Player* sender = nullptr;
@@ -17,11 +19,13 @@ class Trade
 	Utility* utilityToGet = nullptr;
 	Utility* utilityToGive = nullptr;
 
-	int moneyToGet;
-	int moneyToGive;
+	int moneyToGet = 0;
+	int moneyToGive = 0;
 public:
 	Trade() = default;
-
-	void showTrade() const;
+	void show() const;
+	void clear();
+	void initiate();
+	friend class TradeCommand;
 };
 

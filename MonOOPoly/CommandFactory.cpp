@@ -32,5 +32,8 @@ Command* CommandFactory::readCommand(const MyString& commandType)
 	if (commandType == "use_card") {
 		return new UseReleaseCardCommand();
 	}
+	if (commandType == "trade") {
+		return new TradeCommand();
+	}
 	return new InvalidCommand();
 }
