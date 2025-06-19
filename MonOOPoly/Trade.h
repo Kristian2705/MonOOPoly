@@ -1,12 +1,27 @@
 #pragma once
-#include "MyVector.hpp"
 #include "Property.h"
+#include "Station.h"
+#include "Utility.h"
 
 class Trade
 {
-	MyVector<Property*> offeredProperties;
-	MyString firstPersonMessage;
-	MyString secondPersonMessage;
-	int price;
+	Player* sender = nullptr;
+	Player* receiver = nullptr;
+
+	Property* propertyToGet = nullptr;
+	Property* propertyToGive = nullptr;
+
+	Station* stationToGet = nullptr;
+	Station* stationToGive = nullptr;
+
+	Utility* utilityToGet = nullptr;
+	Utility* utilityToGive = nullptr;
+
+	int moneyToGet;
+	int moneyToGive;
+public:
+	Trade() = default;
+
+	void showTrade() const;
 };
 

@@ -173,6 +173,7 @@
     <ClCompile Include="Station.cpp" />
     <ClCompile Include="TaxField.cpp" />
     <ClCompile Include="Trade.cpp" />
+    <ClCompile Include="TradeCommand.cpp" />
     <ClCompile Include="UseReleaseCardCommand.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
@@ -225,6 +226,7 @@
     <ClInclude Include="Station.h" />
     <ClInclude Include="TaxField.h" />
     <ClInclude Include="Trade.h" />
+    <ClInclude Include="TradeCommand.h" />
     <ClInclude Include="UseReleaseCardCommand.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
