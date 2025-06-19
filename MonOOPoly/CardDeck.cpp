@@ -34,7 +34,7 @@ void CardDeck::loadCards()
 	cards.push(new Card("Receive $25 consultancy fee.",
 		std::make_unique<ReceivePaymentEffect>(GameConstants::CONSULTANCY_FEE_REWARD)));
 
-	cards.push(new Card("Get out of Jail Free. This card may be kept until needed, or traded/sold.",
+	cards.push(new Card("Get out of Jail Free. This card may be kept until needed.",
 		std::make_unique<GetOutOfJailEffect>()));
 
 	cards.push(new Card("Go to Jail. Go directly to Jail. Do not pass GO, do not collect $200.",
@@ -89,7 +89,7 @@ void CardDeck::loadCards()
 	cards.push(new Card("Advance to the nearest Railroad. If unowned, you may buy it from the Bank. If owned, pay owner twice the rent to which they are otherwise entitled.",
 		std::make_unique<GoToNearestRailroadEffect>()));
 
-	cards.push(new Card("Get out of Jail Free. This card may be kept until needed, or traded/sold.",
+	cards.push(new Card("Get out of Jail Free. This card may be kept until needed.",
 		std::make_unique<GetOutOfJailEffect>()));
 
 	cards.push(new Card("Go to Jail. Go directly to Jail. Do not pass GO, do not collect $200.",

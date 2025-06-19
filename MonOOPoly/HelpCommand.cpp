@@ -30,9 +30,10 @@ void HelpCommand::execute() const
 
 	std::cout << "In jail: " << std::endl;
 	std::cout << "1. 'roll_dice' to roll the dice" << std::endl;
-	std::cout << "2. 'pay' to pay $50 to get released" << std::endl;
-	std::cout << "3. 'see_info' to see the data of a player by index" << std::endl;
-	std::cout << "4. 'see_map' to see the map" << std::endl;
+	std::cout << "2. 'pay_release' to pay $50 to get released" << std::endl;
+	std::cout << "3. 'use_card' to get a free release from jail" << std::endl;
+	std::cout << "4. 'see_info' to see the data of a player by index" << std::endl;
+	std::cout << "5. 'see_map' to see the map" << std::endl;
 	std::cout << "IMPORTANT: You can pay $50 even after rolling the dice on the same turn!" << std::endl;
 
 	std::cout << "---------------------------------------------" << std::endl;

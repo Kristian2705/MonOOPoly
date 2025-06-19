@@ -10,6 +10,7 @@
 #include "BuildCommand.h"
 #include "SellCommand.h"
 #include "MortgageCommand.h"
+#include "UseReleaseCardCommand.h"
 
 class CommandFactory
 {

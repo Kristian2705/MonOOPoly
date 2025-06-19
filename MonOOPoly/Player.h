@@ -15,11 +15,11 @@ class Player
 	size_t position;
 	int totalBalance;
 	bool inGame = true;
-	bool inJail = false;
+	bool inJail = true;
 	bool inDebt = false;
 	int timesLeftToRollInJail = GameConstants::TIMES_TO_ROLL_IN_JAIL;
+	int releaseCards = 1;
 	MyVector<Property*> ownedProperties;
-	MyVector<Card*> cards;
 	MyVector<Utility*> ownedUtilities;
 	MyVector<Station*> ownedStations;
 public:
@@ -40,8 +40,7 @@ public:
 	MyVector<Property*>& getOwnedProperties();
 	const MyVector<Station*>& getOwnedStations() const;
 	MyVector<Station*>& getOwnedStations();
-	const MyVector<Card*>& getCards() const;
-	MyVector<Card*>& getCards();
+	int getCards() const;
 	const MyVector<Utility*>& getUtilities() const;
 	MyVector<Utility*>& getUtilities();
 	int getTimesLeft() const;
@@ -54,7 +53,8 @@ public:
 	void setInDebtStatus();
 	void addProperty(Property* property);
 	void addStation(Station* station);
-	void addCard(Card* card);
+	void addReleaseCard();
+	void removeReleaseCard();
 	void addUtility(Utility* utility);
 	void addMoney(int amount);
 	void resign();

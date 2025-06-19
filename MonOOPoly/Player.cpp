@@ -8,7 +8,6 @@ Player::Player(const MyString& name, int money)
 	: id(nextId++), name(name), money(money), position(GameConstants::GO_FIELD_INDEX), totalBalance(money)
 {
 	this->ownedProperties = MyVector<Property*>(GameConstants::MIN_CAPACITY);
-	this->cards = MyVector<Card*>(GameConstants::MIN_CAPACITY);
 	this->ownedStations = MyVector<Station*>(GameConstants::MIN_CAPACITY);
 	this->ownedUtilities = MyVector<Utility*>(GameConstants::MIN_CAPACITY);
 }
@@ -23,7 +22,6 @@ Player::Player(int id, const MyString& name, int money, size_t position, int tot
 	this->inGame = isInGame;
 	this->inJail = inJail;
 	ownedProperties = properties;
-	this->cards = cards;
 }
 
 int Player::getId() const
@@ -89,9 +87,14 @@ void Player::addStation(Station* station)
 	std::cout << "You currently have " << ownedStationsCount << " stations. Their rent is $" << station->getRent() << std::endl;
 }
 
-void Player::addCard(Card* card)
+void Player::addReleaseCard()
 {
-	cards.push_back(card);
+	releaseCards++;
+}
+
+void Player::removeReleaseCard()
+{
+	releaseCards--;
 }
 
 void Player::addUtility(Utility* utility)
@@ -247,13 +250,9 @@ MyVector<Station*>& Player::getOwnedStations()
 	return ownedStations;
 }
 
-const MyVector<Card*>& Player::getCards() const {
-	return cards;
-}
-
-MyVector<Card*>& Player::getCards()
+int Player::getCards() const
 {
-	return cards;
+	return releaseCards;
 }
 
 const MyVector<Utility*>& Player::getUtilities() const
@@ -309,13 +308,7 @@ void Player::showInfo() const
 			std::cout << std::endl;
 		}
 	}
-	std::cout << "Cards in hold: " << cards.getSize() << std::endl;
-	if (cards.getSize()) {
-		for (int i = 0; i < cards.getSize(); i++) {
-			cards[i]->getDescription();
-			std::cout << std::endl;
-		}
-	}
+	std::cout << "Release cards in hold: " << releaseCards << std::endl;
 
 	std::cout << "Owned Utilities: " << ownedUtilities.getSize() << std::endl;
 	if (ownedUtilities.getSize()) {

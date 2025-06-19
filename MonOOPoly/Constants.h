@@ -68,4 +68,5 @@ namespace GameConstants {
 	const int COLOR_SET_RENT_INDEX = 1;
 	const int HOTEL_BUILDING_NUM = 5;
 	const int HALF_PRICE_MULTIPLIER = 2;
+	const int RELEASE_CARDS_INITIAL_VALUE = 0;
 };
