@@ -9,6 +9,7 @@
 #include "BankruptCommand.h"
 #include "BuildCommand.h"
 #include "SellCommand.h"
+#include "MortgageCommand.h"
 
 class CommandFactory
 {

@@ -12,8 +12,10 @@ public:
 	
 	size_t getPrice() const;
 	size_t getRent() const;
+	Player* getOwner() const;
 
 	//Mortgage function later
+	void mortgage();
 	void showStation() const;
 	void removeOwner();
 	void setOwner(Player* player);

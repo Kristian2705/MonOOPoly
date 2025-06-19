@@ -36,6 +36,9 @@ size_t Property::getRent() const
 
 int Property::getBuildsCount() const
 {
+	if (rentTierIndex - 1 <= 0) {
+		return 0;
+	}
 	return rentTierIndex - 1;
 }
 

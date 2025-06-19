@@ -26,5 +26,8 @@ Command* CommandFactory::readCommand(const MyString& commandType)
 	if (commandType == "sell") {
 		return new SellCommand();
 	}
+	if (commandType == "mortgage") {
+		return new MortgageCommand();
+	}
 	return new InvalidCommand();
 }

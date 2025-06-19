@@ -141,6 +141,40 @@ void Player::removeProperty(Property* property)
 	ownedProperties.erase(index);
 }
 
+void Player::removeStation(Station* station)
+{
+	int index = -1;
+	for (int i = 0; i < ownedStations.getSize(); i++) {
+		if (station == ownedStations[i]) {
+			index = i;
+			break;
+		}
+	}
+
+	if (index == -1) {
+		throw std::invalid_argument("Invalid index for removal of stations!");
+	}
+
+	ownedStations.erase(index);
+}
+
+void Player::removeUtility(Utility* utility)
+{
+	int index = -1;
+	for (int i = 0; i < ownedUtilities.getSize(); i++) {
+		if (utility == ownedUtilities[i]) {
+			index = i;
+			break;
+		}
+	}
+
+	if (index == -1) {
+		throw std::invalid_argument("Invalid index for removal of utilities!");
+	}
+
+	ownedUtilities.erase(index);
+}
+
 void Player::decreaseTimesLeft()
 {
 	timesLeftToRollInJail--;

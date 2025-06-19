@@ -47,6 +47,8 @@ public:
 	int getTimesLeft() const;
 
 	void removeProperty(Property* property);
+	void removeStation(Station* station);
+	void removeUtility(Utility* utility);
 	void decreaseTimesLeft();
 	void setJailStatus();
 	void setInDebtStatus();

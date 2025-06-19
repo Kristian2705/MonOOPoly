@@ -20,6 +20,17 @@ size_t Station::getRent() const
 	return rentTiers[rentTierIndex];
 }
 
+Player* Station::getOwner() const
+{
+	return owner;
+}
+
+void Station::mortgage() {
+	owner->removeStation(this);
+	owner = nullptr;
+	rentTierIndex = GameConstants::START_RENT_TIER;
+}
+
 void Station::showStation() const
 {
 	std::cout << "--Position: " << boardIndex << std::endl;

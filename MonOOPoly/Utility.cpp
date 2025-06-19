@@ -15,6 +15,16 @@ size_t Utility::getRentMultiplier() const
 	return rentMultiplier;
 }
 
+Player* Utility::getOwner() const {
+	return owner;
+}
+
+void Utility::mortgage() {
+	owner->removeUtility(this);
+	owner = nullptr;
+	rentMultiplier = GameConstants::UTILITY_FIRST_MULTIPLIER;
+}
+
 void Utility::showUtility() const
 {
 	std::cout << "--Position: " << boardIndex << std::endl;

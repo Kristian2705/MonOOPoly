@@ -3,9 +3,9 @@
 class MortgageCommand : public Command
 {
 	//Strategy or Visitor
-	void mortgageProperty();
-	void mortgageStation();
-	void mortgageUtility();
+	void mortgageProperty() const;
+	void mortgageStation() const;
+	void mortgageUtility() const;
 public:
 	MortgageCommand() = default;
 	void execute() const override;

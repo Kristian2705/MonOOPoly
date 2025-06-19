@@ -11,8 +11,10 @@ public:
 	Utility(int boardIndex, const MyString& name, const MyString& abbreviation);
 	size_t getPrice() const;
 	size_t getRentMultiplier() const;
+	Player* getOwner() const;
 
 	//Mortgage function later
+	void mortgage();
 	void showUtility() const;
 	void removeOwner();
 	void setOwner(Player* player);
