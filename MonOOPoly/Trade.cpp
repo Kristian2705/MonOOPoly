@@ -49,30 +49,52 @@ void Trade::clear()
 
 void Trade::initiate()
 {
-	//Null pointer checks and rent increase check for everything left
-	sender->removeProperty(propertyToGive);
-	propertyToGive->setOwner(receiver);
-	propertyToGive->resetRentTier();
+	if (propertyToGive) {
+		sender->removeProperty(propertyToGive);
+		propertyToGive->setOwner(receiver);
+		propertyToGive->resetRentTier();
+		receiver->addProperty(propertyToGive);
+	}
 
-	receiver->removeProperty(propertyToGet);
-	propertyToGet->setOwner(sender);
-	propertyToGet->resetRentTier();
+	if (propertyToGet) {
+		receiver->removeProperty(propertyToGet);
+		propertyToGet->setOwner(sender);
+		propertyToGet->resetRentTier();
+		sender->addProperty(propertyToGet);
+	}
 
-	sender->removeStation(stationToGive);
-	stationToGive->setOwner(receiver);
-	stationToGive->resetRentTier();
+	if (stationToGive) {
+		sender->removeStation(stationToGive);
+		stationToGive->setOwner(receiver);
+		stationToGive->resetRentTier();
+		receiver->addStation(stationToGive);
+	}
 
-	receiver->removeStation(stationToGet);
-	stationToGet->setOwner(sender);
-	stationToGet->resetRentTier();
+	if (stationToGet) {
+		receiver->removeStation(stationToGet);
+		stationToGet->setOwner(sender);
+		stationToGet->resetRentTier();
+		sender->addStation(stationToGet);
+	}
 
-	sender->removeUtility(utilityToGive);
-	utilityToGive->setOwner(receiver);
-	utilityToGive->decreaseRentMultiplier();
+	if (utilityToGive) {
+		sender->removeUtility(utilityToGive);
+		utilityToGive->setOwner(receiver);
+		utilityToGive->decreaseRentMultiplier();
+		receiver->addUtility(utilityToGive);
+	}
 
-	receiver->removeUtility(utilityToGet);
-	utilityToGet->setOwner(sender);
-	utilityToGet->decreaseRentMultiplier();
+	if (utilityToGet) {
+		receiver->removeUtility(utilityToGet);
+		utilityToGet->setOwner(sender);
+		utilityToGet->decreaseRentMultiplier();
+		sender->addUtility(utilityToGet);
+	}
+
+	sender->addMoney((-1) * moneyToGive);
+	sender->addMoney(moneyToGet);
+	receiver->addMoney(moneyToGive);
+	receiver->addMoney((-1) * moneyToGet);
 }
 
 

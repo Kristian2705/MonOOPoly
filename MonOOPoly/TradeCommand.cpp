@@ -72,7 +72,8 @@ void TradeCommand::tradeProperty(Player* player, Property*& property) const
 		}
 
 		if (!shouldSelect) {
-			continue;
+			property = nullptr;
+			return;
 		}
 
 		bool otherPropsReady = true;
@@ -162,7 +163,8 @@ void TradeCommand::tradeStation(Player* player, Station*& station) const
 		}
 
 		if (!shouldSelect) {
-			continue;
+			station = nullptr;
+			return;
 		}
 
 		std::cout << "You successfully selected " << station->getName() << "! You can now select something else." << std::endl;
@@ -236,7 +238,8 @@ void TradeCommand::tradeUtility(Player* player, Utility*& utility) const
 		}
 
 		if (!shouldSelect) {
-			continue;
+			utility = nullptr;
+			return;
 		}
 
 		std::cout << "You successfully selected " << utility->getName() << "! You can now select something else." << std::endl;
