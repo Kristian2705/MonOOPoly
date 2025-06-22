@@ -3,6 +3,7 @@
 
 class Monopoly
 {
+	bool isGameOver = false;
 	int currentPlayerIndex;
 	bool hasRolled = false;
 	int pairsCount = 0;
@@ -14,6 +15,7 @@ class Monopoly
 	void addPlayers();
 	void addPlayer(const Player& player);
 	void removePlayer(int playerId);
+	int getNextPlayerIndex() const;
 	Monopoly();
 public:
 	static Monopoly* getInstance();
@@ -25,6 +27,7 @@ public:
 	void endTurn();
 	void applyFieldEffect(size_t position);
 
+	bool checkGameOver() const;
 	bool getRolledStatus() const;
 	bool getPairStatus() const;
 	int getPairsCount() const;
@@ -33,6 +36,7 @@ public:
 	Player& getPlayerOnTurn();
 	const Player& getPlayer(int playerId) const;
 	Player& getPlayer(int playerId);
+	const Player* getWinner() const;
 	const MyVector<Player>& getPlayers() const;
 	MyVector<Player>& getPlayers();
 };

@@ -162,6 +162,7 @@
     <ClCompile Include="MultiplePaymentToOthers.cpp" />
     <ClCompile Include="MyString.cpp" />
     <ClCompile Include="ParkingField.cpp" />
+    <ClCompile Include="PayDebtCommand.cpp" />
     <ClCompile Include="PayForReleaseCommand.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Property.cpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="MyString.h" />
     <ClInclude Include="MyVector.hpp" />
     <ClInclude Include="ParkingField.h" />
+    <ClInclude Include="PayDebtCommand.h" />
     <ClInclude Include="PayForReleaseCommand.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PolymorphicContainer.hpp" />

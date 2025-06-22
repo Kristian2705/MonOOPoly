@@ -12,6 +12,7 @@
 #include "MortgageCommand.h"
 #include "UseReleaseCardCommand.h"
 #include "TradeCommand.h"
+#include "PayDebtCommand.h"
 
 class CommandFactory
 {

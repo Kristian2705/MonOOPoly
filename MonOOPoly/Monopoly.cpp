@@ -1,6 +1,22 @@
 #include "Monopoly.h"
 
-Monopoly::Monopoly() : currentPlayerIndex(GameConstants::FIRST_PLAYER_ID) 
+int Monopoly::getNextPlayerIndex() const
+{
+	if(currentPlayerIndex >= players.getSize())
+	{
+		return GameConstants::FIRST_PLAYER_ID;
+	}
+
+	for(int i = currentPlayerIndex; i < players.getSize(); i++)
+	{
+		if (players[i].isInGame())
+		{
+			return players[i].getId();
+		}
+	}
+}
+
+Monopoly::Monopoly() : currentPlayerIndex(GameConstants::FIRST_PLAYER_ID)
 {
 	board = Board::getInstance();
 	deck = CardDeck::getInstance();
@@ -63,6 +79,19 @@ void Monopoly::stepOnCard()
 	card->applyEffect(cP);
 }
 
+bool Monopoly::checkGameOver() const
+{
+	int playersInGame = 0;
+	for (int i = 0; i < players.getSize(); i++)
+	{
+		if (players[i].isInGame())
+		{
+			playersInGame++;
+		}
+	}
+	return playersInGame <= 1;
+}
+
 bool Monopoly::getRolledStatus() const
 {
 	return hasRolled;
@@ -113,6 +142,18 @@ Player& Monopoly::getPlayer(int playerId)
 		throw std::out_of_range("Player not found");
 	}
 	return players[playerId - 1];
+}
+
+const Player* Monopoly::getWinner() const  
+{  
+	for (int i = 0; i < players.getSize(); i++)  
+	{  
+		if (players[i].isInGame())  
+		{  
+			return &players[i];
+		}  
+	}  
+	return nullptr; // No winner found  
 }
 
 const MyVector<Player>& Monopoly::getPlayers() const
@@ -166,7 +207,12 @@ void Monopoly::showPlayerData(int id) const
 
 void Monopoly::endTurn()
 {
-	currentPlayerIndex = (currentPlayerIndex++) % players.getSize();
+	currentPlayerIndex = getNextPlayerIndex();
+	//currentPlayerIndex = (currentPlayerIndex++) % players.getSize();
+	//while (!players[currentPlayerIndex - 1].isInGame())
+	//{
+	//	currentPlayerIndex = (currentPlayerIndex++) % players.getSize();
+	//}
 	pairsCount = 0;
 	hasRolled = false;
 	std::cout << "Player " << currentPlayerIndex << "'s turn." << std::endl;

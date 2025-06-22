@@ -12,17 +12,29 @@ void BankruptCommand::execute() const
 			return;
 		}
 		if (answer == "yes") {
+			Player& playerOnTurn = game->getPlayerOnTurn();
 			std::cout << "Type your id to confirm: ";
 			char buffer[GameConstants::BUFFER_CAPACITY];
 			std::cin >> buffer;
 			MyString str(buffer);
 			if (!str.hasLettersOnly()) {
 				int id = str.stoi();
-				if (id == game->getPlayerOnTurn().getId()) {
+				if (id == playerOnTurn.getId()) {
+					std::cout << "----------------------------" << std::endl;
+					std::cout << "You have successfully gone bankrupt! You are out of the game!" << std::endl;
+					std::cout << "Good Game! You did well!" << std::endl;
+					std::cout << "----------------------------" << std::endl;
 					game->endTurn();
-					std::cout << "Good Game! You did well! Here are your stats:" << std::endl;
-					//This has to use a different function which will be implemented later
-					//game->getPlayerOnTurn().showInfo();
+					playerOnTurn.resign();
+					if (game->checkGameOver()) {
+						std::cout << "Game Over! Thanks for playing!" << std::endl;
+						std::cout << "The winner is: " << std::endl;
+						game->getWinner()->showInfo();
+						std::cout << std::endl;
+						std::cout << "Press enter to exit the game..." << std::endl;
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+						std::cin.get();
+					}
 					return;
 				}
 			}

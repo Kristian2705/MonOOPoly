@@ -124,6 +124,8 @@ void Property::applyEffect(Player& player)
 			std::cout << "You don't have enough money to pay your debt to" << owner->getName() << std::endl;
 			std::cout << "You owe $" << getRent() << " but you have $" << player.getMoney() << std::endl;
 			std::cout << "Find a way to collect the money or go bankrupt." << std::endl;
+			player.setInDebtTo(owner);
+			player.setOwedMoney(getRent());
 		}
 		return;
 	}

@@ -35,5 +35,8 @@ Command* CommandFactory::readCommand(const MyString& commandType)
 	if (commandType == "trade") {
 		return new TradeCommand();
 	}
+	if(commandType == "pay_debt") {
+		return new PayDebtCommand();
+	}
 	return new InvalidCommand();
 }

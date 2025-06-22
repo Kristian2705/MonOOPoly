@@ -34,6 +34,11 @@ int Player::getMoney() const
 	return money;
 }
 
+int Player::getOwedMoney() const
+{
+	return owedMoney;
+}
+
 void Player::addProperty(Property* property)
 {
 	ownedProperties.push_back(property);
@@ -198,6 +203,21 @@ void Player::setJailStatus()
 void Player::setInDebtStatus()
 {
 	inDebt = !inDebt;
+	if (!inDebt) {
+		inDebtTo = nullptr;
+		std::cout << "You are no longer in debt." << std::endl;
+	}
+}
+
+void Player::setInDebtTo(Player* player)
+{
+	inDebtTo = player;
+	std::cout << "You are now in debt to " << player->getName() << std::endl;
+}
+
+void Player::setOwedMoney(int amount)
+{
+	owedMoney = amount;
 }
 
 void Player::resign()
@@ -207,6 +227,20 @@ void Player::resign()
 	money = 0;
 	position = GameConstants::INVALID_POSITION;
 	inJail = false;
+	if (inDebtTo) {
+		for(int i = 0; i < ownedProperties.getSize(); i++) {
+			ownedProperties[i]->removeOwner();
+			ownedProperties[i]->resetRentTier();
+			ownedProperties[i]->setOwner(inDebtTo);
+			inDebtTo->addProperty(ownedProperties[i]);
+		}
+	}
+	else {
+		for (int i = 0; i < ownedProperties.getSize(); i++) {
+			ownedProperties[i]->removeOwner();
+			ownedProperties[i]->resetRentTier();
+		}
+	}
 	ownedProperties.clear();
 }
 
@@ -228,6 +262,11 @@ bool Player::isInJail() const
 bool Player::isInDebt() const
 {
 	return inDebt;
+}
+
+Player* Player::getInDebtTo() const
+{
+	return inDebtTo;
 }
 
 const MyVector<Property*>& Player::getOwnedProperties() const
@@ -294,6 +333,7 @@ void Player::showInfo() const
 	std::cout << "Position: " << position << std::endl;
 	std::cout << "In jail: " << (inJail ? "Yes" : "No") << std::endl;
 	std::cout << "In debt: " << (inDebt ? "Yes" : "No") << std::endl;
+	std::cout << "In debt to: " << (inDebtTo ? inDebtTo->getName() : (inDebt ? "Bank" : "None")) << std::endl;
 	std::cout << "Owned properties count: " << ownedProperties.getSize() << std::endl;
 	if (ownedProperties.getSize()) {
 		for (int i = 0; i < ownedProperties.getSize(); i++) {

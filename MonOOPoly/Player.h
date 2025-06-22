@@ -11,6 +11,7 @@ class Player
 	static int nextId;
 	int id;
 	int money;
+	int owedMoney;
 	MyString name;
 	size_t position;
 	int totalBalance;
@@ -19,6 +20,7 @@ class Player
 	bool inDebt = false;
 	int timesLeftToRollInJail = GameConstants::TIMES_TO_ROLL_IN_JAIL;
 	int releaseCards = GameConstants::RELEASE_CARDS_INITIAL_VALUE;
+	Player* inDebtTo = nullptr;
 	MyVector<Property*> ownedProperties;
 	MyVector<Utility*> ownedUtilities;
 	MyVector<Station*> ownedStations;
@@ -30,12 +32,14 @@ public:
 
 	int getId() const;
 	int getMoney() const;
+	int getOwedMoney() const;
 	const MyString& getName() const;
 	int getTotalBalance() const;
 	size_t getCurrentPosition() const;
 	bool isInGame() const;
 	bool isInJail() const;
 	bool isInDebt() const;
+	Player* getInDebtTo() const;
 	const MyVector<Property*>& getOwnedProperties() const;
 	MyVector<Property*>& getOwnedProperties();
 	const MyVector<Station*>& getOwnedStations() const;
@@ -51,6 +55,8 @@ public:
 	void decreaseTimesLeft();
 	void setJailStatus();
 	void setInDebtStatus();
+	void setInDebtTo(Player* player);
+	void setOwedMoney(int amount);
 	void addProperty(Property* property);
 	void addStation(Station* station);
 	void addReleaseCard();
