@@ -24,7 +24,6 @@ void BankruptCommand::execute() const
 					std::cout << "You have successfully gone bankrupt! You are out of the game!" << std::endl;
 					std::cout << "Good Game! You did well!" << std::endl;
 					std::cout << "----------------------------" << std::endl;
-					game->endTurn();
 					playerOnTurn.resign();
 					if (game->checkGameOver()) {
 						std::cout << "Game Over! Thanks for playing!" << std::endl;
@@ -34,7 +33,9 @@ void BankruptCommand::execute() const
 						std::cout << "Press enter to exit the game..." << std::endl;
 						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 						std::cin.get();
+						throw std::overflow_error("You are always welcome to play again!");
 					}
+					game->endTurn();
 					return;
 				}
 			}

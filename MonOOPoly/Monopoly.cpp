@@ -22,6 +22,12 @@ Monopoly::Monopoly() : currentPlayerIndex(GameConstants::FIRST_PLAYER_ID)
 	deck = CardDeck::getInstance();
 }
 
+Monopoly::~Monopoly()
+{
+	board->freeInstance();
+	deck->freeInstance();
+}
+
 Monopoly* Monopoly::instance = nullptr;
 
 Monopoly* Monopoly::getInstance()

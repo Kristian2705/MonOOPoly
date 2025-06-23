@@ -38,15 +38,14 @@ void HelpCommand::execute() const
 
 	std::cout << "---------------------------------------------" << std::endl;
 
-	std::cout << "If you don't have money to pay for a rent or something else: " << std::endl;
+	std::cout << "If you are in debt: " << std::endl;
 	std::cout << "1. 'sell' to sell houses or hotels on your properties when you need money" << std::endl;
 	std::cout << "2. 'mortgage' to mortgage a property, station or utility when you need money" << std::endl;
 	std::cout << "3. 'see_info' to see the data of a player by index" << std::endl;
 	std::cout << "4. 'see_map' to see the map" << std::endl;
 	std::cout << "5. 'trade' to initiate a trade" << std::endl;
-	std::cout << "6. 'bankrupt' to surrender" << std::endl;
+	std::cout << "6. 'pay_debt' to pay your debt to a player or the bank" << std::endl;
+	std::cout << "7. 'bankrupt' to surrender" << std::endl;
 
 	std::cout << "---------------------------------------------" << std::endl;
-
-	//std::cout << "If you have selected an option and want to go back, type 'back'" << std::endl;
 }

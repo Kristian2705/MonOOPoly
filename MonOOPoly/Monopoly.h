@@ -14,9 +14,9 @@ class Monopoly
 
 	void addPlayers();
 	void addPlayer(const Player& player);
-	void removePlayer(int playerId);
 	int getNextPlayerIndex() const;
 	Monopoly();
+	~Monopoly();
 public:
 	static Monopoly* getInstance();
 	static void freeInstance();

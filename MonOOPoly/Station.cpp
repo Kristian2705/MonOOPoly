@@ -10,6 +10,11 @@ Station::Station(int boardIndex, const MyString& name, const MyString& abbreviat
 	rentTiers[3] = GameConstants::STATION_FOURTH_RENT;
 }
 
+int Station::getRentTierIndex() const
+{
+	return rentTierIndex;
+}
+
 size_t Station::getPrice() const
 {
 	return price;
@@ -47,6 +52,11 @@ void Station::removeOwner()
 void Station::setOwner(Player* player)
 {
 	owner = player;
+}
+
+void Station::setRentTier(int rentTierIndex)
+{
+	this->rentTierIndex = rentTierIndex;
 }
 
 void Station::increaseRentTier()

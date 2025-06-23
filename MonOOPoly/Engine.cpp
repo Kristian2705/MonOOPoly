@@ -17,6 +17,10 @@ void Engine::run()
 			command->execute();
 			delete command;
 		}
+		catch (const std::overflow_error& e) {
+			std::cerr << e.what() << std::endl;
+			break;
+		}
 		catch (const std::exception& e) {
 			std::cerr << e.what() << std::endl;
 		}

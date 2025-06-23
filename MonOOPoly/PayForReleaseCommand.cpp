@@ -6,6 +6,9 @@ void PayForReleaseCommand::execute() const
 	if (!player.isInJail()) {
 		throw std::invalid_argument("You are not in jail and you don't have to pay, so chill ;)");
 	}
+	if(player.getMoney() < GameConstants::JAIL_RELEASE_PRICE) {
+		throw std::invalid_argument("You don't have enough money to pay for release!");
+	}
 	player.addMoney(-GameConstants::JAIL_RELEASE_PRICE);
 	player.setJailStatus();
 	if (game->getRolledStatus()) {

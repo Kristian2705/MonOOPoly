@@ -10,15 +10,16 @@ public:
 	//Contructors for later
 	Station(int boardIndex, const MyString& name, const MyString& abbreviation);
 	
+	int getRentTierIndex() const;
 	size_t getPrice() const;
 	size_t getRent() const;
 	Player* getOwner() const;
 
-	//Mortgage function later
 	void mortgage();
 	void showStation() const;
 	void removeOwner();
 	void setOwner(Player* player);
+	void setRentTier(int rentTierIndex);
 	void increaseRentTier();
 	void decreaseRentTier();
 	void resetRentTier();

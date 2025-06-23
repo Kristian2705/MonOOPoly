@@ -15,6 +15,9 @@ void MultiplePaymentToOthers::execute(Player & player)
 		}
 	}
 	else {
+		for (int i = 0; i < players.getSize(); i++) {
+			players[i].addMoney(amount);
+		}
 		player.setInDebtStatus();
 		std::cout << "You don't have enough money to pay your debt to everyone." << std::endl;
 		std::cout << "You owe $" << amount * players.getSize() << " but you have $" << player.getMoney() << std::endl;

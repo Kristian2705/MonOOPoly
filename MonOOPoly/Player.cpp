@@ -44,7 +44,9 @@ void Player::addProperty(Property* property)
 	ownedProperties.push_back(property);
 	property->setOwner(this);
 
-	std::cout << "You successfully purchased " << property->getName() << " for $" << property->getPrice() << std::endl;
+	std::cout << name << ", " << property->getName() << " is now yours!" << std::endl;
+
+	//std::cout << "You successfully purchased " << property->getName() << " for $" << property->getPrice() << std::endl;
 
 	MyVector<Property*> propsByColor;
 	for (int i = 0; i < ownedProperties.getSize(); i++) {
@@ -81,10 +83,11 @@ void Player::addStation(Station* station)
 {
 	ownedStations.push_back(station);
 	station->setOwner(this);
-	std::cout << "You successfully purchased " << station->getName() << " for $" << station->getPrice() << std::endl;
-
+	std::cout << name << ", " << station->getName() << " is now yours!" << std::endl;
+	//std::cout << "You successfully purchased " << station->getName() << " for $" << station->getPrice() << std::endl;
 	int ownedStationsCount = ownedStations.getSize();
 	if (ownedStationsCount > 1) {
+		station->setRentTier(ownedStations[0]->getRentTierIndex());
 		for (int i = 0; i < ownedStationsCount; i++) {
 			ownedStations[i]->increaseRentTier();
 		}
@@ -106,14 +109,15 @@ void Player::addUtility(Utility* utility)
 {
 	ownedUtilities.push_back(utility);
 	utility->setOwner(this);
-	std::cout << "You successfully purchased " << utility->getName() << " for $" << utility->getPrice() << std::endl;
+	std::cout << name << ", " << utility->getName() << " is now yours!" << std::endl;
+	//std::cout << "You successfully purchased " << utility->getName() << " for $" << utility->getPrice() << std::endl;
 	int ownedUtilitiesCount = ownedUtilities.getSize();
 	if (ownedUtilitiesCount > 1) {
 		for (int i = 0; i < ownedUtilitiesCount; i++) {
 			ownedUtilities[i]->increaseRentMultiplier();
 		}
 	}
-	std::cout << "You currently have " << ownedUtilitiesCount << " stations. Their rent multiplier is " << utility->getRentMultiplier() << "x" << std::endl;
+	std::cout << "You currently have " << ownedUtilitiesCount << " utilities. Their rent multiplier is " << utility->getRentMultiplier() << "x" << std::endl;
 }
 
 void Player::addMoney(int amount)
@@ -225,7 +229,7 @@ void Player::resign()
 	inGame = false;
 	totalBalance = 0;
 	money = 0;
-	position = GameConstants::INVALID_POSITION;
+	position = GameConstants::GO_FIELD_INDEX;
 	inJail = false;
 	if (inDebtTo) {
 		for(int i = 0; i < ownedProperties.getSize(); i++) {
@@ -234,14 +238,34 @@ void Player::resign()
 			ownedProperties[i]->setOwner(inDebtTo);
 			inDebtTo->addProperty(ownedProperties[i]);
 		}
+		for(int i = 0; i < ownedStations.getSize(); i++) {
+			ownedStations[i]->removeOwner();
+			ownedStations[i]->resetRentTier();
+			ownedStations[i]->setOwner(inDebtTo);
+			inDebtTo->addStation(ownedStations[i]);
+		}
+		for(int i = 0; i < ownedUtilities.getSize(); i++) {
+			ownedUtilities[i]->removeOwner();
+			ownedUtilities[i]->setOwner(inDebtTo);
+			inDebtTo->addUtility(ownedUtilities[i]);
+		}
 	}
 	else {
 		for (int i = 0; i < ownedProperties.getSize(); i++) {
 			ownedProperties[i]->removeOwner();
 			ownedProperties[i]->resetRentTier();
 		}
+		for (int i = 0; i < ownedStations.getSize(); i++) {
+			ownedStations[i]->removeOwner();
+			ownedStations[i]->resetRentTier();
+		}
+		for (int i = 0; i < ownedUtilities.getSize(); i++) {
+			ownedUtilities[i]->removeOwner();
+		}
 	}
 	ownedProperties.clear();
+	ownedStations.clear();
+	ownedUtilities.clear();
 }
 
 size_t Player::getCurrentPosition() const
@@ -331,9 +355,13 @@ void Player::showInfo() const
 	std::cout << "------------------------------" << std::endl;
 	std::cout << "Money: $" << money << std::endl;
 	std::cout << "Position: " << position << std::endl;
+	std::cout << "In game: " << (inGame ? "Yes" : "No") << std::endl;
 	std::cout << "In jail: " << (inJail ? "Yes" : "No") << std::endl;
 	std::cout << "In debt: " << (inDebt ? "Yes" : "No") << std::endl;
 	std::cout << "In debt to: " << (inDebtTo ? inDebtTo->getName() : (inDebt ? "Bank" : "None")) << std::endl;
+	if (inDebt) {
+		std::cout << "Owed money: $" << owedMoney << std::endl;
+	}
 	std::cout << "Owned properties count: " << ownedProperties.getSize() << std::endl;
 	if (ownedProperties.getSize()) {
 		for (int i = 0; i < ownedProperties.getSize(); i++) {
