@@ -2,6 +2,11 @@
 
 void SeeInfoCommand::execute() const
 {
+	int getPlayersInGameCount = game->getPlayersInGameCount();
+	if (getPlayersInGameCount == 0) {
+		throw std::invalid_argument("No game in progress. Please start a new game.");
+	}
+
 	int index = 0;
 	std::cout << "Please enter which player's info you'd like to see by index" << std::endl;
 	for(int i = 0; i < game->getPlayers().getSize(); i++) {

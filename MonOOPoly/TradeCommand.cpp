@@ -292,6 +292,11 @@ TradeCommand::TradeCommand()
 
 void TradeCommand::execute() const
 {
+	int getPlayersInGameCount = game->getPlayersInGameCount();
+	if (getPlayersInGameCount == 0) {
+		throw std::invalid_argument("No game in progress. Please start a new game.");
+	}
+
 	Player& playerOnTurn = game->getPlayerOnTurn();
 
 	if (playerOnTurn.isInJail()) {

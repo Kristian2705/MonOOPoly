@@ -84,7 +84,7 @@
     <ClCompile Include="MonOOPoly.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Constants.h">
+    <ClCompile Include="ConstantsAndFunctions.h">
       <Filter>Header Files\Utilities</Filter>
     </ClCompile>
     <ClCompile Include="MyString.cpp">
@@ -229,6 +229,12 @@
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="PayDebtCommand.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstantsAndFunctions.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="NewGameCommand.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
   </ItemGroup>
@@ -387,6 +393,9 @@
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="PayDebtCommand.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="NewGameCommand.h">
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
   </ItemGroup>

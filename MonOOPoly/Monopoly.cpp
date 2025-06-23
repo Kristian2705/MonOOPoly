@@ -15,7 +15,7 @@ int Monopoly::getNextPlayerIndex()
 	}
 }
 
-Monopoly::Monopoly() : currentPlayerIndex(GameConstants::FIRST_PLAYER_ID)
+Monopoly::Monopoly() : currentPlayerIndex(GameConstants::INVALID_PLAYER_ID)
 {
 	board = Board::getInstance();
 	deck = CardDeck::getInstance();
@@ -208,6 +208,29 @@ MyVector<Player>& Monopoly::getPlayers()
 	return players;
 }
 
+void Monopoly::saveToBinaryFile() const
+{
+	std::ofstream ofs("monopoly_game.dat", std::ios::binary);
+	if (!ofs) {
+		std::cerr << "Error opening file for saving." << std::endl;
+		return;
+	}
+	size_t playerCount = players.getSize();
+	ofs.write((const char*)(&playerCount), sizeof(playerCount));
+	for (int i = 0; i < playerCount; i++) {
+		if (!players[i].isInGame())
+			continue;
+		players[i].saveToBinary(ofs);
+	}
+	ofs.write((const char*)(&currentPlayerIndex), sizeof(currentPlayerIndex));
+	ofs.write((const char*)(&hasRolled), sizeof(hasRolled));
+	ofs.write((const char*)(&pairsCount), sizeof(pairsCount));
+	board->saveToBinary(ofs);
+	//deck->saveToBinary(ofs);
+	ofs.close();
+	std::cout << "Game saved successfully!" << std::endl;
+}
+
 void Monopoly::addPlayers()
 {
 	std::cout << "Enter the number of players (2-6): ";
@@ -227,6 +250,7 @@ void Monopoly::addPlayers()
 		std::cout << "Player " << (i + 1) << " added with ID: " << player.getId() << std::endl;
 	}
 	std::cout << numPlayers << " added successfully!" << std::endl;
+	currentPlayerIndex = players[0].getId();
 	std::cout << "Are you ready to play?" << std::endl;
 	std::cout << "Press enter to continue..." << std::endl;
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -234,17 +258,6 @@ void Monopoly::addPlayers()
 	board->printBoard();
 	std::cout << "Player " << currentPlayerIndex << "'s turn." << std::endl;
 	std::cout << "Type help in order to see all the options" << std::endl;
-}
-
-void Monopoly::showPlayerData(int id) const
-{
-	const Player& player = getPlayer(id);
-	std::cout << "Player ID: " << player.getId() << std::endl
-		<< "Name: " << player.getName() << std::endl
-		<< "Money: " << player.getMoney() << std::endl
-		<< "Total Balance: " << player.getTotalBalance() << std::endl
-		<< "Position: " << player.getCurrentPosition() << std::endl
-		<< "In Jail: " << (player.isInJail() ? "Yes" : "No") << std::endl;
 }
 
 void Monopoly::endTurn()

@@ -1,4 +1,7 @@
 #pragma once
+#include <fstream>
+
+class MyString;
 
 namespace GameConstants {
 	const int MIN_CAPACITY = 4;
@@ -8,7 +11,6 @@ namespace GameConstants {
 	const int RENT_TIERS_COUNT = 7;
 	const int JAIL_POSITION = 10;
 	const int MAX_ROLLS = 3;
-	const int FIRST_PLAYER_ID = 1;
 	const int BOARD_SIZE = 40;
 	const int INVALID_POSITION = -1;
 	const int INVALID_PLAYER_ID = -1;
@@ -70,3 +72,8 @@ namespace GameConstants {
 	const int HALF_PRICE_MULTIPLIER = 2;
 	const int RELEASE_CARDS_INITIAL_VALUE = 0;
 };
+
+namespace SaveFunctions {
+	void saveMyStringToBinaryFile(std::ofstream& ofs, const MyString& str);
+	MyString loadMyStringFromBinaryFile(std::ifstream& ifs);
+}

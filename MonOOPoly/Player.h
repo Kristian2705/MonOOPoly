@@ -4,7 +4,7 @@
 #include "Station.h"
 #include "Utility.h"
 #include <memory>
-class Card;
+//class Card;
 
 class Player
 {
@@ -14,7 +14,6 @@ class Player
 	int owedMoney;
 	MyString name;
 	size_t position;
-	int totalBalance;
 	bool inGame = true;
 	bool inJail = false;
 	bool inDebt = false;
@@ -28,13 +27,14 @@ public:
 	//Constructors for later
 	Player() = default;
 	Player(const MyString& name, int money = GameConstants::INITIAL_MONEY);
-	Player(int id, const MyString& name, int money, size_t position, int totalBalance, bool isInGame, bool inJail, const MyVector<Property*>& properties, const MyVector<Card*>& cards);
+	Player(int id, const MyString& name, int money, int owedMoney, size_t position,
+		bool inJail, bool isInDebt, int timesLeftToRollInJail, int releaseCards, Player* inDebtTo,
+		const MyVector<Property*>& properties, const MyVector<Station*>& stations, const MyVector<Utility*>& utilities);
 
 	int getId() const;
 	int getMoney() const;
 	int getOwedMoney() const;
 	const MyString& getName() const;
-	int getTotalBalance() const;
 	size_t getCurrentPosition() const;
 	bool isInGame() const;
 	bool isInJail() const;
@@ -66,5 +66,6 @@ public:
 	void resign();
 	void moveTo(size_t newPosition);
 	void showInfo() const;
+	void saveToBinary(std::ofstream& ofs) const;
 };
 

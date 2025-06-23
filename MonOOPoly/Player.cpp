@@ -5,24 +5,20 @@
 int Player::nextId = 1;
 
 Player::Player(const MyString& name, int money)
-	: id(nextId++), name(name), money(money), position(GameConstants::GO_FIELD_INDEX), totalBalance(money)
+	: id(nextId++), name(name), money(money), position(GameConstants::GO_FIELD_INDEX)
 {
 	this->ownedProperties = MyVector<Property*>(GameConstants::MIN_CAPACITY);
 	this->ownedStations = MyVector<Station*>(GameConstants::MIN_CAPACITY);
 	this->ownedUtilities = MyVector<Utility*>(GameConstants::MIN_CAPACITY);
 }
 
-Player::Player(int id, const MyString& name, int money, size_t position, int totalBalance, bool isInGame, bool inJail, const MyVector<Property*>& properties, const MyVector<Card*>& cards)
-{
-	this->id = id;
-	this->name = name;
-	this->money = money;
-	this->position = position;
-	this->totalBalance = totalBalance;
-	this->inGame = isInGame;
-	this->inJail = inJail;
-	ownedProperties = properties;
-}
+Player::Player(int id, const MyString& name, int money, int owedMoney, size_t position, 
+	bool inJail, bool isInDebt, int timesLeftToRollInJail, int releaseCards, Player* inDebtTo, 
+	const MyVector<Property*>& properties, const MyVector<Station*>& stations, const MyVector<Utility*>& utilities)
+	: id(id), name(name), money(money), owedMoney(owedMoney), position(position),
+	  inJail(inJail), inDebt(isInDebt), timesLeftToRollInJail(timesLeftToRollInJail), releaseCards(releaseCards),
+	inDebtTo(inDebtTo), ownedProperties(properties), ownedStations(stations), ownedUtilities(utilities)
+{ }
 
 int Player::getId() const
 {
@@ -123,7 +119,6 @@ void Player::addUtility(Utility* utility)
 void Player::addMoney(int amount)
 {
 	money += amount;
-	totalBalance += amount;
 }
 
 const MyString& Player::getName() const
@@ -131,10 +126,6 @@ const MyString& Player::getName() const
 	return name;
 }
 
-int Player::getTotalBalance() const
-{
-	return totalBalance;
-}
 
 void Player::removeProperty(Property* property)
 {
@@ -227,11 +218,11 @@ void Player::setOwedMoney(int amount)
 void Player::resign()
 {
 	inGame = false;
-	totalBalance = 0;
 	position = GameConstants::GO_FIELD_INDEX;
 	inJail = false;
 	inDebt = false;
 	owedMoney = 0;
+	timesLeftToRollInJail = 0;
 	if (inDebtTo) {
 		for(int i = 0; i < ownedProperties.getSize(); i++) {
 			ownedProperties[i]->removeOwner();
@@ -251,6 +242,10 @@ void Player::resign()
 			inDebtTo->addUtility(ownedUtilities[i]);
 		}
 		inDebtTo->addMoney(money);
+		for(int i = 0; i < releaseCards; i++) {
+			inDebtTo->addReleaseCard();
+		}
+		releaseCards = 0;
 	}
 	else {
 		for (int i = 0; i < ownedProperties.getSize(); i++) {
@@ -269,6 +264,7 @@ void Player::resign()
 	ownedStations.clear();
 	ownedUtilities.clear();
 	money = 0;
+	
 	//Money transfer
 }
 
@@ -389,4 +385,30 @@ void Player::showInfo() const
 			std::cout << std::endl;
 		}
 	}
+}
+
+void Player::saveToBinary(std::ofstream& ofs) const
+{
+	ofs.write((const char*)(&id), sizeof(id));
+	ofs.write((const char*)(&money), sizeof(money));
+	ofs.write((const char*)(&owedMoney), sizeof(owedMoney));
+
+	SaveFunctions::saveMyStringToBinaryFile(ofs, name);
+
+	ofs.write((const char*)(&position), sizeof(position));
+	ofs.write((const char*)(&inGame), sizeof(inGame));
+	ofs.write((const char*)(&inJail), sizeof(inJail));
+	ofs.write((const char*)(&inDebt), sizeof(inDebt));
+
+	if (inDebtTo) {
+		int inDebtToId = inDebtTo->getId();
+		ofs.write((const char*)(&inDebtToId), sizeof(inDebtToId));
+	}
+	else {
+		int inDebtToId = -1;
+		ofs.write((const char*)(&inDebtToId), sizeof(inDebtToId));
+	}
+
+	ofs.write((const char*)(&timesLeftToRollInJail), sizeof(timesLeftToRollInJail));
+	ofs.write((const char*)(&releaseCards), sizeof(releaseCards));
 }

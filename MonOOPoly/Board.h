@@ -27,5 +27,6 @@ public:
 	static void freeInstance();
 	void printBoard() const;
 	void stepOn(size_t position, Player& player);
+	void saveToBinary(std::ofstream& ofs) const;
 };
 

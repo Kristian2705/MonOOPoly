@@ -2,8 +2,9 @@
 
 void Engine::run()
 {
+	//This will be for the new game command
 	Monopoly* game = Monopoly::getInstance();
-	game->welcomePlayers();
+	//game->welcomePlayers();
 
 	while (true) {
 		MyString commandName;

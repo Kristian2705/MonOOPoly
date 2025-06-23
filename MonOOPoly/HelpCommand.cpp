@@ -5,6 +5,12 @@ void HelpCommand::execute() const
 	std::cout << "Here is a list of commands during each phase of the game: " << std::endl;
 
 	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << "First you have to choose: " << std::endl;
+	std::cout << "1. 'new_game' to start a new game" << std::endl;
+	std::cout << "2. 'load_game' to load the latest game you have saved" << std::endl;
+	std::cout << "---------------------------------------------" << std::endl;
+
+	std::cout << "---------------------------------------------" << std::endl;
 
 	std::cout << "During player's turn: " << std::endl;
 	std::cout << "1. 'roll_dice' to roll the dice" << std::endl;

@@ -138,7 +138,8 @@
     <ClCompile Include="CardField.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
-    <ClCompile Include="Constants.h" />
+    <ClCompile Include="ConstantsAndFunctions.cpp" />
+    <ClCompile Include="ConstantsAndFunctions.h" />
     <ClCompile Include="EndTurnCommand.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="FeeEffect.cpp" />
@@ -161,6 +162,7 @@
     <ClCompile Include="MultiplePaymentEffect.cpp" />
     <ClCompile Include="MultiplePaymentToOthers.cpp" />
     <ClCompile Include="MyString.cpp" />
+    <ClCompile Include="NewGameCommand.cpp" />
     <ClCompile Include="ParkingField.cpp" />
     <ClCompile Include="PayDebtCommand.cpp" />
     <ClCompile Include="PayForReleaseCommand.cpp" />
@@ -213,6 +215,7 @@
     <ClInclude Include="MultiplePaymentToOthers.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="MyVector.hpp" />
+    <ClInclude Include="NewGameCommand.h" />
     <ClInclude Include="ParkingField.h" />
     <ClInclude Include="PayDebtCommand.h" />
     <ClInclude Include="PayForReleaseCommand.h" />

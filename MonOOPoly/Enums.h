@@ -23,29 +23,14 @@ enum class ColorSetBuildings {
 	Blue = 2
 };
 
-enum class MoveTypes
+enum class FieldType
 {
-	GoToStart,
+	Start,
+	Jail,
+	Parking,
 	GoToJail,
-	GoToIllinois,
-	GoToStCharles,
-	GoToNearestRailroad,
-	GoToNearestUtility,
-	GetOutOfJailFree,
-	GoBackThreeSpaces,
-	GoToReadingRailroad,
-	GoToBroadwalk
-};
-
-enum class SignlePaymentTypes {
-	BankPaysYouDivident,
-	GeneralRepairs,
-	PayPoorTax,
-	BankError,
-	DoctorFee,
-	SaleOfStock,
-	HolidayFunds,
-	IncomeTaxRefund,
-	LifeInsurance,
-
+	DrawCard,
+	Property,
+	Station,
+	Utility,
 };

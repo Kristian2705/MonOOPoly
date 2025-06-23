@@ -1,5 +1,6 @@
 #pragma once
 #include "Command.h"
+#include "NewGameCommand.h"
 #include "HelpCommand.h"
 #include "RollDiceCommand.h"
 #include "InvalidCommand.h"

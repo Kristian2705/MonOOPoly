@@ -157,3 +157,13 @@ void Board::printBottomRow() const {
 		printCell(fields[i]->getAbbreviation());
 	std::cout << "|\n";
 }
+
+void Board::saveToBinary(std::ofstream& ofs) const
+{
+	if (!ofs.is_open()) {
+		throw std::runtime_error("Error opening file for saving board data.");
+	}
+	//for (int i = 0; i < GameConstants::BOARD_SIZE; i++) {
+	//	fields[i]->saveToBinary(ofs);
+	//}
+}

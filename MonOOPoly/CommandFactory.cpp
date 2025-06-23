@@ -2,6 +2,9 @@
 
 Command* CommandFactory::readCommand(const MyString& commandType)
 {
+	if(commandType == "new_game") {
+		return new NewGameCommand();
+	}
 	if (commandType == "help") {
 		return new HelpCommand();
 	}

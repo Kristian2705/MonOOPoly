@@ -1,6 +1,6 @@
 #pragma once
 #include<fstream>
-#include "Constants.h"
+#include "ConstantsAndFunctions.h"
 
 class MyString {
     char* str;

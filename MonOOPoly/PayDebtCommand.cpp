@@ -2,6 +2,11 @@
 
 void PayDebtCommand::execute() const
 {
+	int getPlayersInGameCount = game->getPlayersInGameCount();
+	if (getPlayersInGameCount == 0) {
+		throw std::invalid_argument("No game in progress. Please start a new game.");
+	}
+
 	Player& player = game->getPlayerOnTurn();
 	if (!player.isInDebt()) {
 		throw std::invalid_argument("You are not in debt! You can only pay if you owe money to someone!");

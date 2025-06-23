@@ -23,7 +23,6 @@ public:
 	void welcomePlayers();
 	int rollDice();
 	void stepOnCard();
-	void showPlayerData(int id) const;
 	void endTurn();
 	void applyFieldEffect(size_t position);
 
@@ -40,5 +39,6 @@ public:
 	const Player* getWinner() const;
 	const MyVector<Player>& getPlayers() const;
 	MyVector<Player>& getPlayers();
+	void saveToBinaryFile() const;
 };
 

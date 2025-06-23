@@ -333,6 +333,11 @@ void MortgageCommand::mortgageUtility() const
 
 void MortgageCommand::execute() const
 {
+	int getPlayersInGameCount = game->getPlayersInGameCount();
+	if (getPlayersInGameCount == 0) {
+		throw std::invalid_argument("No game in progress. Please start a new game.");
+	}
+
 	Player& player = game->getPlayerOnTurn();
 
 	if (player.isInJail()) {

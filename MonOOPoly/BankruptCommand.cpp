@@ -2,6 +2,11 @@
 
 void BankruptCommand::execute() const
 {
+	int getPlayersInGameCount = game->getPlayersInGameCount();
+	if (getPlayersInGameCount == 0) {
+		throw std::invalid_argument("No game in progress. Please start a new game.");
+	}
+
 	std::cout << "You are about to go bankrupt and lose the game!" << std::endl;
 	std::cout << "Are you sure you want to do this? Type 'yes' or 'no'" << std::endl;
 	MyString answer;
