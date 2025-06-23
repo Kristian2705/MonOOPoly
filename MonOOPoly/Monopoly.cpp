@@ -1,18 +1,17 @@
 #include "Monopoly.h"
 
-int Monopoly::getNextPlayerIndex() const
+int Monopoly::getNextPlayerIndex()
 {
-	if(currentPlayerIndex >= players.getSize())
+	while (true)
 	{
-		return GameConstants::FIRST_PLAYER_ID;
-	}
-
-	for(int i = currentPlayerIndex; i < players.getSize(); i++)
-	{
-		if (players[i].isInGame())
-		{
-			return players[i].getId();
+		if (currentPlayerIndex >= players.getSize()) {
+			currentPlayerIndex = 0;
 		}
+		if(players[currentPlayerIndex].isInGame())
+		{
+			return players[currentPlayerIndex].getId();
+		}
+		currentPlayerIndex++;
 	}
 }
 
@@ -85,6 +84,19 @@ void Monopoly::stepOnCard()
 	card->applyEffect(cP);
 }
 
+int Monopoly::getPlayersInGameCount() const
+{
+	int playersInGame = 0;
+	for(int i = 0; i < players.getSize(); i++)
+	{
+		if (players[i].isInGame())
+		{
+			playersInGame++;
+		}
+	}
+	return playersInGame;
+}
+
 bool Monopoly::checkGameOver() const
 {
 	int playersInGame = 0;
@@ -121,12 +133,24 @@ void Monopoly::resetPairStatus()
 
 const Player& Monopoly::getPlayerOnTurn() const
 {
-	return players[currentPlayerIndex - 1];
+	for(int i = 0; i < players.getSize(); i++)
+	{
+		if (players[i].getId() == currentPlayerIndex)
+		{
+			return players[i];
+		}
+	}
 }
 
 Player& Monopoly::getPlayerOnTurn()
 {
-	return players[currentPlayerIndex - 1];
+	for (int i = 0; i < players.getSize(); i++)
+	{
+		if (players[i].getId() == currentPlayerIndex)
+		{
+			return players[i];
+		}
+	}
 }
 
 void Monopoly::addPlayer(const Player& player)
@@ -136,18 +160,30 @@ void Monopoly::addPlayer(const Player& player)
 
 const Player& Monopoly::getPlayer(int playerId) const
 {
-	if (playerId < 1 || playerId > players.getSize()) {
-		throw std::out_of_range("Player not found");
+	for (int i = 0; i < players.getSize(); i++)
+	{
+		if (players[i].getId() == playerId)
+		{
+			return players[i];
+		}
 	}
-	return players[playerId - 1];
+	throw std::out_of_range("Player not found");
+	//if (playerId < 1 || playerId > players.getSize()) {
+	//	throw std::out_of_range("Player not found");
+	//}
+	//return players[playerId - 1];
 }
 
 Player& Monopoly::getPlayer(int playerId)
 {
-	if (playerId < 1 || playerId > players.getSize()) {
-		throw std::out_of_range("Player not found");
+	for (int i = 0; i < players.getSize(); i++)
+	{
+		if (players[i].getId() == playerId)
+		{
+			return players[i];
+		}
 	}
-	return players[playerId - 1];
+	throw std::out_of_range("Player not found");
 }
 
 const Player* Monopoly::getWinner() const  
@@ -228,12 +264,3 @@ void Monopoly::applyFieldEffect(size_t position)
 {
 	board->stepOn(position, getPlayerOnTurn());
 }
-
-//void Monopoly::nextTurn()
-//{
-//	currentPlayerIndex++;
-//	if (currentPlayerIndex >= GameConstants::MAX_PLAYERS)
-//	{
-//		currentPlayerIndex = GameConstants::FIRST_PLAYER_ID;
-//	}
-//}

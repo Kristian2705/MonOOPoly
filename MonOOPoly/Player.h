@@ -27,7 +27,7 @@ class Player
 public:
 	//Constructors for later
 	Player() = default;
-	Player(const MyString& name, int money = 100);
+	Player(const MyString& name, int money = GameConstants::INITIAL_MONEY);
 	Player(int id, const MyString& name, int money, size_t position, int totalBalance, bool isInGame, bool inJail, const MyVector<Property*>& properties, const MyVector<Card*>& cards);
 
 	int getId() const;

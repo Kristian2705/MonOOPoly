@@ -9,6 +9,8 @@ void MultiplePaymentEffect::execute(Player& player)
 {
 	MyVector<Player>& players = Monopoly::getInstance()->getPlayers();
 	for (int i = 0; i < players.getSize(); i++) {
+		if(&players[i] == &player || !players[i].isInGame())
+			continue;
 		if (amount <= players[i].getMoney()) {
 			players[i].addMoney(-amount);
 			player.addMoney(amount);

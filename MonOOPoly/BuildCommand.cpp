@@ -17,7 +17,7 @@ void BuildCommand::execute() const
 	MyVector<Property*> validPropsForBuilding;
 	for (int i = 0; i < ownedProps.getSize(); i++) {
 		int rentTierIndex = ownedProps[i]->getRentTierIndex();
-		if (rentTierIndex >= 1 && rentTierIndex < 5) {
+		if (rentTierIndex >= 1 && rentTierIndex <= 5) {
 			validPropsForBuilding.push_back(ownedProps[i]);
 		}
 	}
@@ -61,7 +61,7 @@ void BuildCommand::execute() const
 			char buffer[GameConstants::BUFFER_CAPACITY];
 			std::cin >> buffer;
 			MyString str(buffer);
-			if (!str.hasLettersOnly()) {
+			if (str.isValidNumber()) {
 				position = str.stoi();
 
 				for (int i = 0; i < validPropsForBuilding.getSize(); i++) {

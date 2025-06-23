@@ -57,7 +57,7 @@ void MortgageCommand::mortgageProperty() const
 			char buffer[GameConstants::BUFFER_CAPACITY];
 			std::cin >> buffer;
 			MyString str(buffer);
-			if (!str.hasLettersOnly()) {
+			if (str.isValidNumber()) {
 				position = str.stoi();
 
 				for (int i = 0; i < validPropsForBuilding.getSize(); i++) {
@@ -178,7 +178,7 @@ void MortgageCommand::mortgageStation() const
 			char buffer[GameConstants::BUFFER_CAPACITY];
 			std::cin >> buffer;
 			MyString str(buffer);
-			if (!str.hasLettersOnly()) {
+			if (str.isValidNumber()) {
 				position = str.stoi();
 
 				for (int i = 0; i < ownedStations.getSize(); i++) {
@@ -280,7 +280,7 @@ void MortgageCommand::mortgageUtility() const
 			char buffer[GameConstants::BUFFER_CAPACITY];
 			std::cin >> buffer;
 			MyString str(buffer);
-			if (!str.hasLettersOnly()) {
+			if (str.isValidNumber()) {
 				position = str.stoi();
 
 				for (int i = 0; i < ownedUtilities.getSize(); i++) {
@@ -348,7 +348,7 @@ void MortgageCommand::execute() const
 		char buffer[GameConstants::BUFFER_CAPACITY];
 		std::cin >> buffer;
 		MyString str(buffer);
-		if (!str.hasLettersOnly()) {
+		if (str.isValidNumber()) {
 			int command = str.stoi();
 			switch (command)
 			{

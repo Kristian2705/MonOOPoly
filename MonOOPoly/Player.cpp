@@ -228,9 +228,10 @@ void Player::resign()
 {
 	inGame = false;
 	totalBalance = 0;
-	money = 0;
 	position = GameConstants::GO_FIELD_INDEX;
 	inJail = false;
+	inDebt = false;
+	owedMoney = 0;
 	if (inDebtTo) {
 		for(int i = 0; i < ownedProperties.getSize(); i++) {
 			ownedProperties[i]->removeOwner();
@@ -249,6 +250,7 @@ void Player::resign()
 			ownedUtilities[i]->setOwner(inDebtTo);
 			inDebtTo->addUtility(ownedUtilities[i]);
 		}
+		inDebtTo->addMoney(money);
 	}
 	else {
 		for (int i = 0; i < ownedProperties.getSize(); i++) {
@@ -266,6 +268,8 @@ void Player::resign()
 	ownedProperties.clear();
 	ownedStations.clear();
 	ownedUtilities.clear();
+	money = 0;
+	//Money transfer
 }
 
 size_t Player::getCurrentPosition() const

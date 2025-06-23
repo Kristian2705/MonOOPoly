@@ -9,6 +9,11 @@ void TradeCommand::tradeProperty(Player* player, Property*& property) const
 
 	MyVector<Property*> ownedProps = player->getOwnedProperties();
 
+	if (!ownedProps.getSize()) {
+		std::cout << "No properties in possession! Try selection something else or move on to trading!" << std::endl;
+		return;
+	}
+
 	MyVector<Property*> validProps;
 
 	for (int i = 0; i < ownedProps.getSize(); i++) {
@@ -37,7 +42,7 @@ void TradeCommand::tradeProperty(Player* player, Property*& property) const
 			char buffer[GameConstants::BUFFER_CAPACITY];
 			std::cin >> buffer;
 			MyString str(buffer);
-			if (!str.hasLettersOnly()) {
+			if (str.isValidNumber()) {
 				position = str.stoi();
 
 				for (int i = 0; i < validProps.getSize(); i++) {
@@ -128,7 +133,7 @@ void TradeCommand::tradeStation(Player* player, Station*& station) const
 			char buffer[GameConstants::BUFFER_CAPACITY];
 			std::cin >> buffer;
 			MyString str(buffer);
-			if (!str.hasLettersOnly()) {
+			if (str.isValidNumber()) {
 				position = str.stoi();
 
 				for (int i = 0; i < ownedStations.getSize(); i++) {
@@ -203,7 +208,7 @@ void TradeCommand::tradeUtility(Player* player, Utility*& utility) const
 			char buffer[GameConstants::BUFFER_CAPACITY];
 			std::cin >> buffer;
 			MyString str(buffer);
-			if (!str.hasLettersOnly()) {
+			if (str.isValidNumber()) {
 				position = str.stoi();
 
 				for (int i = 0; i < ownedUtilities.getSize(); i++) {
@@ -257,8 +262,12 @@ void TradeCommand::tradeMoney(Player* player, int& amount) const
 		char buffer[GameConstants::BUFFER_CAPACITY];
 		std::cin >> buffer;
 		MyString str(buffer);
-		if (!str.hasLettersOnly()) {
+		if (str.isValidNumber()) {
 			amount = str.stoi();
+			if (amount > player->getMoney()) {
+				std::cout << "The selected amount of money is greater than the money in posession: $" << player->getMoney() << std::endl;
+				continue;
+			}
 			std::cout << "You successfully selected an amount of $" << amount << std::endl;
 			return;
 		}
@@ -320,7 +329,7 @@ void TradeCommand::execute() const
 			char buffer[GameConstants::BUFFER_CAPACITY];
 			std::cin >> buffer;
 			MyString str(buffer);
-			if (!str.hasLettersOnly()) {
+			if (str.isValidNumber()) {
 				int command = str.stoi();
 				if (command == 0) {
 					shouldFinish = true;
@@ -390,7 +399,7 @@ void TradeCommand::execute() const
 			char buffer[GameConstants::BUFFER_CAPACITY];
 			std::cin >> buffer;
 			MyString str(buffer);
-			if (!str.hasLettersOnly()) {
+			if (str.isValidNumber()) {
 				int command = str.stoi();
 				switch (command)
 				{
@@ -449,7 +458,7 @@ void TradeCommand::execute() const
 				char buffer[GameConstants::BUFFER_CAPACITY];
 				std::cin >> buffer;
 				MyString str(buffer);
-				if (!str.hasLettersOnly()) {
+				if (str.isValidNumber()) {
 					int command = str.stoi();
 					switch (command)
 					{
@@ -551,6 +560,7 @@ void TradeCommand::execute() const
 				}
 
 				trade->initiate();
+				std::cout << "Trade accepted successfully!" << std::endl;
 				return;
 			}
 		}

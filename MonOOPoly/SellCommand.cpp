@@ -61,7 +61,7 @@ void SellCommand::execute() const
 			char buffer[GameConstants::BUFFER_CAPACITY];
 			std::cin >> buffer;
 			MyString str(buffer);
-			if (!str.hasLettersOnly()) {
+			if (str.isValidNumber()) {
 				position = str.stoi();
 
 				for (int i = 0; i < validPropsForBuilding.getSize(); i++) {

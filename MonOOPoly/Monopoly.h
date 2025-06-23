@@ -14,7 +14,7 @@ class Monopoly
 
 	void addPlayers();
 	void addPlayer(const Player& player);
-	int getNextPlayerIndex() const;
+	int getNextPlayerIndex();
 	Monopoly();
 	~Monopoly();
 public:
@@ -27,6 +27,7 @@ public:
 	void endTurn();
 	void applyFieldEffect(size_t position);
 
+	int getPlayersInGameCount() const;
 	bool checkGameOver() const;
 	bool getRolledStatus() const;
 	bool getPairStatus() const;

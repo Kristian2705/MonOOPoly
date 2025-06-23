@@ -9,6 +9,7 @@ void Engine::run()
 		MyString commandName;
 		std::cout << "> ";
 		std::cin >> commandName;
+
 		if (commandName == "exit") {
 			break;
 		}

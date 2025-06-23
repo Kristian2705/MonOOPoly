@@ -17,7 +17,7 @@ void BankruptCommand::execute() const
 			char buffer[GameConstants::BUFFER_CAPACITY];
 			std::cin >> buffer;
 			MyString str(buffer);
-			if (!str.hasLettersOnly()) {
+			if (str.isValidNumber()) {
 				int id = str.stoi();
 				if (id == playerOnTurn.getId()) {
 					std::cout << "----------------------------" << std::endl;

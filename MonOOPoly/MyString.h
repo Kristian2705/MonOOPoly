@@ -64,7 +64,7 @@ public:
 
     bool empty() const;
 
-    bool hasLettersOnly() const;
+    bool isValidNumber() const;
 
     char& operator[](size_t index);
 

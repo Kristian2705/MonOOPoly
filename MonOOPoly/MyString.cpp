@@ -159,11 +159,11 @@ bool MyString::empty() const {
     return (size == 0);
 }
 
-bool MyString::hasLettersOnly() const
+bool MyString::isValidNumber() const
 {
     int i = 0;
     while (str[i]) {
-        if (str[i] >= 48 && str[i] <= 57) {
+        if (str[i] < 48 || str[i] > 57) {
             return false;
         }
         i++;

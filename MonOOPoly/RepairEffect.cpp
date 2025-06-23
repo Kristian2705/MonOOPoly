@@ -20,6 +20,7 @@ void RepairEffect::execute(Player& player)
 		sumToPay += builds * houseCost;
 		if (builds == 5) {
 			sumToPay += hotelCost;
+			sumToPay -= houseCost;
 		}
 	}
 

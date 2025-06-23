@@ -3,12 +3,15 @@
 void SeeInfoCommand::execute() const
 {
 	int index = 0;
-	std::cout << "Please enter which player's info you'd like to see (1-" << game->getPlayers().getSize() << ")" << std::endl;
+	std::cout << "Please enter which player's info you'd like to see by index" << std::endl;
+	for(int i = 0; i < game->getPlayers().getSize(); i++) {
+		std::cout << i + 1 << ". " << game->getPlayer(i + 1).getName() << std::endl;
+	}
 	char buffer[GameConstants::BUFFER_CAPACITY];
 	std::cin >> buffer;
 	while (true) {
 		MyString str(buffer);
-		if (!str.hasLettersOnly()) {
+		if (str.isValidNumber()) {
 			index = str.stoi();
 			break;
 		}

@@ -46,7 +46,7 @@ namespace GameConstants {
 	const int SCHOOL_FEE = 50;
 	const int CONSULTANCY_FEE_REWARD = 25;
 	const int INHERITANCE_REWARD = 100;
-	const int ASSESSED_HOUSE_REPAIR_PRICE = 45;
+	const int ASSESSED_HOUSE_REPAIR_PRICE = 40;
 	const int ASSESSED_HOTEL_REPAIR_PRICE = 115;
 	const int GRAND_OPERA_NIGHT_REWARD = 50;
 	const int BEAUTY_CONTEST_REWARD = 10;
