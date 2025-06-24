@@ -9,6 +9,16 @@ void JailField::applyEffect(Player& player)
 	std::cout << "Just visiting the jail." << std::endl;
 }
 
+void JailField::saveToBinary(std::ofstream& ofs) const
+{
+	return;
+}
+
+void JailField::loadFromBinary(std::ifstream& ifs)
+{
+	return;
+}
+
 Field* JailField::clone() const
 {
 	return new JailField(*this);

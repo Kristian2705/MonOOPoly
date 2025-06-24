@@ -67,5 +67,6 @@ public:
 	void moveTo(size_t newPosition);
 	void showInfo() const;
 	void saveToBinary(std::ofstream& ofs) const;
+	void loadFromBinary(std::ifstream& ifs);
 };
 

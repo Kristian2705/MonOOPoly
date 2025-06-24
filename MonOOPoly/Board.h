@@ -28,5 +28,6 @@ public:
 	void printBoard() const;
 	void stepOn(size_t position, Player& player);
 	void saveToBinary(std::ofstream& ofs) const;
+	void loadFromBinary(std::ifstream& ifs);
 };
 

@@ -155,6 +155,7 @@
     <ClCompile Include="HelpCommand.cpp" />
     <ClCompile Include="InvalidCommand.cpp" />
     <ClCompile Include="JailField.cpp" />
+    <ClCompile Include="LoadGameCommand.cpp" />
     <ClCompile Include="MonOOPoly.cpp" />
     <ClCompile Include="Monopoly.cpp" />
     <ClCompile Include="Mortgage.cpp" />
@@ -171,6 +172,7 @@
     <ClCompile Include="ReceivePaymentEffect.cpp" />
     <ClCompile Include="RepairEffect.cpp" />
     <ClCompile Include="RollDiceCommand.cpp" />
+    <ClCompile Include="SaveGameCommand.cpp" />
     <ClCompile Include="SeeInfoCommand.cpp" />
     <ClCompile Include="SellCommand.cpp" />
     <ClCompile Include="Station.cpp" />
@@ -208,6 +210,7 @@
     <ClInclude Include="HelpCommand.h" />
     <ClInclude Include="InvalidCommand.h" />
     <ClInclude Include="JailField.h" />
+    <ClInclude Include="LoadGameCommand.h" />
     <ClInclude Include="Monopoly.h" />
     <ClInclude Include="Mortgage.h" />
     <ClInclude Include="MortgageCommand.h" />
@@ -226,6 +229,7 @@
     <ClInclude Include="ReceivePaymentEffect.h" />
     <ClInclude Include="RepairEffect.h" />
     <ClInclude Include="RollDiceCommand.h" />
+    <ClInclude Include="SaveGameCommand.h" />
     <ClInclude Include="SeeInfoCommand.h" />
     <ClInclude Include="SellCommand.h" />
     <ClInclude Include="Station.h" />

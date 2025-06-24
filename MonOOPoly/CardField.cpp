@@ -14,6 +14,16 @@ void CardField::applyEffect(Player& player)
 	deck->putCardAtTheEnd(card);
 }
 
+void CardField::saveToBinary(std::ofstream& ofs) const
+{
+	return;
+}
+
+void CardField::loadFromBinary(std::ifstream& ifs)
+{
+	return;
+}
+
 Field* CardField::clone() const
 {
 	return new CardField(*this);

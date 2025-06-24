@@ -1,5 +1,6 @@
 #include "Utility.h"
 #include "Player.h"
+#include "Monopoly.h"
 
 Utility::Utility(int boardIndex, const MyString& name, const MyString& abbreviation)
 	: Field(boardIndex, name, abbreviation)
@@ -117,6 +118,38 @@ void Utility::applyEffect(Player& player)
 		}
 		std::cout << "Invalid input. Please type 'yes' or 'no'." << std::endl;
 		std::cin >> answer;
+	}
+}
+
+void Utility::saveToBinary(std::ofstream& ofs) const
+{
+	ofs.write((const char*)(&rentMultiplier), sizeof(rentMultiplier));
+	if (owner) 
+	{
+		int ownerId = owner->getId();
+		ofs.write((const char*)(&ownerId), sizeof(ownerId));
+	}
+	else 
+	{
+		int ownerId = GameConstants::INVALID_PLAYER_ID;
+		ofs.write((const char*)(&ownerId), sizeof(ownerId));
+	}
+}
+
+void Utility::loadFromBinary(std::ifstream& ifs)
+{
+	ifs.read((char*)(&rentMultiplier), sizeof(rentMultiplier));
+	int ownerId;
+	ifs.read((char*)(&ownerId), sizeof(ownerId));
+	if (ownerId != GameConstants::INVALID_PLAYER_ID)
+	{
+		Player& player = Monopoly::getInstance()->getPlayer(ownerId);
+		owner = &player;
+		player.addUtility(this);
+	} 
+	else 
+	{
+		owner = nullptr;
 	}
 }
 

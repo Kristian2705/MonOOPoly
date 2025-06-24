@@ -5,6 +5,12 @@ Command* CommandFactory::readCommand(const MyString& commandType)
 	if(commandType == "new_game") {
 		return new NewGameCommand();
 	}
+	if (commandType == "save_game") {
+		return new SaveGameCommand();
+	}
+	if(commandType == "load_game") {
+		return new LoadGameCommand();
+	}
 	if (commandType == "help") {
 		return new HelpCommand();
 	}

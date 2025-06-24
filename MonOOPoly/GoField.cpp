@@ -10,6 +10,16 @@ void GoField::applyEffect(Player& player)
 	std::cout << "GO Collect $200.00 salary as you pass!" << std::endl;
 }
 
+void GoField::saveToBinary(std::ofstream& ofs) const
+{
+	return;
+}
+
+void GoField::loadFromBinary(std::ifstream& ifs)
+{
+	return;
+}
+
 Field* GoField::clone() const
 {
 	return new GoField(*this);

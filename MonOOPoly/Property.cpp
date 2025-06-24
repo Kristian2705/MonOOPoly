@@ -1,5 +1,6 @@
 #include "Property.h"
 #include "Player.h"
+#include "Monopoly.h"
 
 Property::Property(int boardIndex, const MyString& name, const MyString& abbreviation, int price, const size_t* rentTiers, size_t housePrice, size_t hotelPrice, ColorSet colorSet)
 	: Field(boardIndex, name, abbreviation), owner(nullptr), price(price), rentTierIndex(GameConstants::START_RENT_TIER), housePrice(housePrice), hotelPrice(hotelPrice), colorSet(colorSet)
@@ -159,6 +160,38 @@ void Property::applyEffect(Player& player)
 		std::cin >> answer;
 	}
 
+}
+
+void Property::saveToBinary(std::ofstream& ofs) const
+{
+	ofs.write((const char*)(&rentTierIndex), sizeof(rentTierIndex));
+	if (owner) 
+	{
+		int ownerId = owner->getId();
+		ofs.write((const char*)(&ownerId), sizeof(ownerId));
+	}
+	else 
+	{
+		int ownerId = GameConstants::INVALID_PLAYER_ID;
+		ofs.write((const char*)(&ownerId), sizeof(ownerId));
+	}
+}
+
+void Property::loadFromBinary(std::ifstream& ifs)
+{
+	ifs.read((char*)(&rentTierIndex), sizeof(rentTierIndex));
+	int ownerId;
+	ifs.read((char*)(&ownerId), sizeof(ownerId));
+	if (ownerId != GameConstants::INVALID_PLAYER_ID)
+	{
+		Player& player = Monopoly::getInstance()->getPlayer(ownerId);
+		owner = &player;
+		player.addProperty(this);
+	} 
+	else 
+	{
+		owner = nullptr;
+	}
 }
 
 Field* Property::clone() const

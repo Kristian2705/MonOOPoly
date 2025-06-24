@@ -393,7 +393,7 @@ void Player::saveToBinary(std::ofstream& ofs) const
 	ofs.write((const char*)(&money), sizeof(money));
 	ofs.write((const char*)(&owedMoney), sizeof(owedMoney));
 
-	SaveFunctions::saveMyStringToBinaryFile(ofs, name);
+	FileFunctions::saveMyStringToBinaryFile(ofs, name);
 
 	ofs.write((const char*)(&position), sizeof(position));
 	ofs.write((const char*)(&inGame), sizeof(inGame));
@@ -411,4 +411,28 @@ void Player::saveToBinary(std::ofstream& ofs) const
 
 	ofs.write((const char*)(&timesLeftToRollInJail), sizeof(timesLeftToRollInJail));
 	ofs.write((const char*)(&releaseCards), sizeof(releaseCards));
+}
+
+void Player::loadFromBinary(std::ifstream& ifs)
+{
+	int id = 0;
+	ifs.read((char*)(&id), sizeof(id));
+	this->id = id;
+	ifs.read((char*)(&money), sizeof(money));
+	ifs.read((char*)(&owedMoney), sizeof(owedMoney));
+	name = FileFunctions::loadMyStringFromBinaryFile(ifs);
+	ifs.read((char*)(&position), sizeof(position));
+	ifs.read((char*)(&inGame), sizeof(inGame));
+	ifs.read((char*)(&inJail), sizeof(inJail));
+	ifs.read((char*)(&inDebt), sizeof(inDebt));
+	int inDebtToId = 0;
+	ifs.read((char*)(&inDebtToId), sizeof(inDebtToId));
+	if (inDebtToId != -1) {
+		inDebtTo = &Monopoly::getInstance()->getPlayer(inDebtToId);
+	}
+	else {
+		inDebtTo = nullptr;
+	}
+	ifs.read((char*)(&timesLeftToRollInJail), sizeof(timesLeftToRollInJail));
+	ifs.read((char*)(&releaseCards), sizeof(releaseCards));
 }

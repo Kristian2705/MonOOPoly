@@ -13,7 +13,6 @@ public:
 	size_t getRentMultiplier() const;
 	Player* getOwner() const;
 
-	//Mortgage function later
 	void mortgage();
 	void showUtility() const;
 	void removeOwner();
@@ -22,6 +21,8 @@ public:
 	void decreaseRentMultiplier();
 	int rollRentDice() const;
 	void applyEffect(Player& player) override;
+	void saveToBinary(std::ofstream& ofs) const override;
+	void loadFromBinary(std::ifstream& ifs) override;
 	Field* clone() const override;
 };
 

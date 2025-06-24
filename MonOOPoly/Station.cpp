@@ -1,5 +1,6 @@
 #include "Station.h"
 #include "Player.h"
+#include "Monopoly.h"
 
 Station::Station(int boardIndex, const MyString& name, const MyString& abbreviation)
 	: Field(boardIndex, name, abbreviation), rentTierIndex(GameConstants::START_RENT_TIER)
@@ -126,6 +127,39 @@ void Station::applyEffect(Player& player)
 		std::cin >> answer;
 	}
 }
+
+void Station::saveToBinary(std::ofstream& ofs) const
+{
+	ofs.write((const char*)(&rentTierIndex), sizeof(rentTierIndex));
+	if (owner) 
+	{
+		int ownerId = owner->getId();
+		ofs.write((const char*)(&ownerId), sizeof(ownerId));
+	} 
+	else 
+	{
+		int ownerId = GameConstants::INVALID_PLAYER_ID;
+		ofs.write((const char*)(&ownerId), sizeof(ownerId));
+	}
+}
+
+void Station::loadFromBinary(std::ifstream& ifs)
+{
+	ifs.read((char*)(&rentTierIndex), sizeof(rentTierIndex));
+	int ownerId;
+	ifs.read((char*)(&ownerId), sizeof(ownerId));
+	if (ownerId != GameConstants::INVALID_PLAYER_ID) 
+	{
+		Player& player = Monopoly::getInstance()->getPlayer(ownerId);
+		owner = &player;
+		player.addStation(this);
+	} 
+	else 
+	{
+		owner = nullptr;
+	}
+}
+
 Field* Station::clone() const
 {
 	return new Station(*this);

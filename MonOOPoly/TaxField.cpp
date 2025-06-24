@@ -20,6 +20,16 @@ void TaxField::applyEffect(Player& player)
 	player.setOwedMoney(taxAmount);
 }
 
+void TaxField::saveToBinary(std::ofstream& ofs) const
+{
+	return;
+}
+
+void TaxField::loadFromBinary(std::ifstream& ifs)
+{
+	return;
+}
+
 Field* TaxField::clone() const
 {
 	return new TaxField(*this);

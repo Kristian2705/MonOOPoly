@@ -210,25 +210,70 @@ MyVector<Player>& Monopoly::getPlayers()
 
 void Monopoly::saveToBinaryFile() const
 {
-	std::ofstream ofs("monopoly_game.dat", std::ios::binary);
+	std::ofstream ofs("monopoly_game.dat", std::ios::binary | std::ios::trunc);
 	if (!ofs) {
 		std::cerr << "Error opening file for saving." << std::endl;
 		return;
 	}
-	size_t playerCount = players.getSize();
+
+	int playerCount = getPlayersInGameCount();
 	ofs.write((const char*)(&playerCount), sizeof(playerCount));
-	for (int i = 0; i < playerCount; i++) {
+
+	std::ofstream playersOfs("players.dat", std::ios::binary | std::ios::trunc);
+	for (int i = 0; i < players.getSize(); i++) {
 		if (!players[i].isInGame())
 			continue;
-		players[i].saveToBinary(ofs);
+		players[i].saveToBinary(playersOfs);
 	}
+	playersOfs.close();
+
 	ofs.write((const char*)(&currentPlayerIndex), sizeof(currentPlayerIndex));
 	ofs.write((const char*)(&hasRolled), sizeof(hasRolled));
 	ofs.write((const char*)(&pairsCount), sizeof(pairsCount));
-	board->saveToBinary(ofs);
-	//deck->saveToBinary(ofs);
+
+	std::ofstream fieldsOfs("fields.dat", std::ios::binary | std::ios::trunc);
+	board->saveToBinary(fieldsOfs);
+	fieldsOfs.close();
+
 	ofs.close();
-	std::cout << "Game saved successfully!" << std::endl;
+	throw std::overflow_error("Game saved successfully!");
+}
+
+void Monopoly::loadFromBinaryFile()
+{
+	std::ifstream ifs("monopoly_game.dat", std::ios::binary);
+
+	//if (!FileFunctions::getFileSize(ifs)) {
+	//	throw std::invalid_argument("No game saved. Please start a new one!");
+	//}
+
+	if (!ifs) {
+		throw std::invalid_argument("No game saved. Please start a new one!");
+	}
+
+	int playerCount;
+	ifs.read((char*)(&playerCount), sizeof(playerCount));
+
+	std::ifstream playersIfs("players.dat", std::ios::binary);
+	for (int i = 0; i < playerCount; i++) {
+		Player player;
+		player.loadFromBinary(playersIfs);
+		addPlayer(player);
+	}
+	playersIfs.close();
+
+	ifs.read((char*)(&currentPlayerIndex), sizeof(currentPlayerIndex));
+	ifs.read((char*)(&hasRolled), sizeof(hasRolled));
+	ifs.read((char*)(&pairsCount), sizeof(pairsCount));
+
+	std::ifstream fieldsIfs("fields.dat", std::ios::binary);
+	board->loadFromBinary(fieldsIfs);
+	fieldsIfs.close();
+
+	ifs.close();
+
+	std::cout << "Game loaded successfully!" << std::endl;
+	std::cout << "Player " << currentPlayerIndex << "'s turn." << std::endl;
 }
 
 void Monopoly::addPlayers()

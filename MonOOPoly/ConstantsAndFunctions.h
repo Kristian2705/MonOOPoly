@@ -73,7 +73,8 @@ namespace GameConstants {
 	const int RELEASE_CARDS_INITIAL_VALUE = 0;
 };
 
-namespace SaveFunctions {
+namespace FileFunctions {
 	void saveMyStringToBinaryFile(std::ofstream& ofs, const MyString& str);
 	MyString loadMyStringFromBinaryFile(std::ifstream& ifs);
+	size_t getFileSize(std::ifstream& ifs);
 }
