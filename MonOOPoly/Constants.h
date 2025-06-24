@@ -12,7 +12,7 @@ namespace GameConstants {
 	const int JAIL_POSITION = 10;
 	const int MAX_ROLLS = 3;
 	const int BOARD_SIZE = 40;
-	const int INVALID_POSITION = -1;
+	const int INVALID_POSITION = 40;
 	const int INVALID_PLAYER_ID = -1;
 	const int START_RENT_TIER = 0;
 	const int GO_TO_JAIL_FIELD_INDEX = 30;
@@ -72,4 +72,6 @@ namespace GameConstants {
 	const int HALF_PRICE_MULTIPLIER = 2;
 	const int RELEASE_CARDS_INITIAL_VALUE = 0;
 	const int INITIAL_OWED_MONEY = 0;
+	const int THREE_STEPS = 3;
+	const int FOURTH_HOUSE_RENT_TIER = 5;
 };

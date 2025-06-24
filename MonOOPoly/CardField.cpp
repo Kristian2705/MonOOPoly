@@ -23,9 +23,3 @@ void CardField::loadFromBinary(std::ifstream& ifs)
 {
 	return;
 }
-
-Field* CardField::clone() const
-{
-	return new CardField(*this);
-}
-

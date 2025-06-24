@@ -11,15 +11,6 @@ Property::Property(int boardIndex, const MyString& name, const MyString& abbrevi
 	}
 }
 
-Property::Property(Player* owner, int boardIndex, const MyString& name, const MyString& abbreviation, int price, int rentTierIndex, const size_t* rentTiers, size_t housePrice, size_t hotelPrice, ColorSet colorSet)
-	: Field(boardIndex, name, abbreviation), owner(owner), price(price), rentTierIndex(rentTierIndex), housePrice(housePrice), hotelPrice(hotelPrice), colorSet(colorSet)
-{
-	for (int i = 0; i < GameConstants::RENT_TIERS_COUNT; i++)
-	{
-		this->rentTiers[i] = rentTiers[i];
-	}
-}
-
 Player* Property::getOwner()
 {
 	return owner;
@@ -193,9 +184,3 @@ void Property::loadFromBinary(std::ifstream& ifs)
 		owner = nullptr;
 	}
 }
-
-Field* Property::clone() const
-{
-	return new Property(*this);
-}
-

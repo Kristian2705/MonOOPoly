@@ -4,9 +4,7 @@
 
 class GetOutOfJailEffect : public CardEffectStrategy
 {
-	bool useNow = false;
 public:
 	void execute(Player& player) override;
-	CardEffectStrategy* clone() const override;
 };
 

@@ -9,10 +9,6 @@ void SellCommand::execute() const
 
 	Player& player = game->getPlayerOnTurn();
 
-	//if (player.isInJail()) {
-	//	throw std::invalid_argument("Get out of jail first and then try selling!");
-	//}
-
 	const MyVector<Property*>& ownedProps = player.getOwnedProperties();
 
 	if (!ownedProps.getSize()) {
@@ -31,6 +27,11 @@ void SellCommand::execute() const
 		throw std::invalid_argument("You haven't built anything on your properties yet. You can mortgage them if you want.");
 	}
 
+	std::cout << "-----------------------" << std::endl;
+	std::cout << "This is the sell menu!" << std::endl;
+	std::cout << "-----------------------" << std::endl;
+	std::cout << std::endl;
+
 	std::cout << "Here are all the properties on which you can sell buildings!" << std::endl;
 	for (int i = 0; i < validPropsForBuilding.getSize(); i++) {
 		validPropsForBuilding[i]->showProperty();
@@ -40,6 +41,7 @@ void SellCommand::execute() const
 	while (true) {
 		bool readyToSell = true;
 		while (true) {
+			std::cout << std::endl;
 			std::cout << "Ready to sell? Type 'yes' or 'no'" << std::endl;
 			MyString answer;
 			std::cin >> answer;
@@ -98,10 +100,12 @@ void SellCommand::execute() const
 		}
 
 		if (!otherPropsReady) {
+			std::cout << std::endl;
 			std::cout << "You have selected " << propToSellOn->getName() << " of color " << (int)propToSellOn->getColorSet() << " which has " << propToSellOn->getBuildsCount() << " buildings." << std::endl;
 			std::cout << "But other properties of color " << (int)propToSellOn->getColorSet() << " have " << propToSellOn->getBuildsCount() + 1 << " buildings." << std::endl;
 			std::cout << "Make sure all properties of the same color have the same amount of builds before selling some!" << std::endl;
 			std::cout << "Try again by selecting an eligible property." << std::endl;
+			std::cout << std::endl;
 			continue;
 		}
 
@@ -111,6 +115,7 @@ void SellCommand::execute() const
 		size_t priceToPay = isHouse ? propToSellOn->getHousePrice() / GameConstants::HALF_PRICE_MULTIPLIER : propToSellOn->getHotelPrice() / GameConstants::HALF_PRICE_MULTIPLIER;
 		MyString building = isHouse ? "house" : "hotel";
 
+		std::cout << std::endl;
 		std::cout << "Are you sure you want to sell a " << building << " for $" << priceToPay << " on " << propToSellOn->getName() << std::endl;
 		std::cout << "Type 'yes' or 'no'" << std::endl;
 
@@ -134,8 +139,10 @@ void SellCommand::execute() const
 
 		propToSellOn->decreaseRentTier();
 		player.addMoney(priceToPay);
+		std::cout << std::endl;
 		std::cout << "You successfully sold a " << (isHouse ? "house" : "hotel") << " on " << propToSellOn->getName() << " which cost $" << priceToPay << std::endl;
 		std::cout << "Its rent is now $" << propToSellOn->getRent() << std::endl;
+		std::cout << std::endl;
 	}
 	std::cout << "You just finished selling! You can always come back as long as you are not in jail!" << std::endl;
 }

@@ -3,14 +3,9 @@
 void GoBackThreeSpacesEffect::execute(Player& player)
 {
 	int currentPos = player.getCurrentPosition();
-	int movePos = currentPos - 3;
-	if (3 > currentPos) {
-		movePos = GameConstants::BOARD_SIZE - (3 - currentPos);
+	int movePos = currentPos - GameConstants::THREE_STEPS;
+	if (GameConstants::THREE_STEPS > currentPos) {
+		movePos = GameConstants::BOARD_SIZE - (GameConstants::THREE_STEPS - currentPos);
 	}
 	player.moveTo(movePos);
-}
-
-CardEffectStrategy* GoBackThreeSpacesEffect::clone() const
-{
-	return new GoBackThreeSpacesEffect(*this);
 }

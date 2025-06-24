@@ -10,6 +10,5 @@ class MultiplePaymentEffect : public CardEffectStrategy
 public:
 	MultiplePaymentEffect(int amount);
 	void execute(Player& player) override;
-	CardEffectStrategy* clone() const override;
 };
 

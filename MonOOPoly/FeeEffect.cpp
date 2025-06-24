@@ -18,8 +18,3 @@ void FeeEffect::execute(Player& player)
 		player.setOwedMoney(amount);
 	}
 }
-
-CardEffectStrategy* FeeEffect::clone() const
-{
-	return new FeeEffect(*this);
-}

@@ -8,5 +8,4 @@ class GoToLocationEffect : public CardEffectStrategy
 public:
 	GoToLocationEffect(size_t locationIndex);
 	void execute(Player& player) override;
-	CardEffectStrategy* clone() const override;
 };

@@ -24,8 +24,3 @@ void GoToJailField::loadFromBinary(std::ifstream& ifs)
 {
 	return;
 }
-
-Field* GoToJailField::clone() const
-{
-	return new GoToJailField(*this);
-}

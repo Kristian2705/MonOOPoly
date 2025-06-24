@@ -14,10 +14,8 @@ class Property : public Field
 	size_t hotelPrice;
 	ColorSet colorSet;
 public:
-	//Constructors for later
 	Property() = default;
-	Property(int boardIndex, const MyString& name, const MyString& abbreviation, int price, const size_t* rentTiers, size_t housePrice, size_t hotelPrice ,ColorSet colorSet);
-	Property(Player* owner, int boardIndex, const MyString& name, const MyString& abbreviation, int price, int rentTierIndex, const size_t* rentTiers, size_t housePrice, size_t hotelPrice, ColorSet colorSet);
+	Property(int boardIndex, const MyString& name, const MyString& abbreviation, int price, const size_t* rentTiers, size_t housePrice, size_t hotelPrice , ColorSet colorSet);
 
 	Player* getOwner();
 	int getPrice() const;
@@ -28,7 +26,6 @@ public:
 	size_t getHousePrice() const;
 	size_t getHotelPrice() const;
 
-	//Mortgage function later
 	void mortgage();
 	void showProperty() const;
 	void removeOwner();
@@ -39,6 +36,5 @@ public:
 	void applyEffect(Player& player) override;
 	void saveToBinary(std::ofstream& ofs) const override;
 	void loadFromBinary(std::ifstream& ifs) override;
-	Field* clone() const override;
 };
 

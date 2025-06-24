@@ -19,8 +19,3 @@ void GoField::loadFromBinary(std::ifstream& ifs)
 {
 	return;
 }
-
-Field* GoField::clone() const
-{
-	return new GoField(*this);
-}

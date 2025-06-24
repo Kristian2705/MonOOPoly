@@ -6,6 +6,5 @@ class GoToJailEffect : public CardEffectStrategy
 {
 public:
 	void execute(Player& player) override;
-	CardEffectStrategy* clone() const override;
 };
 

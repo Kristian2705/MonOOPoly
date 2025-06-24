@@ -3,7 +3,6 @@
 #include "RepairEffect.h"
 #include "FeeEffect.h"
 #include "MultiplePaymentEffect.h"
-#include "AdvanceToGoEffect.h"
 #include "GoBackThreeSpacesEffect.h"
 #include "GetOutOfJailEffect.h"
 #include "GoToJailEffect.h"
@@ -23,7 +22,7 @@ void CardDeck::loadCards()
 {
 	//CC 17
 	cards.push(new Card("Advance to \"Go\". (Collect $200)",
-		std::make_unique<AdvanceToGoEffect>()));
+		std::make_unique<GoToLocationEffect>(GameConstants::GO_FIELD_INDEX)));
 
 	cards.push(new Card("You are assessed for street repairs: Pay $40 per house and $115 per hotel you own",
 		std::make_unique<RepairEffect>(GameConstants::ASSESSED_HOUSE_REPAIR_PRICE, GameConstants::ASSESSED_HOTEL_REPAIR_PRICE)));
@@ -55,7 +54,7 @@ void CardDeck::loadCards()
 	cards.push(new Card("You inherit $100.",
 		std::make_unique<ReceivePaymentEffect>(GameConstants::INHERITANCE_REWARD)));
 
-	cards.push(new Card("Life insurance matures – Collect $100.",
+	cards.push(new Card("Life insurance matures - Collect $100.",
 		std::make_unique<ReceivePaymentEffect>(GameConstants::LIFE_INSURANCE)));
 
 	cards.push(new Card("From sale of stock you get $50.",
@@ -75,7 +74,7 @@ void CardDeck::loadCards()
 
 	//Chance 15
 	cards.push(new Card("Advance to \"Go\". (Collect $200)",
-		std::make_unique<AdvanceToGoEffect>()));
+		std::make_unique<GoToLocationEffect>(GameConstants::GO_FIELD_INDEX)));
 
 	cards.push(new Card("Advance to Illinois Ave. If you pass Go, collect $200.",
 		std::make_unique<GoToLocationEffect>(GameConstants::ILLINOIS_LOCATION)));
@@ -83,10 +82,10 @@ void CardDeck::loadCards()
 	cards.push(new Card("Advance to St. Charles Place. If you pass Go, collect $200.",
 		std::make_unique<GoToLocationEffect>(GameConstants::ST_CHARLES_LOCATION)));
 
-	cards.push(new Card("Advance token to the nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total 10 times the amount thrown.",
+	cards.push(new Card("Advance token to the nearest Utility. If unowned, you may buy it from the Bank.",
 		std::make_unique<GoToNearestUtilityEffect>()));
 
-	cards.push(new Card("Advance to the nearest Railroad. If unowned, you may buy it from the Bank. If owned, pay owner twice the rent to which they are otherwise entitled.",
+	cards.push(new Card("Advance to the nearest Railroad. If unowned, you may buy it from the Bank.",
 		std::make_unique<GoToNearestRailroadEffect>()));
 
 	cards.push(new Card("Get out of Jail Free. This card may be kept until needed.",

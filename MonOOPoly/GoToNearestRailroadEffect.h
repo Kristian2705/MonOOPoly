@@ -6,6 +6,5 @@ class GoToNearestRailroadEffect : public CardEffectStrategy
 {
 public:
 	void execute(Player& player) override;
-	CardEffectStrategy* clone() const override;
 };
 

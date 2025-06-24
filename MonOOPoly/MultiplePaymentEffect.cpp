@@ -26,8 +26,3 @@ void MultiplePaymentEffect::execute(Player& player)
 		}
 	}
 }
-
-CardEffectStrategy* MultiplePaymentEffect::clone() const
-{
-	return new MultiplePaymentEffect(*this);
-}

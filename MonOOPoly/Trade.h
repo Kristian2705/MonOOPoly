@@ -23,9 +23,11 @@ class Trade
 	int moneyToGive = 0;
 public:
 	Trade() = default;
+
 	void show() const;
 	void clear();
 	void initiate();
+
 	friend class TradeCommand;
 };
 

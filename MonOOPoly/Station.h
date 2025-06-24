@@ -7,7 +7,6 @@ class Station : public Field
 	size_t rentTiers[GameConstants::RENT_TIERS_STATION_COUNT];
 	int rentTierIndex;
 public:
-	//Contructors for later
 	Station(int boardIndex, const MyString& name, const MyString& abbreviation);
 	
 	int getRentTierIndex() const;
@@ -26,5 +25,4 @@ public:
 	void applyEffect(Player& player) override;
 	void saveToBinary(std::ofstream& ofs) const override;
 	void loadFromBinary(std::ifstream& ifs) override;
-	Field* clone() const override;
 };

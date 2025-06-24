@@ -20,18 +20,24 @@ void RollDiceCommand::execute() const
 
 	if (playerOnTurn.isInJail()) {
 		if (game->getPairStatus()) {
+
 			playerOnTurn.setJailStatus();
+
 			game->resetPairStatus();
+
 			playerOnTurn.moveTo(playerOnTurn.getCurrentPosition() + total);
 		}
 		else {
 			playerOnTurn.decreaseTimesLeft();
+
 			std::cout << "Try next turn (rolls left: " << playerOnTurn.getTimesLeft() << ") or pay $50." << std::endl;
+
 			if (playerOnTurn.getTimesLeft() == 0) {
 				playerOnTurn.setJailStatus();
 			}
 		}
 		return;
 	}
+
 	playerOnTurn.moveTo(playerOnTurn.getCurrentPosition() + total);
 }

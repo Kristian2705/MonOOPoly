@@ -19,8 +19,3 @@ void GoToNearestRailroadEffect::execute(Player& player)
 
 	player.moveTo(moveToPos);
 }
-
-CardEffectStrategy* GoToNearestRailroadEffect::clone() const
-{
-	return new GoToNearestRailroadEffect(*this);
-}

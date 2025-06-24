@@ -18,8 +18,3 @@ void ParkingField::loadFromBinary(std::ifstream& ifs)
 {
 	return;
 }
-
-Field* ParkingField::clone() const
-{
-	return new ParkingField(*this);
-}

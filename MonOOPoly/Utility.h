@@ -7,7 +7,6 @@ class Utility : public Field
 	size_t price = GameConstants::RAILROAD_PRICE;
 	int rentMultiplier = GameConstants::UTILITY_FIRST_MULTIPLIER;
 public:
-	//Constructors for later
 	Utility(int boardIndex, const MyString& name, const MyString& abbreviation);
 	size_t getPrice() const;
 	size_t getRentMultiplier() const;
@@ -23,6 +22,5 @@ public:
 	void applyEffect(Player& player) override;
 	void saveToBinary(std::ofstream& ofs) const override;
 	void loadFromBinary(std::ifstream& ifs) override;
-	Field* clone() const override;
 };
 

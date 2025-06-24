@@ -127,7 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AdvanceToGoEffect.cpp" />
     <ClCompile Include="BankruptCommand.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="BuildCommand.cpp" />
@@ -182,7 +181,6 @@
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AdvanceToGoEffect.h" />
     <ClInclude Include="BankruptCommand.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="BuildCommand.h" />

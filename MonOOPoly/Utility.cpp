@@ -123,7 +123,6 @@ void Utility::applyEffect(Player& player)
 
 void Utility::saveToBinary(std::ofstream& ofs) const
 {
-	ofs.write((const char*)(&rentMultiplier), sizeof(rentMultiplier));
 	if (owner) 
 	{
 		int ownerId = owner->getId();
@@ -138,7 +137,6 @@ void Utility::saveToBinary(std::ofstream& ofs) const
 
 void Utility::loadFromBinary(std::ifstream& ifs)
 {
-	ifs.read((char*)(&rentMultiplier), sizeof(rentMultiplier));
 	int ownerId;
 	ifs.read((char*)(&ownerId), sizeof(ownerId));
 	if (ownerId != GameConstants::INVALID_PLAYER_ID)
@@ -151,9 +149,4 @@ void Utility::loadFromBinary(std::ifstream& ifs)
 	{
 		owner = nullptr;
 	}
-}
-
-Field* Utility::clone() const
-{
-	return new Utility(*this);
 }

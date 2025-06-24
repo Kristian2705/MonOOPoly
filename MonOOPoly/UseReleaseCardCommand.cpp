@@ -19,12 +19,16 @@ void UseReleaseCardCommand::execute() const
 
 	player.removeReleaseCard();
 	player.setJailStatus();
+	std::cout << std::endl;
 	std::cout << "You successfully used a release card. You have " << player.getCards() << " cards left." << std::endl;
+	std::cout << std::endl;
 
 	if (game->getRolledStatus()) {
 		std::cout << "You are free. You'll will be able to roll next turn." << std::endl;
+		std::cout << std::endl;
 	}
 	else {
 		std::cout << "You are free. You can now roll the dice!" << std::endl;
+		std::cout << std::endl;
 	}
 }

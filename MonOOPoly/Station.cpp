@@ -130,7 +130,6 @@ void Station::applyEffect(Player& player)
 
 void Station::saveToBinary(std::ofstream& ofs) const
 {
-	ofs.write((const char*)(&rentTierIndex), sizeof(rentTierIndex));
 	if (owner) 
 	{
 		int ownerId = owner->getId();
@@ -145,7 +144,6 @@ void Station::saveToBinary(std::ofstream& ofs) const
 
 void Station::loadFromBinary(std::ifstream& ifs)
 {
-	ifs.read((char*)(&rentTierIndex), sizeof(rentTierIndex));
 	int ownerId;
 	ifs.read((char*)(&ownerId), sizeof(ownerId));
 	if (ownerId != GameConstants::INVALID_PLAYER_ID) 
@@ -158,9 +156,4 @@ void Station::loadFromBinary(std::ifstream& ifs)
 	{
 		owner = nullptr;
 	}
-}
-
-Field* Station::clone() const
-{
-	return new Station(*this);
 }

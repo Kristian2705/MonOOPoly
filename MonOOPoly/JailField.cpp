@@ -18,8 +18,3 @@ void JailField::loadFromBinary(std::ifstream& ifs)
 {
 	return;
 }
-
-Field* JailField::clone() const
-{
-	return new JailField(*this);
-}

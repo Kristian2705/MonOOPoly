@@ -48,7 +48,9 @@ void Player::addProperty(Property* property)
 		case ColorSet::Blue:
 			if (propsByColor.getSize() == GameConstants::FIRST_AND_LAST_PROPERTIES_COUNT_BY_COLOR) {
 				for (int i = 0; i < propsByColor.getSize(); i++) {
-					propsByColor[i]->increaseRentTier();
+					if(propsByColor[i]->getRentTierIndex() == GameConstants::COLOR_SET_RENT_INDEX - 1) {
+						propsByColor[i]->increaseRentTier();
+					}
 				}
 				std::cout << "You have collected all properties of color " << (int)property->getColorSet() << std::endl;
 				std::cout << "You can now build houses and later hotels on the properties of this color to increase the rent!" << std::endl;
@@ -57,7 +59,9 @@ void Player::addProperty(Property* property)
 		default:
 			if (propsByColor.getSize() == GameConstants::REST_PROPERTIES_COUNT_BY_COLOR_) {
 				for (int i = 0; i < propsByColor.getSize(); i++) {
-					propsByColor[i]->increaseRentTier();
+					if (propsByColor[i]->getRentTierIndex() == GameConstants::COLOR_SET_RENT_INDEX - 1) {
+						propsByColor[i]->increaseRentTier();
+					}
 				}
 				std::cout << "You have collected all properties of color " << (int)property->getColorSet() << std::endl;
 				std::cout << "You can now build houses and later hotels on the properties of this color to increase the rent!" << std::endl;
@@ -213,7 +217,7 @@ void Player::setOwedMoney(int amount)
 void Player::resign()
 {
 	inGame = false;
-	position = GameConstants::GO_FIELD_INDEX;
+	position = GameConstants::INVALID_POSITION;
 	inJail = false;
 	inDebt = false;
 	owedMoney = 0;

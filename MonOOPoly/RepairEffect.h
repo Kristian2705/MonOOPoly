@@ -9,6 +9,5 @@ class RepairEffect : public CardEffectStrategy
 public:
 	RepairEffect(int houseCost, int hotelCost);
 	void execute(Player& player) override;
-	CardEffectStrategy* clone() const override;
 };
 

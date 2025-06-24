@@ -299,10 +299,6 @@ void TradeCommand::execute() const
 
 	Player& playerOnTurn = game->getPlayerOnTurn();
 
-	//if (playerOnTurn.isInJail()) {
-	//	throw std::invalid_argument("Get out of jail first and then try to trade with others!");
-	//}
-
 	while (true)
 	{
 		std::cout << "-----------------------" << std::endl;
@@ -311,6 +307,7 @@ void TradeCommand::execute() const
 		std::cout << std::endl;
 		std::cout << "First you have to choose which player you want to trade with or go back!" << std::endl;
 		std::cout << "Please enter the index of the player you want to trade with!" << std::endl;
+		std::cout << std::endl;
 		std::cout << "Here is a list with all eligible player for trade with their indices:" << std::endl;
 
 		MyVector<Player>& players = game->getPlayers();
@@ -359,6 +356,7 @@ void TradeCommand::execute() const
 			break;
 		}
 
+		std::cout << std::endl;
 		std::cout << "Are you sure you want to trade with " << trade->receiver->getName() << " with index " << trade->receiver->getId() << "?" << std::endl;
 		std::cout << "Type 'yes' or 'no'" << std::endl;
 
@@ -380,9 +378,11 @@ void TradeCommand::execute() const
 			continue;
 		}
 
+		std::cout << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "You are now in a trade with " << trade->receiver->getName() << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
+		std::cout << std::endl;
 		std::cout << "Here are his stats: " << std::endl;
 
 		trade->receiver->showInfo();
@@ -436,8 +436,9 @@ void TradeCommand::execute() const
 			}
 
 			if (shouldCancel) {
-				//'yes/no' confirmation to add
+				std::cout << std::endl;
 				std::cout << "You canceled the trade window with " << trade->receiver->getName() << std::endl;
+				std::cout << std::endl;
 				clearTrade();
 				break;
 			}
@@ -495,8 +496,9 @@ void TradeCommand::execute() const
 				}
 
 				if (shouldGoBack) {
-					//'yes/no' confirmation to add
+					std::cout << std::endl;
 					std::cout << "You went back! Select what you want to get from " << trade->receiver->getName() << std::endl;
+					std::cout << std::endl;
 					break;
 				}
 
@@ -528,11 +530,15 @@ void TradeCommand::execute() const
 				}
 
 				if (!shouldSend) {
+					std::cout << std::endl;
 					std::cout << "You have been send to the previous tab! Edit what you need!" << std::endl;
+					std::cout << std::endl;
 					continue;
 				}
 
+				std::cout << std::endl;
 				std::cout << "Trade sent successfully to " << trade->receiver->getName() << "!" << std::endl;
+				std::cout << std::endl;
 
 				std::cout << "Now its up to you " << trade->receiver->getName() << "!" << std::endl;
 
@@ -560,18 +566,24 @@ void TradeCommand::execute() const
 				}
 
 				if (!isAccepted) {
+					std::cout << std::endl;
 					std::cout << "Trade declined!" << std::endl;
+					std::cout << std::endl;
 					return;
 				}
 
 				trade->initiate();
+				std::cout << std::endl;
 				std::cout << "Trade accepted successfully!" << std::endl;
+				std::cout << std::endl;
 				return;
 			}
 		}
 	}
 
+	std::cout << std::endl;
 	std::cout << "You successfully exited the trading menu!" << std::endl;
+	std::cout << std::endl;
 }
 
 TradeCommand::~TradeCommand()

@@ -17,8 +17,3 @@ void GoToNearestUtilityEffect::execute(Player& player)
 
 	player.moveTo(moveToPos);
 }
-
-CardEffectStrategy* GoToNearestUtilityEffect::clone() const
-{
-	return new GoToNearestUtilityEffect(*this);
-}

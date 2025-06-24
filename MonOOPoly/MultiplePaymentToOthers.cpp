@@ -31,9 +31,4 @@ void MultiplePaymentToOthers::execute(Player & player)
 	}
 }
 
-CardEffectStrategy* MultiplePaymentToOthers::clone() const
-{
-	return new MultiplePaymentToOthers(*this);
-}
-
 

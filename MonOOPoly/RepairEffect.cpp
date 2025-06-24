@@ -35,8 +35,3 @@ void RepairEffect::execute(Player& player)
 		player.setOwedMoney(sumToPay);
 	}
 }
-
-CardEffectStrategy* RepairEffect::clone() const
-{
-	return new RepairEffect(*this);
-}

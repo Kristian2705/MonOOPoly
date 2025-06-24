@@ -22,6 +22,7 @@ void MortgageCommand::mortgageProperty() const
 		return;
 	}
 
+	std::cout << std::endl;
 	std::cout << "Here are all the eligible properties for mortgaging!" << std::endl;
 	for (int i = 0; i < validPropsForBuilding.getSize(); i++) {
 		validPropsForBuilding[i]->showProperty();
@@ -31,6 +32,7 @@ void MortgageCommand::mortgageProperty() const
 	while (true) {
 		bool readyToMortgage = true;
 		while (true) {
+			std::cout << std::endl;
 			std::cout << "Ready to mortgage a property? Type 'yes' or 'no'" << std::endl;
 			MyString answer;
 			std::cin >> answer;
@@ -51,6 +53,7 @@ void MortgageCommand::mortgageProperty() const
 		Property* propToMortgage = nullptr;
 		int position = 0;
 		while (true) {
+			std::cout << std::endl;
 			std::cout << "You currently have $" << player.getMoney() << std::endl;
 			std::cout << "Please enter the position of the property you'd like to mortgage!" << std::endl;
 
@@ -75,12 +78,15 @@ void MortgageCommand::mortgageProperty() const
 		}
 
 		if (!propToMortgage->getOwner()) {
+			std::cout << std::endl;
 			std::cout << "You already mortgaged " << propToMortgage->getName() << std::endl;
 			std::cout << "Please select an eligible property for mortgaging!" << std::endl;
+			std::cout << std::endl;
 			continue;
 		}
 
 		size_t rewardForMortgage = propToMortgage->getPrice() / GameConstants::HALF_PRICE_MULTIPLIER;
+		std::cout << std::endl;
 		std::cout << "Are you sure you want to mortgage " << propToMortgage->getName() << " for $" << rewardForMortgage << std::endl;
 		std::cout << "Type 'yes' or 'no'" << std::endl;
 
@@ -109,21 +115,24 @@ void MortgageCommand::mortgageProperty() const
 					otherPropsReady = false;
 					break;
 				}
-				//might add a check: ownedProps[i]->getRentTierIndex() == 0
 				ownedProps[i]->decreaseRentTier();
 			}
 		}
 
 		if (!otherPropsReady) {
+			std::cout << std::endl;
 			std::cout << "You have properties of this color that have buildings. Make sure to sell everything on your color set before mortgaging!" << std::endl;
+			std::cout << std::endl;
 			continue;
 		}
 
 		propToMortgage->mortgage();
 		player.addMoney(rewardForMortgage);
 
+		std::cout << std::endl;
 		std::cout << "You successfully mortgaged " << propToMortgage->getName() << " for $" << rewardForMortgage << std::endl;
 		std::cout << propToMortgage->getName() << " is now owned by the bank. Whoever steps on it may buy it or skip it." << std::endl;
+		std::cout << std::endl;
 	}
 }
 
@@ -137,6 +146,7 @@ void MortgageCommand::mortgageStation() const
 		return;
 	}
 
+	std::cout << std::endl;
 	std::cout << "Here are your stations!" << std::endl;
 	for (int i = 0; i < ownedStations.getSize(); i++) {
 		ownedStations[i]->showStation();
@@ -146,12 +156,15 @@ void MortgageCommand::mortgageStation() const
 	while (true)
 	{
 		if (!ownedStations.getSize()) {
+			std::cout << std::endl;
 			std::cout << "You currently don't have any stations so you can't mortgage them!" << std::endl;
+			std::cout << std::endl;
 			break;
 		}
 
 		bool readyToMortgage = true;
 		while (true) {
+			std::cout << std::endl;
 			std::cout << "Ready to mortgage a stations? Type 'yes' or 'no'" << std::endl;
 			MyString answer;
 			std::cin >> answer;
@@ -172,6 +185,7 @@ void MortgageCommand::mortgageStation() const
 		Station* stationToMortgage = nullptr;
 		int position = 0;
 		while (true) {
+			std::cout << std::endl;
 			std::cout << "You currently have $" << player.getMoney() << std::endl;
 			std::cout << "Please enter the position of the station you'd like to mortgage!" << std::endl;
 
@@ -196,6 +210,7 @@ void MortgageCommand::mortgageStation() const
 		}
 
 		size_t rewardForMortgage = stationToMortgage->getPrice() / GameConstants::HALF_PRICE_MULTIPLIER;
+		std::cout << std::endl;
 		std::cout << "Are you sure you want to mortgage " << stationToMortgage->getName() << " for $" << rewardForMortgage << std::endl;
 		std::cout << "Type 'yes' or 'no'" << std::endl;
 
@@ -224,8 +239,10 @@ void MortgageCommand::mortgageStation() const
 			ownedStations[i]->decreaseRentTier();
 		}
 
+		std::cout << std::endl;
 		std::cout << "You successfully mortgaged " << stationToMortgage->getName() << " for $" << rewardForMortgage << std::endl;
 		std::cout << stationToMortgage->getName() << " is now owned by the bank. Whoever steps on it may buy it or skip it." << std::endl;
+		std::cout << std::endl;
 	}
 }
 
@@ -239,6 +256,7 @@ void MortgageCommand::mortgageUtility() const
 		return;
 	}
 
+	std::cout << std::endl;
 	std::cout << "Here are your utilities!" << std::endl;
 	for (int i = 0; i < ownedUtilities.getSize(); i++) {
 		ownedUtilities[i]->showUtility();
@@ -248,12 +266,15 @@ void MortgageCommand::mortgageUtility() const
 	while (true)
 	{
 		if (!ownedUtilities.getSize()) {
+			std::cout << std::endl;
 			std::cout << "You currently don't have any utilities so you can't mortgage them!" << std::endl;
+			std::cout << std::endl;
 			break;
 		}
 
 		bool readyToMortgage = true;
 		while (true) {
+			std::cout << std::endl;
 			std::cout << "Ready to mortgage a utility? Type 'yes' or 'no'" << std::endl;
 			MyString answer;
 			std::cin >> answer;
@@ -274,6 +295,7 @@ void MortgageCommand::mortgageUtility() const
 		Utility* utilityToMortage = nullptr;
 		int position = 0;
 		while (true) {
+			std::cout << std::endl;
 			std::cout << "You currently have $" << player.getMoney() << std::endl;
 			std::cout << "Please enter the position of the utility you'd like to mortgage!" << std::endl;
 
@@ -298,6 +320,7 @@ void MortgageCommand::mortgageUtility() const
 		}
 
 		size_t rewardForMortgage = utilityToMortage->getPrice() / GameConstants::HALF_PRICE_MULTIPLIER;
+		std::cout << std::endl;
 		std::cout << "Are you sure you want to mortgage " << utilityToMortage->getName() << " for $" << rewardForMortgage << std::endl;
 		std::cout << "Type 'yes' or 'no'" << std::endl;
 
@@ -326,8 +349,10 @@ void MortgageCommand::mortgageUtility() const
 			ownedUtilities[i]->decreaseRentMultiplier();
 		}
 
+		std::cout << std::endl;
 		std::cout << "You successfully mortgaged " << utilityToMortage->getName() << " for $" << rewardForMortgage << std::endl;
 		std::cout << utilityToMortage->getName() << " is now owned by the bank. Whoever steps on it may buy it or skip it." << std::endl;
+		std::cout << std::endl;
 	}
 }
 
@@ -340,9 +365,10 @@ void MortgageCommand::execute() const
 
 	Player& player = game->getPlayerOnTurn();
 
-	//if (player.isInJail()) {
-	//	throw std::invalid_argument("Get out of jail first and then try mortgaging!");
-	//}
+	std::cout << "-----------------------" << std::endl;
+	std::cout << "This is the mortgage menu!" << std::endl;
+	std::cout << "-----------------------" << std::endl;
+	std::cout << std::endl;
 
 	while (true) {
 		std::cout << "Here is a list of the things you can mortgage. Enter a number based on the field you want to sell: " << std::endl;
@@ -367,6 +393,7 @@ void MortgageCommand::execute() const
 				mortgageUtility();
 				break;
 			case 4:
+				std::cout << std::endl;
 				std::cout << "You successfully exited the 'mortgage' menu!" << std::endl;
 				return;
 			default:

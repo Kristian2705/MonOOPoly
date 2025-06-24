@@ -16,9 +16,6 @@
     <Filter Include="Header Files\Commands">
       <UniqueIdentifier>{032fe37e-7775-4b76-ba84-0e1fa63a404d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Repositories">
-      <UniqueIdentifier>{19c46045-ce00-4fba-82c1-9c39a0aded47}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Entities">
       <UniqueIdentifier>{816beec8-79a3-4955-bffc-de4bb807b14f}</UniqueIdentifier>
     </Filter>
@@ -27,9 +24,6 @@
     </Filter>
     <Filter Include="Source Files\Entities">
       <UniqueIdentifier>{d97e96de-9485-40b3-b66e-a0d0f86bc92d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Repositories">
-      <UniqueIdentifier>{5ca6f11f-81ff-4a5e-926c-a212f505b427}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Utilities">
       <UniqueIdentifier>{6ab7e7d9-6311-4c7f-a7be-1187e3bc6e8e}</UniqueIdentifier>
@@ -134,9 +128,6 @@
     </ClCompile>
     <ClCompile Include="Trade.cpp">
       <Filter>Source Files\Entities\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="AdvanceToGoEffect.cpp">
-      <Filter>Source Files\Entities\Cards\Effects\Move</Filter>
     </ClCompile>
     <ClCompile Include="GetOutOfJailEffect.cpp">
       <Filter>Source Files\Entities\Cards\Effects\Move</Filter>
@@ -301,9 +292,6 @@
     </ClInclude>
     <ClInclude Include="Trade.h">
       <Filter>Header Files\Entities\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="AdvanceToGoEffect.h">
-      <Filter>Header Files\Entities\Cards\Effects\Move</Filter>
     </ClInclude>
     <ClInclude Include="GetOutOfJailEffect.h">
       <Filter>Header Files\Entities\Cards\Effects\Move</Filter>
