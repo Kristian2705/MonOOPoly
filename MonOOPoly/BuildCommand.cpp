@@ -9,10 +9,6 @@ void BuildCommand::execute() const
 
 	Player& player = game->getPlayerOnTurn();
 
-	if (player.isInJail()) {
-		throw std::invalid_argument("Get out of jail first and then build!");
-	}
-
 	const MyVector<Property*>& ownedProps = player.getOwnedProperties();
 
 	if (!ownedProps.getSize()) {

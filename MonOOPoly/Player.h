@@ -4,14 +4,13 @@
 #include "Station.h"
 #include "Utility.h"
 #include <memory>
-//class Card;
 
 class Player
 {
 	static int nextId;
 	int id;
 	int money;
-	int owedMoney;
+	int owedMoney = GameConstants::INITIAL_OWED_MONEY;
 	MyString name;
 	size_t position;
 	bool inGame = true;
@@ -24,12 +23,8 @@ class Player
 	MyVector<Utility*> ownedUtilities;
 	MyVector<Station*> ownedStations;
 public:
-	//Constructors for later
 	Player() = default;
 	Player(const MyString& name, int money = GameConstants::INITIAL_MONEY);
-	Player(int id, const MyString& name, int money, int owedMoney, size_t position,
-		bool inJail, bool isInDebt, int timesLeftToRollInJail, int releaseCards, Player* inDebtTo,
-		const MyVector<Property*>& properties, const MyVector<Station*>& stations, const MyVector<Utility*>& utilities);
 
 	int getId() const;
 	int getMoney() const;

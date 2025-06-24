@@ -299,9 +299,9 @@ void TradeCommand::execute() const
 
 	Player& playerOnTurn = game->getPlayerOnTurn();
 
-	if (playerOnTurn.isInJail()) {
-		throw std::invalid_argument("Get out of jail first and then try to trade with others!");
-	}
+	//if (playerOnTurn.isInJail()) {
+	//	throw std::invalid_argument("Get out of jail first and then try to trade with others!");
+	//}
 
 	while (true)
 	{

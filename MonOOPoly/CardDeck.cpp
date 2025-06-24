@@ -73,7 +73,7 @@ void CardDeck::loadCards()
 	cards.push(new Card("It is your birthday. Collect $10 from every player.",
 		std::make_unique<MultiplePaymentEffect>(GameConstants::BIRTHDAY_REWARD)));
 
-	////Chance 15
+	//Chance 15
 	cards.push(new Card("Advance to \"Go\". (Collect $200)",
 		std::make_unique<AdvanceToGoEffect>()));
 

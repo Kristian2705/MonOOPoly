@@ -7,6 +7,7 @@
 #include "RollDiceCommand.h"
 #include "InvalidCommand.h"
 #include "SeeInfoCommand.h"
+#include "SeeMapCommand.h"
 #include "EndTurnCommand.h"
 #include "PayForReleaseCommand.h"
 #include "BankruptCommand.h"

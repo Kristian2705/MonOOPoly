@@ -21,7 +21,7 @@ namespace GameConstants {
 	const int JAIL_FIELD_INDEX = 10;
 	const int PASS_GO_BONUS = 200;
 	const int PRINT_BOARD_WIDTH = 11;
-	const int CELL_WIDTH = 7;
+	const int CELL_WIDTH = 20;
 	const int ILLINOIS_LOCATION = 24;
 	const int ST_CHARLES_LOCATION = 11;
 	const int TOTAL_STATIONS = 4;
@@ -71,10 +71,5 @@ namespace GameConstants {
 	const int HOTEL_BUILDING_NUM = 5;
 	const int HALF_PRICE_MULTIPLIER = 2;
 	const int RELEASE_CARDS_INITIAL_VALUE = 0;
+	const int INITIAL_OWED_MONEY = 0;
 };
-
-namespace FileFunctions {
-	void saveMyStringToBinaryFile(std::ofstream& ofs, const MyString& str);
-	MyString loadMyStringFromBinaryFile(std::ifstream& ifs);
-	size_t getFileSize(std::ifstream& ifs);
-}

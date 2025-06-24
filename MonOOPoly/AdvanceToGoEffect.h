@@ -1,7 +1,7 @@
 #pragma once
 #include "CardEffectStrategy.h"
 #include "Player.h"
-#include "ConstantsAndFunctions.h"
+#include "Constants.h"
 
 class AdvanceToGoEffect : public CardEffectStrategy
 {

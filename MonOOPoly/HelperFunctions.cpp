@@ -1,14 +1,13 @@
-#include "ConstantsAndFunctions.h"
-#include "MyString.h"
+#include "HelperFunctions.h"
 
-void FileFunctions::saveMyStringToBinaryFile(std::ofstream& ofs, const MyString& str)
+void HelperFunctions::saveMyStringToBinaryFile(std::ofstream& ofs, const MyString& str)
 {
 	int size = str.getSize();
 	ofs.write((const char*)(&size), sizeof(size));
 	ofs.write(str.c_str(), sizeof(char) * size);
 }
 
-MyString FileFunctions::loadMyStringFromBinaryFile(std::ifstream& ifs)
+MyString HelperFunctions::loadMyStringFromBinaryFile(std::ifstream& ifs)
 {
 	int size = 0;
 	ifs.read((char*)(&size), sizeof(size));
@@ -20,7 +19,7 @@ MyString FileFunctions::loadMyStringFromBinaryFile(std::ifstream& ifs)
 	return str;
 }
 
-size_t FileFunctions::getFileSize(std::ifstream& ifs)
+size_t HelperFunctions::getFileSize(std::ifstream& ifs)
 {
 	size_t currPos = ifs.tellg();
 	ifs.seekg(0, std::ios::end);

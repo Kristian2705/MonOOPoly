@@ -17,6 +17,7 @@ class Board
 	Board();
 	static Board* instance;
 	PolymorphicContainer<Field> fields;
+
 	void initializeBoard();
 	void printCell(const MyString& label) const;
 	void printTopRow() const;
@@ -25,6 +26,7 @@ class Board
 public:
 	static Board* getInstance();
 	static void freeInstance();
+
 	void printBoard() const;
 	void stepOn(size_t position, Player& player);
 	void saveToBinary(std::ofstream& ofs) const;

@@ -38,6 +38,7 @@ void BankruptCommand::execute() const
 						std::cout << "Press enter to exit the game..." << std::endl;
 						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 						std::cin.get();
+						game->truncateBinaryFiles();
 						throw std::overflow_error("You are always welcome to play again!");
 					}
 					game->endTurn();

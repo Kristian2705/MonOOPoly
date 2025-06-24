@@ -84,7 +84,7 @@
     <ClCompile Include="MonOOPoly.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ConstantsAndFunctions.h">
+    <ClCompile Include="Constants.h">
       <Filter>Header Files\Utilities</Filter>
     </ClCompile>
     <ClCompile Include="MyString.cpp">
@@ -120,9 +120,6 @@
     <ClCompile Include="Property.cpp">
       <Filter>Source Files\Entities\Fields</Filter>
     </ClCompile>
-    <ClCompile Include="Bank.cpp">
-      <Filter>Source Files\Entities\Base</Filter>
-    </ClCompile>
     <ClCompile Include="Board.cpp">
       <Filter>Source Files\Entities\Base</Filter>
     </ClCompile>
@@ -130,9 +127,6 @@
       <Filter>Source Files\Entities\Base</Filter>
     </ClCompile>
     <ClCompile Include="Monopoly.cpp">
-      <Filter>Source Files\Entities\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Mortgage.cpp">
       <Filter>Source Files\Entities\Base</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
@@ -231,9 +225,6 @@
     <ClCompile Include="PayDebtCommand.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
-    <ClCompile Include="ConstantsAndFunctions.cpp">
-      <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
     <ClCompile Include="NewGameCommand.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
@@ -241,6 +232,12 @@
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="SaveGameCommand.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="HelperFunctions.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="SeeMapCommand.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
   </ItemGroup>
@@ -290,9 +287,6 @@
     <ClInclude Include="Card.h">
       <Filter>Header Files\Entities\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="Bank.h">
-      <Filter>Header Files\Entities\Base</Filter>
-    </ClInclude>
     <ClInclude Include="Board.h">
       <Filter>Header Files\Entities\Base</Filter>
     </ClInclude>
@@ -300,9 +294,6 @@
       <Filter>Header Files\Entities\Base</Filter>
     </ClInclude>
     <ClInclude Include="Monopoly.h">
-      <Filter>Header Files\Entities\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Mortgage.h">
       <Filter>Header Files\Entities\Base</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
@@ -408,6 +399,12 @@
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="SaveGameCommand.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="HelperFunctions.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="SeeMapCommand.h">
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
   </ItemGroup>

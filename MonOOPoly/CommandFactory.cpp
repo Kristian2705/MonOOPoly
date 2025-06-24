@@ -20,6 +20,9 @@ Command* CommandFactory::readCommand(const MyString& commandType)
 	if (commandType == "see_info") {
 		return new SeeInfoCommand();
 	}
+	if (commandType == "see_map") {
+		return new SeeMapCommand();
+	}
 	if (commandType == "end_turn") {
 		return new EndTurnCommand();
 	}

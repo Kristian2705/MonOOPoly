@@ -2,9 +2,9 @@
 
 void Engine::run()
 {
-	//This will be for the new game command
 	Monopoly* game = Monopoly::getInstance();
-	//game->welcomePlayers();
+
+	game->showMainMenu();
 
 	while (true) {
 		MyString commandName;
@@ -12,6 +12,7 @@ void Engine::run()
 		std::cin >> commandName;
 
 		if (commandName == "exit") {
+			game->truncateBinaryFiles();
 			break;
 		}
 		try {

@@ -10,6 +10,7 @@ void SeeInfoCommand::execute() const
 	int index = 0;
 	std::cout << "Please enter which player's info you'd like to see by index" << std::endl;
 	for(int i = 0; i < game->getPlayers().getSize(); i++) {
+		//Might add a check for player in game
 		std::cout << i + 1 << ". " << game->getPlayer(i + 1).getName() << std::endl;
 	}
 	char buffer[GameConstants::BUFFER_CAPACITY];

@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Card.h"
 #include "Monopoly.h"
+#include "HelperFunctions.h"
 
 int Player::nextId = 1;
 
@@ -11,14 +12,6 @@ Player::Player(const MyString& name, int money)
 	this->ownedStations = MyVector<Station*>(GameConstants::MIN_CAPACITY);
 	this->ownedUtilities = MyVector<Utility*>(GameConstants::MIN_CAPACITY);
 }
-
-Player::Player(int id, const MyString& name, int money, int owedMoney, size_t position, 
-	bool inJail, bool isInDebt, int timesLeftToRollInJail, int releaseCards, Player* inDebtTo, 
-	const MyVector<Property*>& properties, const MyVector<Station*>& stations, const MyVector<Utility*>& utilities)
-	: id(id), name(name), money(money), owedMoney(owedMoney), position(position),
-	  inJail(inJail), inDebt(isInDebt), timesLeftToRollInJail(timesLeftToRollInJail), releaseCards(releaseCards),
-	inDebtTo(inDebtTo), ownedProperties(properties), ownedStations(stations), ownedUtilities(utilities)
-{ }
 
 int Player::getId() const
 {
@@ -41,8 +34,6 @@ void Player::addProperty(Property* property)
 	property->setOwner(this);
 
 	std::cout << name << ", " << property->getName() << " is now yours!" << std::endl;
-
-	//std::cout << "You successfully purchased " << property->getName() << " for $" << property->getPrice() << std::endl;
 
 	MyVector<Property*> propsByColor;
 	for (int i = 0; i < ownedProperties.getSize(); i++) {
@@ -79,8 +70,9 @@ void Player::addStation(Station* station)
 {
 	ownedStations.push_back(station);
 	station->setOwner(this);
+
 	std::cout << name << ", " << station->getName() << " is now yours!" << std::endl;
-	//std::cout << "You successfully purchased " << station->getName() << " for $" << station->getPrice() << std::endl;
+
 	int ownedStationsCount = ownedStations.getSize();
 	if (ownedStationsCount > 1) {
 		station->setRentTier(ownedStations[0]->getRentTierIndex());
@@ -88,6 +80,7 @@ void Player::addStation(Station* station)
 			ownedStations[i]->increaseRentTier();
 		}
 	}
+
 	std::cout << "You currently have " << ownedStationsCount << " stations. Their rent is $" << station->getRent() << std::endl;
 }
 
@@ -105,14 +98,16 @@ void Player::addUtility(Utility* utility)
 {
 	ownedUtilities.push_back(utility);
 	utility->setOwner(this);
+
 	std::cout << name << ", " << utility->getName() << " is now yours!" << std::endl;
-	//std::cout << "You successfully purchased " << utility->getName() << " for $" << utility->getPrice() << std::endl;
+
 	int ownedUtilitiesCount = ownedUtilities.getSize();
 	if (ownedUtilitiesCount > 1) {
 		for (int i = 0; i < ownedUtilitiesCount; i++) {
 			ownedUtilities[i]->increaseRentMultiplier();
 		}
 	}
+
 	std::cout << "You currently have " << ownedUtilitiesCount << " utilities. Their rent multiplier is " << utility->getRentMultiplier() << "x" << std::endl;
 }
 
@@ -264,8 +259,6 @@ void Player::resign()
 	ownedStations.clear();
 	ownedUtilities.clear();
 	money = 0;
-	
-	//Money transfer
 }
 
 size_t Player::getCurrentPosition() const
@@ -393,7 +386,7 @@ void Player::saveToBinary(std::ofstream& ofs) const
 	ofs.write((const char*)(&money), sizeof(money));
 	ofs.write((const char*)(&owedMoney), sizeof(owedMoney));
 
-	FileFunctions::saveMyStringToBinaryFile(ofs, name);
+	HelperFunctions::saveMyStringToBinaryFile(ofs, name);
 
 	ofs.write((const char*)(&position), sizeof(position));
 	ofs.write((const char*)(&inGame), sizeof(inGame));
@@ -420,7 +413,7 @@ void Player::loadFromBinary(std::ifstream& ifs)
 	this->id = id;
 	ifs.read((char*)(&money), sizeof(money));
 	ifs.read((char*)(&owedMoney), sizeof(owedMoney));
-	name = FileFunctions::loadMyStringFromBinaryFile(ifs);
+	name = HelperFunctions::loadMyStringFromBinaryFile(ifs);
 	ifs.read((char*)(&position), sizeof(position));
 	ifs.read((char*)(&inGame), sizeof(inGame));
 	ifs.read((char*)(&inJail), sizeof(inJail));

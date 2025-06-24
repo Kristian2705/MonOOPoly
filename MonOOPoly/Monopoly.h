@@ -1,5 +1,6 @@
 #pragma once
 #include "Board.h"
+#include "HelperFunctions.h"
 
 class Monopoly
 {
@@ -21,6 +22,8 @@ public:
 	static Monopoly* getInstance();
 	static void freeInstance();
 	void welcomePlayers();
+	void showMainMenu() const;
+	void showMap() const;
 	int rollDice();
 	void stepOnCard();
 	void endTurn();
@@ -31,6 +34,7 @@ public:
 	bool getRolledStatus() const;
 	bool getPairStatus() const;
 	int getPairsCount() const;
+	int getPlayerMaxIndex() const;
 	void resetPairStatus();
 	const Player& getPlayerOnTurn() const;
 	Player& getPlayerOnTurn();
@@ -41,5 +45,6 @@ public:
 	MyVector<Player>& getPlayers();
 	void saveToBinaryFile() const;
 	void loadFromBinaryFile();
+	void truncateBinaryFiles() const;
 };
 

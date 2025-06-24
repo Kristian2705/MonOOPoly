@@ -340,9 +340,9 @@ void MortgageCommand::execute() const
 
 	Player& player = game->getPlayerOnTurn();
 
-	if (player.isInJail()) {
-		throw std::invalid_argument("Get out of jail first and then try mortgaging!");
-	}
+	//if (player.isInJail()) {
+	//	throw std::invalid_argument("Get out of jail first and then try mortgaging!");
+	//}
 
 	while (true) {
 		std::cout << "Here is a list of the things you can mortgage. Enter a number based on the field you want to sell: " << std::endl;

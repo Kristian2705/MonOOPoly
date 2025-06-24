@@ -4,7 +4,7 @@ int Monopoly::getNextPlayerIndex()
 {
 	while (true)
 	{
-		if (currentPlayerIndex >= players.getSize()) {
+		if (currentPlayerIndex >= getPlayerMaxIndex()) {
 			currentPlayerIndex = 0;
 		}
 		if(players[currentPlayerIndex].isInGame())
@@ -47,10 +47,31 @@ void Monopoly::freeInstance()
 
 void Monopoly::welcomePlayers()
 {
-	std::cout << "Welcome to MonOOPoly!" << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << "        You started a new game!      " << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
 	std::cout << "Press anything to start the game..." << std::endl;
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.get();
 	addPlayers();
+}
+
+void Monopoly::showMainMenu() const
+{
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << "         Welcome to MonOOPoly!        " << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << "Please choose an option: " << std::endl;
+	std::cout << "1. 'help' to see the available commands in game" << std::endl;
+	std::cout << "2. 'new_game' to start a new game" << std::endl;
+	std::cout << "3. 'save_game' to save your game and exit" << std::endl;
+	std::cout << "4. 'load_game' to load the latest saved game" << std::endl;
+	std::cout << "5. 'exit' to exit the game without saving" << std::endl;
+}
+
+void Monopoly::showMap() const
+{
+	board->printBoard();
 }
 
 int Monopoly::rollDice()
@@ -125,6 +146,19 @@ int Monopoly::getPairsCount() const
 	return pairsCount;
 }
 
+int Monopoly::getPlayerMaxIndex() const
+{
+	int maxIndex = 0;
+	for(int i = 0; i < players.getSize(); i++)
+	{
+		if (players[i].getId() > maxIndex)
+		{
+			maxIndex = players[i].getId();
+		}
+	}
+	return maxIndex;
+}
+
 void Monopoly::resetPairStatus()
 {
 	pairsCount = 0;
@@ -168,10 +202,6 @@ const Player& Monopoly::getPlayer(int playerId) const
 		}
 	}
 	throw std::out_of_range("Player not found");
-	//if (playerId < 1 || playerId > players.getSize()) {
-	//	throw std::out_of_range("Player not found");
-	//}
-	//return players[playerId - 1];
 }
 
 Player& Monopoly::getPlayer(int playerId)
@@ -195,7 +225,7 @@ const Player* Monopoly::getWinner() const
 			return &players[i];
 		}  
 	}  
-	return nullptr; // No winner found  
+	return nullptr;
 }
 
 const MyVector<Player>& Monopoly::getPlayers() const
@@ -216,13 +246,11 @@ void Monopoly::saveToBinaryFile() const
 		return;
 	}
 
-	int playerCount = getPlayersInGameCount();
+	int playerCount = players.getSize();
 	ofs.write((const char*)(&playerCount), sizeof(playerCount));
 
 	std::ofstream playersOfs("players.dat", std::ios::binary | std::ios::trunc);
-	for (int i = 0; i < players.getSize(); i++) {
-		if (!players[i].isInGame())
-			continue;
+	for (int i = 0; i < playerCount; i++) {
 		players[i].saveToBinary(playersOfs);
 	}
 	playersOfs.close();
@@ -243,11 +271,12 @@ void Monopoly::loadFromBinaryFile()
 {
 	std::ifstream ifs("monopoly_game.dat", std::ios::binary);
 
-	//if (!FileFunctions::getFileSize(ifs)) {
-	//	throw std::invalid_argument("No game saved. Please start a new one!");
-	//}
-
 	if (!ifs) {
+		throw std::invalid_argument("No game saved. Please start a new one!");
+	}
+
+	if(HelperFunctions::getFileSize(ifs) == 0)
+	{
 		throw std::invalid_argument("No game saved. Please start a new one!");
 	}
 
@@ -273,49 +302,96 @@ void Monopoly::loadFromBinaryFile()
 	ifs.close();
 
 	std::cout << "Game loaded successfully!" << std::endl;
+	std::cout << "------------------------------------------" << std::endl;
 	std::cout << "Player " << currentPlayerIndex << "'s turn." << std::endl;
+	std::cout << "------------------------------------------" << std::endl;
+	std::cout << std::endl;
+}
+
+void Monopoly::truncateBinaryFiles() const
+{
+	std::ofstream ofs("monopoly_game.dat", std::ios::trunc | std::ios::binary);
+	if (!ofs) {
+		std::cerr << "Error opening game save file for truncation." << std::endl;
+		return;
+	}
+	ofs.close();
+	std::ofstream playersOfs("players.dat", std::ios::trunc | std::ios::binary);
+	if (!playersOfs) {
+		std::cerr << "Error opening players save file for truncation." << std::endl;
+		return;
+	}
+	playersOfs.close();
+	std::ofstream fieldsOfs("fields.dat", std::ios::trunc | std::ios::binary);
+	if (!fieldsOfs) {
+		std::cerr << "Error opening fields save file for truncation." << std::endl;
+		return;
+	}
+	fieldsOfs.close();
 }
 
 void Monopoly::addPlayers()
 {
 	std::cout << "Enter the number of players (2-6): ";
-	int numPlayers;
-	std::cin >> numPlayers;
-	while (numPlayers < 2 || numPlayers > GameConstants::MAX_PLAYERS) {
-		std::cout << "Invalid number of players. Please enter a number between 2 and " << GameConstants::MAX_PLAYERS << "." << std::endl;
-		std::cout << "Enter the number of players (2-6): ";
-		std::cin >> numPlayers;
+	int numPlayers = 0;
+	while (true)
+	{
+		char buffer[GameConstants::BUFFER_CAPACITY];
+		std::cin >> buffer;
+		MyString str(buffer);
+		if(str.isValidNumber()) {
+			numPlayers = str.stoi();
+			if (numPlayers < 2 || numPlayers > GameConstants::MAX_PLAYERS) 
+			{
+				std::cout << "Invalid number of players. Please enter a number between 2 and " << GameConstants::MAX_PLAYERS << "." << std::endl;
+				std::cout << "Enter the number of players (2-6): ";
+				continue;
+			}
+			else {
+				break;
+			}
+		}
+		std::cout << "Invalid input! Please enter a valid number of players (2-6): ";
 	}
+
 	for (int i = 0; i < numPlayers; i++) {
 		std::cout << "Enter name for Player " << (i + 1) << ": ";
 		MyString name;
 		std::cin >> name;
 		Player player(name);
 		addPlayer(player);
-		std::cout << "Player " << (i + 1) << " added with ID: " << player.getId() << std::endl;
+		std::cout << "Player " << name << " added with ID: " << player.getId() << std::endl;
 	}
-	std::cout << numPlayers << " added successfully!" << std::endl;
+
+	std::cout << "------------------------------------------" << std::endl;
+	std::cout << numPlayers << " players added successfully!" << std::endl;
+	std::cout << "------------------------------------------" << std::endl;
+
 	currentPlayerIndex = players[0].getId();
+
 	std::cout << "Are you ready to play?" << std::endl;
 	std::cout << "Press enter to continue..." << std::endl;
+
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	std::cin.get();
+
 	board->printBoard();
+
+	std::cout << "------------------------------------------" << std::endl;
 	std::cout << "Player " << currentPlayerIndex << "'s turn." << std::endl;
-	std::cout << "Type help in order to see all the options" << std::endl;
+	std::cout << "------------------------------------------" << std::endl;
+	std::cout << std::endl;
 }
 
 void Monopoly::endTurn()
 {
 	currentPlayerIndex = getNextPlayerIndex();
-	//currentPlayerIndex = (currentPlayerIndex++) % players.getSize();
-	//while (!players[currentPlayerIndex - 1].isInGame())
-	//{
-	//	currentPlayerIndex = (currentPlayerIndex++) % players.getSize();
-	//}
 	pairsCount = 0;
 	hasRolled = false;
+	std::cout << "------------------------------------------" << std::endl;
 	std::cout << "Player " << currentPlayerIndex << "'s turn." << std::endl;
+	std::cout << "------------------------------------------" << std::endl;
+	std::cout << std::endl;
 }
 
 void Monopoly::applyFieldEffect(size_t position)
